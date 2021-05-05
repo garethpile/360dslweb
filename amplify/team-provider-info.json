@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "360dslBE": {}
+        "360dslBE": {},
+        "360dslbe919a24f3": {}
       },
       "function": {
         "360dslRetrieveStravaActivity": {
