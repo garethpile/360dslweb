@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/strava",
+            "lambdaFunction": "360dslWriteStravaNotification",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "360dslWriteStravaNotification",
+    "apiName": "360dslWriteStravaNotification",
+    "functionArns": [
+        {
+            "lambdaFunction": "360dslWriteStravaNotification"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-360dslbe-staging-31412-authRole",
+        "unAuthRoleName": "amplify-360dslbe-staging-31412-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "360dslWriteStravaNotification",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "2d4a2b84"
+}

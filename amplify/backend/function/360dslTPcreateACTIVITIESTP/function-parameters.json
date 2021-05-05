@@ -1,0 +1,18 @@
+{
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "360dslLayer01",
+      "version": 2
+    }
+  ],
+  "permissions": {
+    "api": {
+      "360dslBE": [
+        "create",
+        "read",
+        "update"
+      ]
+    }
+  }
+}
