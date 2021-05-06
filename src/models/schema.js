@@ -128,14 +128,14 @@ export const schema = {
                 "TPActivityDate": {
                     "name": "TPActivityDate",
                     "isArray": false,
-                    "type": "AWSTime",
+                    "type": "AWSDate",
                     "isRequired": true,
                     "attributes": []
                 },
                 "TPActivityMovingTime": {
                     "name": "TPActivityMovingTime",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "Float",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -790,5 +790,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "b1351dbdffcf52cf61ec849dc90644c2"
+    "version": "309bd29b2e3847967996fffe74a68c64"
 };

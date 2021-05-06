@@ -14,8 +14,8 @@ type ACTIVITIESTP @model @auth(rules: [{allow: public}]) {
   TPActivityOwnerId: String!
   TPActivityDescription: String!
   TPActivityType: String!
-  TPActivityDate: AWSTime!
-  TPActivityMovingTime: Int!
+  TPActivityDate: AWSDate!
+  TPActivityMovingTime: Float!
   TPActivityDistance: Float!
   TPActivityAverageHeartRate: Float
   TPActivityTSS: Int
