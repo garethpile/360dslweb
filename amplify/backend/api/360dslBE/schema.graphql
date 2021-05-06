@@ -18,7 +18,7 @@ type ACTIVITIESTP @model @auth(rules: [{allow: public}]) {
   TPActivityMovingTime: Float!
   TPActivityDistance: Float!
   TPActivityAverageHeartRate: Float
-  TPActivityTSS: Int
+  TPActivityTSS: Float
   TPActivityCalories: Float
   TPActivityElevationGain: Float
   TPActivityAverageSpeed: Float

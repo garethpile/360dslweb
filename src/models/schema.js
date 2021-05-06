@@ -156,7 +156,7 @@ export const schema = {
                 "TPActivityTSS": {
                     "name": "TPActivityTSS",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "Float",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -790,5 +790,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "309bd29b2e3847967996fffe74a68c64"
+    "version": "5bfbc7b8ec5b24b3d4e6e1c018e0edc5"
 };
