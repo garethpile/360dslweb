@@ -7,10 +7,16 @@ function App() {
   return (
     <div className="App">
       <header>
-      
+        <div>
+      <img src="https://www.360dsl.co.za/attachments/Logo/360SL_logo_1.png" alt="360DSL" width = "400" height = "300"/>
+      </div>
         <h1>Please connect your accounts to your 360DSL account:</h1>
+        <div>
         <a href = "https://oauth.sandbox.trainingpeaks.com/OAuth/Authorize?client_id=m360&response_type=code&scope=workouts athlete:profile&redirect_uri=https://cisx9pt2th.execute-api.us-east-1.amazonaws.com/dev/tpnotification">Connect your TP account</a>
+        </div>
+        <div>
         <a href = "http://www.strava.com/oauth/authorize?client_id=7947&response_type=code&scope=activity:read_all&redirect_uri=https://cisx9pt2th.execute-api.us-east-1.amazonaws.com/dev/notification">Connect your Strava account</a>
+        </div>
       </header>
       <AmplifySignOut />
     </div>
