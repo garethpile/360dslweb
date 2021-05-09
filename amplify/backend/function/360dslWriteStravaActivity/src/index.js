@@ -1,4 +1,10 @@
-const https = require("https");
+/* Amplify Params - DO NOT EDIT
+	API_360DSLBE_GRAPHQLAPIENDPOINTOUTPUT
+	API_360DSLBE_GRAPHQLAPIIDOUTPUT
+	API_360DSLBE_GRAPHQLAPIKEYOUTPUT
+	ENV
+	REGION
+Amplify Params - DO NOT EDIT */const https = require("https");
 const AWS = require("aws-sdk");
 const urlParse = require("url").URL;
 const appsyncUrl = process.env.API_360DSLBE_GRAPHQLAPIENDPOINTOUTPUT;

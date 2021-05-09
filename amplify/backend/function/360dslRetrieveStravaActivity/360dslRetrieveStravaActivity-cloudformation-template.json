@@ -77,7 +77,7 @@
         "Runtime": "nodejs12.x",
         "Layers": [
           {
-            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:360dslLayer01-staging:1"
+            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:360dslLayer01-staging:2"
           }
         ],
         "Timeout": "25",

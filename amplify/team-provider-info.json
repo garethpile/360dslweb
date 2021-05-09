@@ -35,7 +35,7 @@
         },
         "360dslWriteStravaActivity": {
           "deploymentBucketName": "amplify-360dslbe-staging-31412-deployment",
-          "s3Key": "amplify-builds/360dslWriteStravaActivity-314c72444c4e6f4a6c39-build.zip"
+          "s3Key": "amplify-builds/360dslWriteStravaActivity-39556a62376f79374161-build.zip"
         },
         "360dslSendCorrespondence": {
           "deploymentBucketName": "amplify-360dslbe-staging-31412-deployment",

@@ -15,6 +15,10 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "function360dslLayer01Arn": {
+      "Type": "String",
+      "Default": "function360dslLayer01Arn"
     }
   },
   "Conditions": {
@@ -79,7 +83,11 @@
           ]
         },
         "Runtime": "nodejs12.x",
-        "Layers": [],
+        "Layers": [
+          {
+            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:360dslLayer01-staging:2"
+          }
+        ],
         "Timeout": "25"
       }
     },

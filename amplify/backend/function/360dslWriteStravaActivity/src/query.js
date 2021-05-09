@@ -1,6 +1,6 @@
 module.exports = {
-    mutation: `mutation createACTIVITIESTP($input: CreateACTIVITIESTPInput!) {
-      createACTIVITIESTP(input: $input) {
+    mutation: `mutation createACTIVITIESSTRAVA($input: CreateACTIVITIESSTRAVAInput!) {
+      createACTIVITIESSTRAVA(input: $input) {
         id
         StravaActivityAverageCadence
         StravaActivityAverageHeartRate

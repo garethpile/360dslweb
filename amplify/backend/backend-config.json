@@ -71,6 +71,13 @@
             "GraphQLAPIEndpointOutput",
             "GraphQLAPIKeyOutput"
           ]
+        },
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -82,7 +89,16 @@
     "360dslRetrieveStravaToken": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslWriteStravaActivity": {
       "build": true,
@@ -97,73 +113,197 @@
             "GraphQLAPIEndpointOutput",
             "GraphQLAPIKeyOutput"
           ]
+        },
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
     "360dslSendCorrespondence": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslStravaOauthExchange": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslStravaOathCallbackValidation": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslPartyUpdate": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslStravaTransformInput": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslStravaRefreshStravaToken": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslTPOauthExchange": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslPartyTPMaintain": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslPartyStravaMaintain": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslTPRefreshTPToken": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslTPGetActivity": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslGarminCallback": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslStravaGetAthlete": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "360dslTPcreateACTIVITIESTP": {
       "build": true,
@@ -177,6 +317,13 @@
             "GraphQLAPIIdOutput",
             "GraphQLAPIEndpointOutput",
             "GraphQLAPIKeyOutput"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "360dslLayer01",
+          "attributes": [
+            "Arn"
           ]
         }
       ]
