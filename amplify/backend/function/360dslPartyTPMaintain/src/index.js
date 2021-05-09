@@ -28,7 +28,7 @@ module.exports.handler = (event, context, callback) => {
       TableName: "360dslPartyTP",
       Item: {
         PartyId: body.PartyId,
-        LastName: body.LastName,
+        LastName: body.LastName + body.FirstName,
         FirstName: body.FirstName,
         EmailAddress: body.EmailAddress,
         tp_access_token: TPAccessToken,
