@@ -9,7 +9,6 @@ module.exports.handler = (event, context, callback) => {
   try {
     console.log(event);
     console.log(event.body);
-    console.log(typeof event.body);
     body = JSON.parse(event.body);
   } catch (error) {
     throw new Error("event.body not present: ", error);

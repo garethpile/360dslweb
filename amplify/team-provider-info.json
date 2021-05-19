@@ -51,7 +51,7 @@
         },
         "360dslPartyUpdate": {
           "deploymentBucketName": "amplify-360dslbe-staging-31412-deployment",
-          "s3Key": "amplify-builds/360dslPartyUpdate-5a2b75744a7a6d6f4670-build.zip"
+          "s3Key": "amplify-builds/360dslPartyUpdate-53474b48576d45304977-build.zip"
         },
         "360dslStravaTransformInput": {
           "deploymentBucketName": "amplify-360dslbe-staging-31412-deployment",
@@ -59,7 +59,7 @@
         },
         "360dslStravaRefreshStravaToken": {
           "deploymentBucketName": "amplify-360dslbe-staging-31412-deployment",
-          "s3Key": "amplify-builds/360dslStravaRefreshStravaToken-507878642b6877542f67-build.zip"
+          "s3Key": "amplify-builds/360dslStravaRefreshStravaToken-4c5a75556b4261435a57-build.zip"
         },
         "360dslTPOauthExchange": {
           "deploymentBucketName": "amplify-360dslbe-staging-31412-deployment",
@@ -67,7 +67,7 @@
         },
         "360dslPartyTPMaintain": {
           "deploymentBucketName": "amplify-360dslbe-staging-31412-deployment",
-          "s3Key": "amplify-builds/360dslPartyTPMaintain-5136336b397a4b6a7063-build.zip"
+          "s3Key": "amplify-builds/360dslPartyTPMaintain-5868746e6849494a496c-build.zip"
         },
         "360dslPartyStravaMaintain": {
           "deploymentBucketName": "amplify-360dslbe-staging-31412-deployment",
@@ -95,7 +95,7 @@
         },
         "360dslTPCreateWorkout": {
           "deploymentBucketName": "amplify-360dslbe-staging-31412-deployment",
-          "s3Key": "amplify-builds/360dslTPCreateWorkout-7872455a682f48466453-build.zip"
+          "s3Key": "amplify-builds/360dslTPCreateWorkout-774b6d6634494c486645-build.zip"
         }
       },
       "hosting": {
