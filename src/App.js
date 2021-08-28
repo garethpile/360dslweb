@@ -18,7 +18,7 @@ function App() {
         <a href = "http://www.strava.com/oauth/authorize?client_id=7947&response_type=code&scope=activity:read_all&redirect_uri=https://cisx9pt2th.execute-api.us-east-1.amazonaws.com/dev/notification">Connect your Strava account</a>
         </div>
         <div>
-        <a href = "https://connect.garmin.com/oauthConfirm?oauth_token=cb7604cc-1e93-4e25-a361-780645ed8882">Connect your Garmin account</a>
+        <a href = "https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/garminreqtok">Connect your Garmin account</a>
         </div>
       </header>
       <AmplifySignOut />
