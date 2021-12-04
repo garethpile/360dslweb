@@ -59,7 +59,7 @@ const headers = { 'Content-Type': 'application/json' ,
   .then(data => {
     console.log(data);
     //var oauth_token = data.oauth_token;
-    console.log(oauth_token);
+    //console.log(oauth_token);
     fetch('https://connect.garmin.com/oauthConfirm?oauth_token=${data.oauth_token}', {headers})
   
   })
