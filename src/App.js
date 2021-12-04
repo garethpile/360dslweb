@@ -1,16 +1,18 @@
 import React from "react";
-import logo from "./logo.svg";
+import logo from "./images/360dsl_logo.svg";
 import "./App.css";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { actionButton } from "@aws-amplify/ui";
 
 function App() {
   return (
+
+
     <div className="App">
-      <header></header>
-      <body>
+      
         <div>
           <img
-            src="https://www.360dsl.co.za/attachments/Logo/360SL_logo_1.png"
+            src="http://www.360dsl.co.za/attachments/Logo/360SL_logo_1.png"
             alt="360DSL"
             width="400"
             height="300"
@@ -32,33 +34,37 @@ function App() {
             Connect your Garmin account
           </a>
         </div>
-
         <div>
-          <button type="button" onclick="getGarminToken()">
-            Connect your Garmin account
-          </button>
+          <button onClick={fetchGarminToken}>Link Garmin</button>
         </div>
-        <div id="demo"></div>
-      </body>
+   
 
       <AmplifySignOut />
     </div>
+
   );
 }
 
 export default withAuthenticator(App);
 
-function getGarminToken() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open(
-    "GET",
-    "https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken",
-    true
-  );
-  xhttp.send();
+
+
+function fetchGarminToken(){
+
+
+const headers = { 'Content-Type': 'application/json' ,
 }
+  fetch('https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken' )
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    //var oauth_token = data.oauth_token;
+    console.log(oauth_token);
+    fetch('https://connect.garmin.com/oauthConfirm?oauth_token=${data.oauth_token}', {headers})
+  
+  })
+  
+
+}
+
+
