@@ -30,7 +30,7 @@ function App() {
           </a>
         </div>
         <div>
-          <a href="https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken">
+          <a href="https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken">
             Connect your Garmin account
           </a>
         </div>
