@@ -5,6 +5,9 @@ import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { actionButton } from "@aws-amplify/ui";
 
 function App() {
+
+console.log("User Info: ", Auth.currentUserInfo())
+
   return (
 
 
