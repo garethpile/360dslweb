@@ -3,7 +3,7 @@ import React from "react";
 import "./App.css";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { actionButton } from "@aws-amplify/ui";
-import {Auth} from "@aws-amplify";
+import {Auth} from "aws-amplify";
 
 function App() {
 
