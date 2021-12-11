@@ -1,8 +1,9 @@
 import React from "react";
 //import logo from "./images/360dsl_logo.svg";
 import "./App.css";
-import { withAuthenticator, AmplifySignOut ,Auth} from "@aws-amplify/ui-react";
+import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { actionButton } from "@aws-amplify/ui";
+import {Auth} from "@aws-amplify";
 
 function App() {
 
