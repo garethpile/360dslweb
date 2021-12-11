@@ -6,8 +6,7 @@ import { actionButton } from "@aws-amplify/ui";
 
 function App() {
 
-  const user =  await Auth.currentAuthenticatedUser();
-  console.log("User Info: ", user);
+ 
 
   return (
 
@@ -41,6 +40,9 @@ function App() {
         <div>
           <button onClick={fetchGarminToken}>Link Garmin</button>
         </div>
+        <div>
+          <button onClick={testUserData}>TestUser Data</button>
+        </div>
    
 
       <AmplifySignOut />
@@ -51,7 +53,11 @@ function App() {
 
 export default withAuthenticator(App);
 
+function testUserData(){
 
+  const user =  await Auth.currentAuthenticatedUser();
+  console.log("User Info: ", user);
+}
 
 function fetchGarminToken(){
 
