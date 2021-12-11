@@ -5,11 +5,20 @@ import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { actionButton } from "@aws-amplify/ui";
 import {Auth} from "aws-amplify";
 
+var userId;
+
 function App() {
+
+
 
   Auth.currentAuthenticatedUser({
     bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-}).then(user => console.log(user))
+}).then(
+  
+  //user => userId = user.username
+  userId = user.username
+
+)
 .catch(err => console.log(err));
 
   return (
@@ -61,7 +70,7 @@ function fetchGarminToken(){
 
 const headers = { 'Content-Type': 'application/json' ,
 }
-  fetch('https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken' )
+  fetch('https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken?userId=${userId}' )
   .then(response => response.json())
   .then(data => {
     console.log(data);
