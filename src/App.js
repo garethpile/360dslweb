@@ -6,7 +6,10 @@ import { actionButton } from "@aws-amplify/ui";
 
 function App() {
 
- 
+  Auth.currentAuthenticatedUser({
+    bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+}).then(user => console.log(user))
+.catch(err => console.log(err));
 
   return (
 
@@ -40,9 +43,6 @@ function App() {
         <div>
           <button onClick={fetchGarminToken}>Link Garmin</button>
         </div>
-        <div>
-          <button onClick={testUserData}>TestUser Data</button>
-        </div>
    
 
       <AmplifySignOut />
@@ -53,11 +53,7 @@ function App() {
 
 export default withAuthenticator(App);
 
-function testUserData(){
 
-  const user =  await Auth.currentAuthenticatedUser();
-  console.log("User Info: ", user);
-}
 
 function fetchGarminToken(){
 
