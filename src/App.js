@@ -6,7 +6,8 @@ import { actionButton } from "@aws-amplify/ui";
 
 function App() {
 
-console.log("User Info: ", Auth.currentUserInfo());
+  const user =  await Auth.currentAuthenticatedUser();
+  console.log("User Info: ", user);
 
   return (
 
