@@ -52,11 +52,11 @@ function App() {
 
       <div>
         <script language="javascript" type="text/javascript">
-          openPage = function(){" "}
+          openPage = function()
           {
-            (location.href =
+            location.href =
               "https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=" +
-              userId)
+              userId
           }
         </script>
         this is a <a href="javascript:openPage()">Link </a>
