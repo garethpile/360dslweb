@@ -62,7 +62,7 @@ export default withAuthenticator(App);
 
 function fetchGarminToken() {
   var url = new URL(
-    "https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken"
+    "https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/"
   );
 
   var params = { userId: userId };
