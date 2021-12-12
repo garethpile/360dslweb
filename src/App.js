@@ -42,12 +42,12 @@ function App() {
         </a>
       </div>
       <div>
-        <script>
-          var loc =
-          "https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId="
-          + userId; document.write('
-          <a href="' + loc + '">Connect your Garmin account</a>');
-        </script>
+        <a
+          href="https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/"
+          onclick="location.href=this.href+'?userId'+userId;return false;"
+        >
+          Garmin
+        </a>
       </div>
       <div>
         <button onClick={fetchGarminToken}>Link Garmin</button>
