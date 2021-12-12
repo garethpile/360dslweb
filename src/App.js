@@ -8,8 +8,6 @@ import { Auth } from "aws-amplify";
 var userId;
 
 function App() {
-  
-
   Auth.currentAuthenticatedUser({
     bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
   })
@@ -51,6 +49,10 @@ function App() {
           Connect you Garmin account
         </a>
       </div>
+      <div>
+        <button onClick={fetchGarminToken}>Connect you Garmin account</button>
+      </div>
+
       <AmplifySignOut />
     </div>
   );
@@ -69,4 +71,3 @@ function fetchGarminToken() {
 
   fetch(url);
 }
-
