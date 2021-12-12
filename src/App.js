@@ -44,9 +44,9 @@ function App() {
       <div>
         <a
           href="https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/"
-          onclick="location.href=this.href+'?userId'+userId;return false;"
+          onclick="location.href=this.href+'?userId='+userId;return false;"
         >
-          Garmin
+          Connect you Garmin account
         </a>
       </div>
       <div>
@@ -62,17 +62,12 @@ export default withAuthenticator(App);
 
 function fetchGarminToken() {
   const headers = { "Content-Type": "application/json" };
-  fetch(
-    "https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken"
-  )
+  const url =
+    "https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken?userId=" +
+    userId;
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      //var oauth_token = data.oauth_token;
-      //console.log(oauth_token);
-      fetch(
-        "https://connect.garmin.com/oauthConfirm?oauth_token=${data.oauth_token}",
-        { headers }
-      );
     });
 }
