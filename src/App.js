@@ -61,10 +61,11 @@ function App() {
 export default withAuthenticator(App);
 
 function fetchGarminToken(userId) {
-  const headers = { "Content-Type": "application/json" };
+ 
   const url =
     "https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken?userId=" +
     userId;
+    console.log("URL: ",url);
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
