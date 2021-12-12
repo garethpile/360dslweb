@@ -64,13 +64,13 @@ function App() {
 export default withAuthenticator(App);
 
 function fetchGarminToken(userId) {
-  const url =
-    "https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken?userId=" +
-    userId;
-  console.log("URL: ", url);
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    });
+  var url = new URL(
+    "https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken"
+  );
+
+  var params = { userId: userId };
+
+  url.search = new URLSearchParams(params).toString();
+
+  fetch(url);
 }
