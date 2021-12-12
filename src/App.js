@@ -65,5 +65,5 @@ function fetchGarminToken() {
 
   console.log("url: ",url);
 
-  location.href = url;
+  window.location.href = url;
 }
