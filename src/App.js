@@ -51,9 +51,6 @@ function App() {
           Connect you Garmin account
         </a>
       </div>
-      <div>
-        <button onClick={fetchGarminToken}>Link Garmin</button>
-      </div>
       <AmplifySignOut />
     </div>
   );
