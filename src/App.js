@@ -50,6 +50,18 @@ function App() {
         </a>
       </div>
 
+      <div>
+        <script language="javascript" type="text/javascript">
+          openPage = function(){" "}
+          {
+            (location.href =
+              "https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=" +
+              userId)
+          }
+        </script>
+        this is a <a href="javascript:openPage()">Link </a>
+      </div>
+
       <AmplifySignOut />
     </div>
   );
