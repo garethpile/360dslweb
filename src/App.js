@@ -50,7 +50,7 @@ function App() {
         </a>
       </div>
       <div>
-        <button onClick={fetchGarminToken}>Link Garmin</button>
+        <button onClick={fetchGarminToken(userId)}>Link Garmin</button>
       </div>
 
       <AmplifySignOut />
@@ -60,7 +60,7 @@ function App() {
 
 export default withAuthenticator(App);
 
-function fetchGarminToken() {
+function fetchGarminToken(userId) {
   const headers = { "Content-Type": "application/json" };
   const url =
     "https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken?userId=" +
