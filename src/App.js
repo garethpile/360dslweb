@@ -54,7 +54,7 @@ function App() {
         <script language="javascript" type="text/javascript">
           openPage = function()
           {
-            location.href =
+            window.location.href =
               "https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=" +
               userId
           }
