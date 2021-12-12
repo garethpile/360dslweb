@@ -61,7 +61,5 @@ function fetchGarminToken() {
 
   url.search = new URLSearchParams(params).toString();
 
-  var result  = fetch(url);
-
-  return result;
+  location.href = fetch(url);
 }
