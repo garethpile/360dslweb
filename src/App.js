@@ -51,24 +51,9 @@ function App() {
           Connect you Garmin account
         </a>
       </div>
-      <div>
-        <button onClick={fetchGarminToken}>Link Garmin</button>
-      </div>
       <AmplifySignOut />
     </div>
   );
 }
 
 export default withAuthenticator(App);
-
-function fetchGarminToken() {
-  var url = new URL(
-    "https://ab3qw9gu7b.execute-api.us-east-1.amazonaws.com/staging/requesttoken"
-  );
-
-  var params = { userId: userId };
-
-  url.search = new URLSearchParams(params).toString();
-
-  fetch(url);
-}
