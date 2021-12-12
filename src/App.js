@@ -49,13 +49,11 @@ function App() {
           Connect you Garmin account
         </a>
       </div>
-
-      {(userId) => (
-        <div>
+      <div>
+        {(userId) => (
           <button onClick={() => fetchGarminToken(userId)}>Link Garmin</button>
-        </div>
-      )}
-
+        )}
+      </div>
       <AmplifySignOut />
     </div>
   );
