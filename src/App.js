@@ -72,3 +72,4 @@ function fetchGarminToken() {
 
   fetch(url);
 }
+
