@@ -14,11 +14,13 @@ function App() {
     .then(
       (user) => {
         userId = user.username;
-        console.log("Current userId: ", userId);
+        
       }
       //userId = user.username
     )
     .catch((err) => console.log(err));
+
+    console.log("Current userId: ", userId);
 
   return (
     <div className="App">
