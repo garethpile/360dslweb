@@ -14,6 +14,7 @@ function App() {
     .then(
       (user) => {
         userId = user.username;
+        console.log("Current userId: ", userId);
       }
       //userId = user.username
     )
