@@ -5,10 +5,7 @@ import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { actionButton } from "@aws-amplify/ui";
 import { Auth } from "aws-amplify";
 
-
-
 function App() {
-
   var userId;
 
   Auth.currentAuthenticatedUser({
@@ -47,12 +44,11 @@ function App() {
 
       <div>
         <a
-          href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId="${userId}`}>
+          href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId="${userId}`}
+        >
           Connect your Garmin account
         </a>
       </div>
- 
-
 
       <AmplifySignOut />
     </div>
@@ -60,7 +56,7 @@ function App() {
 }
 
 export default withAuthenticator(App);
-
+/*
 function fetchGarminToken() {
   var url = new URL(
     "https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/"
@@ -76,3 +72,4 @@ function fetchGarminToken() {
 
   window.location.href = fetch(url);
 }
+*/
