@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { Auth } from "aws-amplify";
 
 function App() {
-  var userId;
+  const [userId, setUserId] = useState("");
 
-  // Obtain current logged in Amplify user userId which needs to be passed into Garmin URL later
+ useEffect(() => {
+   // Obtain current logged in Amplify user userId which needs to be passed into Garmin URL later
   Auth.currentAuthenticatedUser({
     bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
   })
     .then((user) => {
-      userId = user.username;
+      // userId = user.username;
+      setUserId(user.username)
       console.log("Current userId: ", userId); // This works and userId visible ...
     })
     .catch((err) => console.log(err));
+ }, [])
 
   // userId variable is not visoble in this return code below ????????
   return (
