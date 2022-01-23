@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { Auth } from "aws-amplify";
+import Strava from "./Strava/Strava";
 
 function App() {
   const [userId, setUserId] = useState("");
@@ -14,7 +15,7 @@ function App() {
     .then((user) => {
       // userId = user.username;
       setUserId(user.username)
-      console.log("Current userId: ", userId); // This works and userId visible ...
+      console.log("Current userId: ", user.username); // This works and userId visible ...
     })
     .catch((err) => console.log(err));
  }, [])
@@ -55,4 +56,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(Strava);

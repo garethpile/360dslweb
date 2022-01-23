@@ -1,0 +1,170 @@
+@import "~antd/dist/antd.css";
+body{
+    background-color: rgb(233, 233, 233) !important;
+}
+.StravaDiv{
+    font-size: 24px !important;
+    font-weight: 950 !important;
+    color: orangered;
+}
+.headerDiv{
+    position: static;
+    background-color: white !important;
+}
+.searchDiv{
+    margin-left: 3px !important;
+    margin-top: 4px !important;
+}
+.searchIcon{
+    font-size: 90% !important;
+}
+.buttonDiv{
+    background-color: orangered !important;
+    color: white !important;
+    margin-left: 350px;
+}
+.notificationIcon{
+    color: black !important;
+    margin-left: 2% !important;
+}
+.addIcon{
+    color: orangered !important;
+    /* margin-left: 75%; */
+}
+.ArrowIcon{
+    color: black !important;
+    margin-right: 1% !important;
+    cursor: pointer;
+}
+.avatarIcon{
+    margin-left: 1% !important;
+}
+.rightDiv{
+    display: contents;
+    margin-left: 20px !important;
+}
+.bodyDiv{
+    margin-top: 5% !important;
+}
+.cardDiv{
+    /* width: 39% !important; */
+     margin-top: 35px !important;
+    /* margin: auto !important; */
+}
+.cardDiv1{
+    /* width: 39% !important; */
+    margin-top: 35px  !important; 
+    /* margin: auto !important; */
+}
+.cardSpacingDiv{
+    margin-bottom: 0.5% !important;
+}
+.subtitleDiv{
+    /* width: 33%; */
+    text-align: start;
+    margin-top: -4%;
+}
+.titleDiv{
+    font-weight: 600;
+    text-align: start;
+}
+.Description{
+    text-align: start;
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: 6%;
+    margin-top: -1.5%;
+}
+.descriptionDiv{
+    display: flex;
+}
+.cycleIcon{
+    margin-left: 3%;
+    margin-top: -1%;
+    color: grey;
+    font-size: 25px;
+}
+.likeDiv{
+    text-align: end;
+}
+.CalculationDiv{
+    display: flex;
+    text-align: start;
+    font-size: 18px;
+    margin-left: 6%;
+    margin-top: -1.5%;
+}
+.distanceDiv{
+    font-size: 15px;
+    margin-bottom: 0%;
+}
+.distanceDiv1{
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+.timeDiv{
+    font-size: 15px;
+    margin-bottom: 0%;
+}
+.timeDiv1{
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+.stepDiv{
+    font-size: 15px;
+    margin-bottom: 0%;
+}
+.stepDiv1{
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+.spanDiv{
+    margin-right: 8%;
+    margin-left: 8%;
+}
+.spanDiv1{
+    margin-right: 8%;
+}
+.maincardDiv{
+    width: 80% !important;
+    margin-left: 6% !important; 
+    margin-top: 8% !important; 
+}
+.mainavatarIcon{
+    margin-top: -26% !important;
+}
+.latestDiv{
+    text-align: start;
+    font-weight: 610;
+    margin-top: 5%  !important;
+}
+.ActivityDiv{
+    text-align: start;
+    margin-top: -5%;
+    font-weight: 700;
+}
+.LogDiv{
+    text-align: start;
+    margin-top: 5%;
+    margin-bottom: -3%;
+    font-weight: 649;
+    font-size: 15px;
+}
+.LogIconDiv{
+    display: flex;
+}
+.nameDiv{
+    font-size: 25px !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+}
+.LogIcon{
+    margin-top: 2% !important;
+    margin-left: 45% !important;
+}
+.menuItems{
+    display: contents;
+}
