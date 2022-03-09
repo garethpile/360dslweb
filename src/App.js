@@ -3,9 +3,52 @@ import "./App.css";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { Auth } from "aws-amplify";
 import Strava from "./Strava/Strava";
+import {
+  useQuery,
+  gql
+} from "@apollo/client";
 
+const firstQuery = gql`query MyQuery {
+
+  activitiesgarminByGarminAccountId(GarminAccountId: "574dc5ad1b54a9fe210170d1fd34741c") {
+
+    nextToken
+
+    startedAt
+
+    items {
+
+      GarminAccountId
+
+      GarminActiveKilocalories
+
+      GarminActivity
+
+      GarminActivityDescription
+
+      GarminActivityDistance
+
+      GarminActivityDuration
+
+      GarminActivityId
+
+      GarminActivityStartTime
+
+      GarminActivityType
+
+      GarminAverageHeartRateInBeatsPerMinute
+
+      GarminAveragePaceInMinutesPerKilometer
+
+    }
+
+  }
+
+}`
 function App() {
   const [userId, setUserId] = useState("");
+  const { loading, error, data } = useQuery(firstQuery);
+  
 
  useEffect(() => {
    // Obtain current logged in Amplify user userId which needs to be passed into Garmin URL later
@@ -19,7 +62,10 @@ function App() {
     })
     .catch((err) => console.log(err));
  }, [])
-
+//  console.log(error)
+//  if (loading) return <p>Loading...</p>;
+//   if (error) return <p>Error :(</p>;
+  console.log(data , "333")
   // userId variable is not visoble in this return code below ????????
   return (
     <div className="App">
@@ -56,4 +102,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(Strava);
+export default withAuthenticator(App);
