@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
-import { Auth } from "aws-amplify";
+import { Auth , API , graphqlOperation } from "aws-amplify";
 import Strava from "./Strava/Strava";
 import {
   useQuery,
   gql
 } from "@apollo/client";
 
-const firstQuery = gql`query MyQuery {
+const firstQuery = `query MyQuery {
 
   activitiesgarminByGarminAccountId(GarminAccountId: "574dc5ad1b54a9fe210170d1fd34741c") {
 
@@ -47,8 +47,15 @@ const firstQuery = gql`query MyQuery {
 }`
 function App() {
   const [userId, setUserId] = useState("");
-  const { loading, error, data } = useQuery(firstQuery);
-  
+  // const { loading, error, data } = useQuery(firstQuery);
+  async function fetchDetails() {
+    try {
+      const todoData = await API.graphql(graphqlOperation(firstQuery));
+      console.log(todoData);
+      // const todos = todoData.data.listTodos.items
+      // setTodos(todos)
+    } catch (err) { console.log('error fetching todos') }
+  }
 
  useEffect(() => {
    // Obtain current logged in Amplify user userId which needs to be passed into Garmin URL later
@@ -58,6 +65,7 @@ function App() {
     .then((user) => {
       // userId = user.username;
       setUserId(user.username)
+      fetchDetails()
       console.log("Current userId: ", user.username); // This works and userId visible ...
     })
     .catch((err) => console.log(err));
@@ -65,7 +73,7 @@ function App() {
 //  console.log(error)
 //  if (loading) return <p>Loading...</p>;
 //   if (error) return <p>Error :(</p>;
-  console.log(data , "333")
+//   console.log(data , "333")
   // userId variable is not visoble in this return code below ????????
   return (
     <div className="App">
@@ -102,4 +110,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(Strava);
