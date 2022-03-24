@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useState, useEffect } from 'react';
 import './Strava.css'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -30,9 +30,11 @@ import EventIcon from '@mui/icons-material/Event';
 import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
 import TabPanel from '@mui/lab/TabPanel';
 import TabContext from '@mui/lab/TabContext';
+import { Auth , API , graphqlOperation } from "aws-amplify";
+import {Activityquery} from "../Apollo/queries"
+import { Select, Radio } from 'antd';
 
-
-
+const { Option } = Select;
 const data1 = [
   {
     title: <><p className='titleDiv'>Robert</p></>,
@@ -68,11 +70,23 @@ const data5 = [
 
 function Strava() {
   const [value, setValue] = React.useState(1);
+  const [activities, setActivities] = React.useState([]);
+  const [dropdwon1, setDropdwon1] = React.useState("Super Easy");
+  const [dropdwon2, setDropdwon2] = React.useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  async function fetchActivities() {
+    try {
+      const activity = await API.graphql(graphqlOperation(Activityquery));
+      console.log(activity.data.activitiesgarminByGarminAccountId.items);
+      setActivities(activity.data.activitiesgarminByGarminAccountId.items);
+    } catch (err) { console.log('error fetching todos') }
+  }
+  useEffect(() => {
+    fetchActivities();
+  } , [])
   return (
     <div>
       <AppBar className="headerDiv">
@@ -185,132 +199,65 @@ function Strava() {
 
                     </Col>
                     <Col span={8}>
-                    <div className='cardSpacingDiv'>
-                    <Card className='cardDiv'>
-                            <List
-                                itemLayout="horizontal"
-                                dataSource={data1}
-                                renderItem={item => (
-                                <List.Item>
-                                    <List.Item.Meta
-                                    avatar={<Avatar shape="circle" size={50} src="https://joeschmoe.io/api/v1/random" />}
-                                    title={item.title}
-                                    description={item.description}
-                                    />  
-                                </List.Item>
-                                )}
-                            />
-                            <div className="descriptionDiv">
-                            <PedalBikeIcon className="cycleIcon"/>
-                            <p className='Description'>
-                                ROUVY Guide - Over amp; Under
-                            </p>
-                            </div>    
-                            <div className="CalculationDiv">
-                              <span className='spanDiv'>
-                                  <p className='distanceDiv'>Distance</p>
-                                  <p className='distanceDiv1'>5.00 km</p>
-                              </span>
-                              <span className='spanDiv1'>
-                              <p className='timeDiv'>Time</p>
-                              <p className='timeDiv1'>12m 15s</p>
-                              </span>
-                              <span>
-                              <p className='stepDiv'>Avg Power</p>
-                              <p className='stepDiv1'>113 W</p>
-                              </span>
-                            </div>
-                            <Divider light />
-                            <div className="likeDiv">
-                              <IconButton><ThumbUpAltOutlinedIcon/></IconButton>
-                              <IconButton><ForumOutlinedIcon/></IconButton>
-                           </div>
-                      </Card>
-                    </div>
-                    <div className='cardSpacingDiv'>
-                      <Card className='cardDiv1'>
-                            <List
-                                itemLayout="horizontal"
-                                dataSource={data2}
-                                renderItem={item => (
-                                <List.Item>
-                                    <List.Item.Meta
-                                    avatar={<Avatar shape="circle" size={50} src="https://joeschmoe.io/api/v1/random" />}
-                                    title={item.title}
-                                    description={item.description}
-                                    />  
-                                </List.Item>
-                                )}
-                            />
-                            <div className="descriptionDiv">
-                            <PedalBikeIcon className="cycleIcon"/>
-                            <p className='Description'>
-                                ROUVY Guide - Over amp; Under
-                            </p>
-                            </div>    
-                            <div className="CalculationDiv">
-                              <span className='spanDiv'>
-                                  <p className='distanceDiv'>Distance</p>
-                                  <p className='distanceDiv1'>24.47 km</p>
-                              </span>
-                              <span className='spanDiv1'>
-                              <p className='timeDiv'>Time</p>
-                              <p className='timeDiv1'>24m 2s</p>
-                              </span>
-                              <span>
-                              <p className='stepDiv'>Avg Power</p>
-                              <p className='stepDiv1'>24 W</p>
-                              </span>
-                            </div>
-                            <Divider light />
-                            <div className="likeDiv">
-                              <IconButton><ThumbUpAltOutlinedIcon/></IconButton>
-                              <IconButton><ForumOutlinedIcon/></IconButton>
-                           </div>
-                      </Card>        
-                    </div> 
-                    <div className='cardSpacingDiv'> 
-                      <Card className='cardDiv1'>
-                            <List
-                                itemLayout="horizontal"
-                                dataSource={data3}
-                                renderItem={item => (
-                                <List.Item>
-                                    <List.Item.Meta
-                                    avatar={<Avatar shape="circle" size={50} src="https://joeschmoe.io/api/v1/random" />}
-                                    title={item.title}
-                                    description={item.description}
-                                    />  
-                                </List.Item>
-                                )}
-                            />
-                            <div className="descriptionDiv">
-                            <PedalBikeIcon className="cycleIcon"/>
-                            <p className='Description'>
-                                Morning Ride
-                            </p>
-                            </div>    
-                            <div className="CalculationDiv">
-                              <span className='spanDiv'>
-                                  <p className='distanceDiv'>Distance</p>
-                                  <p className='distanceDiv1'>70.04 km</p>
-                              </span>
-                              <span className='spanDiv1'>
-                              <p className='timeDiv'>Avg Power</p>
-                              <p className='timeDiv1'>599 m</p>
-                              </span>
-                              <span>
-                              <p className='stepDiv'>Time</p>
-                              <p className='stepDiv1'>24h 11m</p>
-                              </span>
-                            </div>
-                            <Divider light />
-                            <div className="likeDiv">
-                              <IconButton><ThumbUpAltOutlinedIcon/></IconButton>
-                              <IconButton><ForumOutlinedIcon/></IconButton>
-                           </div>
-                      </Card>
-                    </div>
+                      {activities.map(({GarminActivityType , GarminAveragePaceInMinutesPerKilometer,GarminActivityStartTime ,GarminActivityDuration,GarminActivityDistance, GarminAverageHeartRateInBeatsPerMinute}) => {
+                        return <div className='cardSpacingDiv'>
+                        <Card className='cardDiv1'>
+                        <Row>
+                          <Col span={10}>
+                              <Typography>Activity Type: </Typography>
+                              <Typography component="b">{GarminActivityType}</Typography>
+                              <Typography>Activity Start Time :</Typography>
+                              <Typography component="b">{new Date(GarminActivityStartTime).toLocaleString()}</Typography>
+                              
+                          </Col>
+                          <Col span={14}>
+                            <h2>Activity Description</h2>
+                          </Col>
+                        </Row>
+                        <Divider />
+                        <Row>
+                          <Col span={9} style={{"border-right" : "1px solid grey"}}>
+                              <Typography>Distance: </Typography>
+                              <Typography>{GarminActivityDistance}</Typography>
+                              <Typography>Time :</Typography>
+                              <Typography>{GarminActivityDuration}</Typography>
+                              
+                              <Typography>Average Pace :</Typography>
+                              <Typography>{GarminAveragePaceInMinutesPerKilometer}</Typography>
+                              <Typography>Average Heart rate :</Typography>
+                              <Typography>{GarminAverageHeartRateInBeatsPerMinute}</Typography>
+
+                          </Col>
+                          <Col span={15}>
+                          <Box paddingX={3}>
+                            <Typography>How hard was thar Effort?</Typography>
+                            <Select value={dropdwon1} onChange={(e) => setDropdwon1(e)} placeholder="How hard was that Effort" style={{ width: 200 }}>
+                              <Option value="Super Easy">Super Easy</Option>
+                              <Option value="Good WorkOut">Good WorkOut</Option>
+                              <Option value="Serious Sweet!">Serious Sweet!</Option>
+                              <Option value="Hard But I was Strong Sweet!">Hard But I was Strong Sweet!</Option>
+                              <Option value="Thats hurts a bit">Thats hurts a bit</Option>
+                              <Option value="Broke me in half">Broke me in half</Option>
+                            </Select>
+                            </Box>
+                            <Box paddingX={3}>
+                              <Typography>Fatigue Level post Workout</Typography>
+                              <Select value={dropdwon2} onChange={(e) => setDropdwon2(e)} placeholder="How hard was that Effort" style={{ width: 200 }}>
+                                <Option value="Could Run for days">Could Run for days</Option>
+                                <Option value="Could train again today">Could train again today</Option>
+                                <Option value="Feel great">Feel great</Option>
+                                <Option value="Glad my training done for the day">Glad my training done for the day</Option>
+                                <Option value="Feeling a bit wobbly and drained">Feeling a bit wobbly and drained</Option>
+                                <Option value="I am broken">I am broken</Option>
+                              </Select>
+                              <Button>Save</Button>
+                            </Box>
+                          </Col>
+                        </Row>
+                        </Card>        
+                      </div> 
+                      })}
+                    
                     </Col>
                     <Col span={8}>
                       <div>

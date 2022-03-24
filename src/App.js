@@ -3,59 +3,10 @@ import "./App.css";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { Auth , API , graphqlOperation } from "aws-amplify";
 import Strava from "./Strava/Strava";
-import {
-  useQuery,
-  gql
-} from "@apollo/client";
 
-const firstQuery = `query MyQuery {
-
-  activitiesgarminByGarminAccountId(GarminAccountId: "574dc5ad1b54a9fe210170d1fd34741c") {
-
-    nextToken
-
-    startedAt
-
-    items {
-
-      GarminAccountId
-
-      GarminActiveKilocalories
-
-      GarminActivity
-
-      GarminActivityDescription
-
-      GarminActivityDistance
-
-      GarminActivityDuration
-
-      GarminActivityId
-
-      GarminActivityStartTime
-
-      GarminActivityType
-
-      GarminAverageHeartRateInBeatsPerMinute
-
-      GarminAveragePaceInMinutesPerKilometer
-
-    }
-
-  }
-
-}`
 function App() {
   const [userId, setUserId] = useState("");
-  // const { loading, error, data } = useQuery(firstQuery);
-  async function fetchDetails() {
-    try {
-      const todoData = await API.graphql(graphqlOperation(firstQuery));
-      console.log(todoData);
-      // const todos = todoData.data.listTodos.items
-      // setTodos(todos)
-    } catch (err) { console.log('error fetching todos') }
-  }
+  // const { loading, error, data } = useQuery(firstQuery)
 
  useEffect(() => {
    // Obtain current logged in Amplify user userId which needs to be passed into Garmin URL later
@@ -65,7 +16,6 @@ function App() {
     .then((user) => {
       // userId = user.username;
       setUserId(user.username)
-      fetchDetails()
       console.log("Current userId: ", user.username); // This works and userId visible ...
     })
     .catch((err) => console.log(err));
