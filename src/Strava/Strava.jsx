@@ -12,6 +12,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import PedalBikeIcon from '@mui/icons-material/PedalBike';
+import SportsMartialArtsIcon from '@mui/icons-material/SportsMartialArts';
 import 'antd/dist/antd.min.css';
 import { List, Avatar } from 'antd';
 import { Card, Input , Image } from 'antd';
@@ -25,6 +26,7 @@ import { SearchOutlined ,EyeOutlined} from '@ant-design/icons';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import IceSkatingIcon from '@mui/icons-material/IceSkating';
+import PoolIcon from '@mui/icons-material/Pool';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import EventIcon from '@mui/icons-material/Event';
 import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
@@ -33,7 +35,9 @@ import TabContext from '@mui/lab/TabContext';
 import { Auth , API , graphqlOperation } from "aws-amplify";
 import {Activityquery} from "../Apollo/queries"
 import { Select, Radio } from 'antd';
-
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import SportsGymnasticsIcon from '@mui/icons-material/SportsBar';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 const { Option } = Select;
 const data1 = [
   {
@@ -74,6 +78,13 @@ function Strava() {
   const [dropdwon1, setDropdwon1] = React.useState("Super Easy");
   const [dropdwon2, setDropdwon2] = React.useState("");
 
+  const iconDictionary = {
+    "LAP_SWIMMING" : <PoolIcon fontSize="large" />,
+    "STRENGTH_TRAINING" : <><SportsMartialArtsIcon fontSize="large" /><FitnessCenterIcon fontSize="large" /></>,
+    "RUNNING" : <DirectionsRunIcon fontSize="large" />,
+    "CYCLING" : <DirectionsBikeIcon fontSize="large" />,
+    "VIRTUAL_RIDE" : <PedalBikeIcon fontSize="large" />
+  }
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -98,7 +109,7 @@ function Strava() {
               noWrap
               component="div"
             >
-              STRAVA
+              <img src={process.env.PUBLIC_URL + '/360log.jpeg'} width="150" height={50} />
             </Typography>
             <IconButton className="searchDiv" size="large" aria-label="search">
               <SearchIcon className="searchIcon"/>
@@ -140,7 +151,7 @@ function Strava() {
      
                   <div className='bodyDiv'>
                   <Row>
-                    <Col span={8}>
+                    <Col style={{ position: "absolute","width": "100%"}} span={8}>
                     <div>
                       <Card className="maincardDiv">
                       <IconButton className="mainavatarIcon">
@@ -198,20 +209,21 @@ function Strava() {
                     </div>
 
                     </Col>
-                    <Col span={8}>
-                      {activities.map(({GarminActivityType , GarminAveragePaceInMinutesPerKilometer,GarminActivityStartTime ,GarminActivityDuration,GarminActivityDistance, GarminAverageHeartRateInBeatsPerMinute}) => {
+                    <Col style={{ position: "absolute", left : "35%" ,"width": "100%"}} span={8}>
+                      {activities.map(({GarminActivityType ,GarminActivityDescription, GarminAveragePaceInMinutesPerKilometer,GarminActivityStartTime ,GarminActivityDuration,GarminActivityDistance, GarminAverageHeartRateInBeatsPerMinute}) => {
                         return <div className='cardSpacingDiv'>
                         <Card className='cardDiv1'>
                         <Row>
                           <Col span={10}>
                               <Typography>Activity Type: </Typography>
-                              <Typography component="b">{GarminActivityType}</Typography>
+                              <Typography component="b">{iconDictionary[GarminActivityType] || GarminActivityType}</Typography>
                               <Typography>Activity Start Time :</Typography>
                               <Typography component="b">{new Date(GarminActivityStartTime).toLocaleString()}</Typography>
                               
                           </Col>
                           <Col span={14}>
                             <h2>Activity Description</h2>
+                            <Typography>{GarminActivityDescription}</Typography>
                           </Col>
                         </Row>
                         <Divider />
@@ -232,23 +244,23 @@ function Strava() {
                           <Box paddingX={3}>
                             <Typography>How hard was thar Effort?</Typography>
                             <Select value={dropdwon1} onChange={(e) => setDropdwon1(e)} placeholder="How hard was that Effort" style={{ width: 200 }}>
-                              <Option value="Super Easy">Super Easy</Option>
-                              <Option value="Good WorkOut">Good WorkOut</Option>
-                              <Option value="Serious Sweet!">Serious Sweet!</Option>
-                              <Option value="Hard But I was Strong Sweet!">Hard But I was Strong Sweet!</Option>
-                              <Option value="Thats hurts a bit">Thats hurts a bit</Option>
-                              <Option value="Broke me in half">Broke me in half</Option>
+                              <Option value="Super easy!">Super easy!</Option>
+                              <Option value="Good workout!">Good workout!</Option>
+                              <Option value="Serious sweat!!">Serious sweat!</Option>
+                              <Option value="Hard but strong!">Hard but strong!</Option>
+                              <Option value="That hurt!">That hurt!</Option>
+                              <Option value="Broke me!">Broke me!</Option>
                             </Select>
                             </Box>
                             <Box paddingX={3}>
                               <Typography>Fatigue Level post Workout</Typography>
                               <Select value={dropdwon2} onChange={(e) => setDropdwon2(e)} placeholder="How hard was that Effort" style={{ width: 200 }}>
-                                <Option value="Could Run for days">Could Run for days</Option>
-                                <Option value="Could train again today">Could train again today</Option>
+                                <Option value="Could run for days">Could run for days</Option>
+                                <Option value="Need more training">Need more training</Option>
                                 <Option value="Feel great">Feel great</Option>
-                                <Option value="Glad my training done for the day">Glad my training done for the day</Option>
-                                <Option value="Feeling a bit wobbly and drained">Feeling a bit wobbly and drained</Option>
-                                <Option value="I am broken">I am broken</Option>
+                                <Option value="Glad it’s done!">Glad it’s done!</Option>
+                                <Option value="A bit wobbly">A bit wobbly</Option>
+                                <Option value="Broken!">Broken!</Option>
                               </Select>
                               <Button>Save</Button>
                             </Box>
@@ -259,7 +271,7 @@ function Strava() {
                       })}
                     
                     </Col>
-                    <Col span={8}>
+                    <Col style={{ position: "absolute","left": "70%"}} span={8}>
                       <div>
                         <Row style={{ marginRight:'40px' , marginTop:'35px' }} >
                         <Col span={6}>
