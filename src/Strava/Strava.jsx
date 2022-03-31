@@ -80,7 +80,7 @@ function Strava() {
 
   const iconDictionary = {
     "LAP_SWIMMING" : <PoolIcon fontSize="large" />,
-    "STRENGTH_TRAINING" : <><SportsMartialArtsIcon fontSize="large" /><FitnessCenterIcon fontSize="large" /></>,
+    "STRENGTH_TRAINING" : <FitnessCenterIcon fontSize="large" />,
     "RUNNING" : <DirectionsRunIcon fontSize="large" />,
     "CYCLING" : <DirectionsBikeIcon fontSize="large" />,
     "VIRTUAL_RIDE" : <PedalBikeIcon fontSize="large" />
