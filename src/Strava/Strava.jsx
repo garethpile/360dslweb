@@ -242,7 +242,7 @@ function Strava() {
                           </Col>
                           <Col span={15}>
                           <Box paddingX={3}>
-                            <Typography>How hard was thar Effort?</Typography>
+                            <Typography>How hard was that?</Typography>
                             <Select value={dropdwon1} onChange={(e) => setDropdwon1(e)} placeholder="How hard was that Effort" style={{ width: 200 }}>
                               <Option value="Super easy!">Super easy!</Option>
                               <Option value="Good workout!">Good workout!</Option>
