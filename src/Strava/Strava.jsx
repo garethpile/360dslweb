@@ -288,7 +288,7 @@ function Strava() {
                 return (
                   <div className="cardSpacingDiv">
 
-                    
+
                     <Card className="maincardDiv">
                       <IconButton className="mainavatarIcon">
                         <Avatar
@@ -298,20 +298,27 @@ function Strava() {
                         />
                       </IconButton>
                       <div>
-                        <p className="nameDiv">Athlete A</p>
+                        <p className="nameDiv">{GarminActivityDescription}</p>
+                        <p className="distanceDiv1">{new Date(
+                              GarminActivityStartTime
+                            ).toLocaleDateString()}</p>
                       </div>
                       <div className="CalculationDiv">
                         <span className="spanDiv">
-                          <p className="distanceDiv">Following</p>
-                          <p className="distanceDiv1">33</p>
+                          <p className="distanceDiv">Distance</p>
+                          <p className="distanceDiv1">{GarminActivityDistance}</p>
                         </span>
                         <span className="spanDiv1">
-                          <p className="timeDiv">Followers</p>
-                          <p className="timeDiv1">32</p>
+                          <p className="timeDiv">Time</p>
+                          <p className="timeDiv1">{GarminActivityStartTime}</p>
                         </span>
                         <span>
-                          <p className="stepDiv">Activities</p>
-                          <p className="stepDiv1">1,583</p>
+                          <p className="stepDiv">Avg Pace</p>
+                          <p className="stepDiv1">{GarminAveragePaceInMinutesPerKilometer}</p>
+                        </span>
+                        <span>
+                          <p className="stepDiv">Avg HR</p>
+                          <p className="stepDiv1">{GarminAverageHeartRateInBeatsPerMinute}</p>
                         </span>
                       </div>
                       <Divider light />
