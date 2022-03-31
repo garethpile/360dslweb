@@ -215,14 +215,14 @@ function Strava() {
                         <Card className='cardDiv1'>
                         <Row>
                           <Col span={10}>
-                              <Typography>Activity Type: </Typography>
+                              
                               <Typography component="b">{iconDictionary[GarminActivityType] || GarminActivityType}</Typography>
-                              <Typography>Activity Start Time :</Typography>
+                              
                               <Typography component="b">{new Date(GarminActivityStartTime).toLocaleString()}</Typography>
                               
                           </Col>
                           <Col span={14}>
-                            <h2>Activity Description</h2>
+                            
                             <Typography>{GarminActivityDescription}</Typography>
                           </Col>
                         </Row>
