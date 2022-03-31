@@ -124,26 +124,22 @@ function Strava() {
             </div>
             <KeyboardArrowDownIcon className="ArrowIcon"/>
             <div style={{ color:'black', cursor:'pointer' }}>
-              Explore
+              Athlete
             </div>
             <KeyboardArrowDownIcon className="ArrowIcon"/>
             <div style={{ color:'black', cursor:'pointer'}}>
-              Challenges
+              Applications
             </div>
             <KeyboardArrowDownIcon className="ArrowIcon"/>
             </div>
             <div className="rightDiv">
-            <Typography>
-              <Button className="buttonDiv">
-                 Subscribe
-              </Button>
-            </Typography>
-            <NotificationsNoneIcon className="notificationIcon"/>
+  
+         
             <IconButton className="avatarIcon">
               <Avatar shape="circle" size={37} src="https://joeschmoe.io/api/v1/random" />
               </IconButton> 
               <KeyboardArrowDownIcon className="ArrowIcon"/>
-            <AddCircleOutlineIcon className="addIcon"/>
+           
             </div>
           </Toolbar>
         </Container>
@@ -217,27 +213,26 @@ function Strava() {
                           <Col span={10}>
                               
                               <Typography component="b">{iconDictionary[GarminActivityType] || GarminActivityType}</Typography>
-                              
-                              <Typography component="b">{new Date(GarminActivityStartTime).toLocaleString()}</Typography>
+                              <Typography>   </Typography>
+                              <Typography component="b">{new Date(GarminActivityStartTime).toLocaleDateString()}</Typography>
                               
                           </Col>
                           <Col span={14}>
                             
-                            <Typography>{GarminActivityDescription}</Typography>
+                            <Typography style={{ fontWeight: 600 }}>{GarminActivityDescription}</Typography>
                           </Col>
                         </Row>
                         <Divider />
                         <Row>
                           <Col span={9} style={{"border-right" : "1px solid grey"}}>
                               <Typography>Distance: </Typography>
-                              <Typography className="metricsDetail">{GarminActivityDistance}</Typography>
+                              <Typography style={{ fontWeight: 600 }}>{GarminActivityDistance}</Typography>
                               <Typography>Time :</Typography>
-                              <Typography>{GarminActivityDuration}</Typography>
-                              
+                              <Typography style={{ fontWeight: 600 }}>{GarminActivityDuration}</Typography>
                               <Typography>Average Pace :</Typography>
-                              <Typography>{GarminAveragePaceInMinutesPerKilometer}</Typography>
+                              <Typography style={{ fontWeight: 600 }}>{GarminAveragePaceInMinutesPerKilometer}</Typography>
                               <Typography>Average Heart rate :</Typography>
-                              <Typography>{GarminAverageHeartRateInBeatsPerMinute}</Typography>
+                              <Typography style={{ fontWeight: 600 }}>{GarminAverageHeartRateInBeatsPerMinute}</Typography>
 
                           </Col>
                           <Col span={15}>
