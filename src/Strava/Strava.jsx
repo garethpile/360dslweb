@@ -93,7 +93,7 @@ function Strava() {
       const activity = await API.graphql(graphqlOperation(Activityquery));
       console.log(activity.data.activitiesgarminByGarminAccountId.items);
       setActivities(activity.data.activitiesgarminByGarminAccountId.items);
-    } catch (err) { console.log('error fetching todos') }
+    } catch (err) { console.log('Error fetching activities') }
   }
   useEffect(() => {
     fetchActivities();
@@ -157,7 +157,7 @@ function Strava() {
                       <IconButton className="mainavatarIcon">
                           <Avatar shape="circle" size={60} src="https://joeschmoe.io/api/v1/random" />
                           </IconButton>  
-                          <div><p className="nameDiv">Daryl Gehlig</p></div>
+                          <div><p className="nameDiv">Athlete A</p></div>
                           <div className="CalculationDiv">
                                   <span className='spanDiv'>
                                       <p className='distanceDiv'>Following</p>
@@ -230,7 +230,7 @@ function Strava() {
                         <Row>
                           <Col span={9} style={{"border-right" : "1px solid grey"}}>
                               <Typography>Distance: </Typography>
-                              <Typography>{GarminActivityDistance}</Typography>
+                              <Typography className="metricsDetail">{GarminActivityDistance}</Typography>
                               <Typography>Time :</Typography>
                               <Typography>{GarminActivityDuration}</Typography>
                               

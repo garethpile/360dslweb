@@ -168,3 +168,6 @@ body{
 .menuItems{
     display: contents;
 }
+.metricsDetai{
+    font-weight: 600;
+}
