@@ -303,24 +303,24 @@ function Strava() {
                       </div>
                       <div className="CalculationDiv">
                         <span className="spanDiv">
-                          <p className="distanceDiv">Distance</p>
-                          <p className="distanceDiv1">
+                          <p className="metricHead">Distance</p>
+                          <p className="metricValue">
                             {GarminActivityDistance}
                           </p>
                         </span>
-                        <span className="spanDiv1">
-                          <p className="timeDiv">Time</p>
-                          <p className="timeDiv1">{GarminActivityStartTime}</p>
+                        <span className="spanDiv">
+                          <p className="metricHead">Time</p>
+                          <p className="metricValue">{GarminActivityDuration}</p>
                         </span>
-                        <span>
-                          <p className="stepDiv">Avg Pace</p>
-                          <p className="stepDiv1">
+                        <span className="spanDiv">
+                          <p className="metricHead">Avg Pace</p>
+                          <p className="metricValue">
                             {GarminAveragePaceInMinutesPerKilometer}
                           </p>
                         </span>
-                        <span>
-                          <p className="stepDiv">Avg HR</p>
-                          <p className="stepDiv1">
+                        <span className="spanDiv">
+                          <p className="metricHead">Avg HR</p>
+                          <p className="metricValue">
                             {GarminAverageHeartRateInBeatsPerMinute}
                           </p>
                         </span>

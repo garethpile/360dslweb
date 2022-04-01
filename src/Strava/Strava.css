@@ -91,14 +91,14 @@ body{
     display: flex;
     text-align: start;
     font-size: 18px;
-    margin-left: 6%;
+    margin-left: 1%;
     margin-top: -1.5%;
 }
-.distanceDiv{
+.metricHead{
     font-size: 15px;
     margin-bottom: 0%;
 }
-.distanceDiv1{
+.metricValue{
     font-size: 15px;
     font-weight: 700;
     text-align: center;
