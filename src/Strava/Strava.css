@@ -87,7 +87,14 @@ body{
 .likeDiv{
     text-align: end;
 }
-.CalculationDiv{
+.calculationDiv{
+    display: flex;
+    text-align: left;
+    font-size: 18px;
+    margin-left: 1%;
+    margin-top: -1.5%;
+}
+.headingDiv{
     display: flex;
     text-align: start;
     font-size: 18px;

@@ -194,18 +194,18 @@ function Strava() {
                 <div>
                   <p className="nameDiv">Athlete A</p>
                 </div>
-                <div className="CalculationDiv">
+                <div className="calculationDiv">
                   <span className="spanDiv">
-                    <p className="distanceDiv">Following</p>
-                    <p className="distanceDiv1">33</p>
+                    <p className="metricHead">Following</p>
+                    <p className="metricValue">33</p>
                   </span>
-                  <span className="spanDiv1">
-                    <p className="timeDiv">Followers</p>
-                    <p className="timeDiv1">32</p>
+                  <span className="spanDiv">
+                    <p className="metricHead">Followers</p>
+                    <p className="metricValue">32</p>
                   </span>
-                  <span>
-                    <p className="stepDiv">Activities</p>
-                    <p className="stepDiv1">1,583</p>
+                  <span className="spanDiv">
+                    <p className="metricHead">Activities</p>
+                    <p className="metricValue">1,583</p>
                   </span>
                 </div>
                 <Divider light />
@@ -293,15 +293,17 @@ function Strava() {
                           src="https://joeschmoe.io/api/v1/random"
                         />
                       </IconButton>
-                      <div>
+                      <div className = "headingDiv">
+                        <span className="spanDiv">
                         <p className="nameDiv">{GarminActivityDescription}</p>
                         <p className="metricValue">
                           {new Date(
                             GarminActivityStartTime
-                          ).toLocaleDateDateString()}
+                          ).toLocaleTimeString()}
                         </p>
+                        </span>
                       </div>
-                      <div className="CalculationDiv">
+                      <div className="calculationDiv">
                         <span className="spanDiv">
                           <p className="metricHead">Distance</p>
                           <p className="metricValue">
