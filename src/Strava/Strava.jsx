@@ -152,9 +152,7 @@ function Strava() {
                 height={50}
               />
             </Typography>
-            <IconButton className="searchDiv" size="large" aria-label="search">
-              <SearchIcon className="searchIcon" />
-            </IconButton>
+
             <div className="menuItems">
               <div style={{ color: "black", cursor: "pointer" }}>Dashboard</div>
               <KeyboardArrowDownIcon className="ArrowIcon" />
@@ -287,8 +285,6 @@ function Strava() {
               }) => {
                 return (
                   <div className="cardSpacingDiv">
-
-
                     <Card className="maincardDiv">
                       <IconButton className="mainavatarIcon">
                         <Avatar
@@ -299,14 +295,18 @@ function Strava() {
                       </IconButton>
                       <div>
                         <p className="nameDiv">{GarminActivityDescription}</p>
-                        <p className="distanceDiv1">{new Date(
-                              GarminActivityStartTime
-                            ).toLocaleDateString()}</p>
+                        <p className="distanceDiv1">
+                          {new Date(
+                            GarminActivityStartTime
+                          ).toLocaleDateString()}
+                        </p>
                       </div>
                       <div className="CalculationDiv">
                         <span className="spanDiv">
                           <p className="distanceDiv">Distance</p>
-                          <p className="distanceDiv1">{GarminActivityDistance}</p>
+                          <p className="distanceDiv1">
+                            {GarminActivityDistance}
+                          </p>
                         </span>
                         <span className="spanDiv1">
                           <p className="timeDiv">Time</p>
@@ -314,11 +314,15 @@ function Strava() {
                         </span>
                         <span>
                           <p className="stepDiv">Avg Pace</p>
-                          <p className="stepDiv1">{GarminAveragePaceInMinutesPerKilometer}</p>
+                          <p className="stepDiv1">
+                            {GarminAveragePaceInMinutesPerKilometer}
+                          </p>
                         </span>
                         <span>
                           <p className="stepDiv">Avg HR</p>
-                          <p className="stepDiv1">{GarminAverageHeartRateInBeatsPerMinute}</p>
+                          <p className="stepDiv1">
+                            {GarminAverageHeartRateInBeatsPerMinute}
+                          </p>
                         </span>
                       </div>
                       <Divider light />
@@ -384,43 +388,39 @@ function Strava() {
                             <Select
                               value={dropdwon1}
                               onChange={(e) => setDropdwon1(e)}
-                              placeholder="How hard was that Effort"
+                              placeholder="ActivityEffort"
                               style={{ width: 200 }}
                             >
-                              <Option value="Super easy!">Super easy!</Option>
-                              <Option value="Good workout!">
-                                Good workout!
-                              </Option>
-                              <Option value="Serious sweat!!">
+                              <Option value="SuperEasy">Super easy!</Option>
+
+                              <Option value="SeriousSweat">
                                 Serious sweat!
                               </Option>
-                              <Option value="Hard but strong!">
+                              <Option value="HardStrong">
                                 Hard but strong!
                               </Option>
-                              <Option value="That hurt!">That hurt!</Option>
-                              <Option value="Broke me!">Broke me!</Option>
+                              <Option value="Hurt">That hurt!</Option>
+                              <Option value="Broke">Broke me!</Option>
                             </Select>
                           </Box>
                           <Box paddingX={3}>
-                            <Typography>Fatigue Level post Workout</Typography>
+                            <Typography>How's the body?</Typography>
                             <Select
                               value={dropdwon2}
                               onChange={(e) => setDropdwon2(e)}
-                              placeholder="How hard was that Effort"
+                              placeholder="BodyFeedback"
                               style={{ width: 200 }}
                             >
-                              <Option value="Could run for days">
-                                Could run for days
+                              <Option value="SuperStrong">
+                                Super strong!
                               </Option>
-                              <Option value="Need more training">
-                                Need more training
-                              </Option>
-                              <Option value="Feel great">Feel great</Option>
-                              <Option value="Glad it’s done!">
+
+                              <Option value="FeelGreat">Feel great</Option>
+                              <Option value="GladDone">
                                 Glad it’s done!
                               </Option>
-                              <Option value="A bit wobbly">A bit wobbly</Option>
-                              <Option value="Broken!">Broken!</Option>
+                              <Option value="Sore">I'm sore!</Option>
+                              <Option value="Broken">Broken!</Option>
                             </Select>
                             <Button>Save</Button>
                           </Box>
