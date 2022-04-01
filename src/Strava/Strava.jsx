@@ -326,17 +326,40 @@ function Strava() {
                         </span>
                       </div>
                       <Divider light />
-                      <p className="latestDiv">Latest Activities</p>
-                      <p className="ActivityDiv">
-                        WEEK: 1 - Sessions#1 - Intervals - Today
-                      </p>
+                      <Box paddingX={3}>
+                        <Typography>How hard was that?</Typography>
+                        <Select
+                          value={dropdwon1}
+                          onChange={(e) => setDropdwon1(e)}
+                          placeholder="ActivityEffort"
+                          style={{ width: 200 }}
+                        >
+                          <Option value="SuperEasy">Super easy!</Option>
+
+                          <Option value="SeriousSweat">Serious sweat!</Option>
+                          <Option value="HardStrong">Hard but strong!</Option>
+                          <Option value="Hurt">That hurt!</Option>
+                          <Option value="Broke">Broke me!</Option>
+                        </Select>
+                      </Box>
                       <Divider light />
-                      <div className="LogIconDiv">
-                        <p className="LogDiv">Your Training Log</p>
-                        <IconButton className="LogIcon">
-                          <ArrowForwardIosOutlinedIcon />
-                        </IconButton>
-                      </div>
+                      <Box paddingX={3}>
+                        <Typography>How's the body?</Typography>
+                        <Select
+                          value={dropdwon2}
+                          onChange={(e) => setDropdwon2(e)}
+                          placeholder="BodyFeedback"
+                          style={{ width: 200 }}
+                        >
+                          <Option value="SuperStrong">Super strong!</Option>
+
+                          <Option value="FeelGreat">Feel great</Option>
+                          <Option value="GladDone">Glad it’s done!</Option>
+                          <Option value="Sore">I'm sore!</Option>
+                          <Option value="Broken">Broken!</Option>
+                        </Select>
+                        <Button>Save</Button>
+                      </Box>
                     </Card>
 
                     <Card className="cardDiv1">
@@ -411,14 +434,10 @@ function Strava() {
                               placeholder="BodyFeedback"
                               style={{ width: 200 }}
                             >
-                              <Option value="SuperStrong">
-                                Super strong!
-                              </Option>
+                              <Option value="SuperStrong">Super strong!</Option>
 
                               <Option value="FeelGreat">Feel great</Option>
-                              <Option value="GladDone">
-                                Glad it’s done!
-                              </Option>
+                              <Option value="GladDone">Glad it’s done!</Option>
                               <Option value="Sore">I'm sore!</Option>
                               <Option value="Broken">Broken!</Option>
                             </Select>
