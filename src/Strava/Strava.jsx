@@ -211,7 +211,7 @@ function Strava() {
                 <Divider light />
                 <p className="latestDiv">Latest Activities</p>
                 <p className="ActivityDiv">
-                  WEEK: 1 - Sessions#1 - Intervals - Today
+                  WEEK: 2 - Sessions#1 - Intervals - Today
                 </p>
                 <Divider light />
                 <div className="LogIconDiv">
@@ -286,21 +286,19 @@ function Strava() {
                 return (
                   <div className="cardSpacingDiv">
                     <Card className="maincardDiv">
-                      <IconButton className="mainavatarIcon">
-                        <Avatar
-                          shape="circle"
-                          size={60}
-                          src="https://joeschmoe.io/api/v1/random"
-                        />
-                      </IconButton>
-                      <div className = "headingDiv">
+                      <Typography className="mainavatarIcon" component="b">
+                        {iconDictionary[GarminActivityType] ||
+                          GarminActivityType}
+                      </Typography>
+
+                      <div className="headingDiv">
                         <span className="spanDiv">
-                        <p className="nameDiv">{GarminActivityDescription}</p>
-                        <p className="metricValue">
-                          {new Date(
-                            GarminActivityStartTime
-                          ).toLocaleTimeString()}
-                        </p>
+                          <p className="metricValue">{GarminActivityDescription}</p>
+                          <p className="metricValue">
+                            {new Date(
+                              GarminActivityStartTime
+                            ).toLocaleTimeString()}
+                          </p>
                         </span>
                       </div>
                       <div className="calculationDiv">
@@ -312,7 +310,9 @@ function Strava() {
                         </span>
                         <span className="spanDiv">
                           <p className="metricHead">Time</p>
-                          <p className="metricValue">{GarminActivityDuration}</p>
+                          <p className="metricValue">
+                            {GarminActivityDuration}
+                          </p>
                         </span>
                         <span className="spanDiv">
                           <p className="metricHead">Avg Pace</p>
@@ -362,91 +362,6 @@ function Strava() {
                         </Select>
                         <Button>Save</Button>
                       </Box>
-                    </Card>
-
-                    <Card className="cardDiv1">
-                      <Row>
-                        <Col span={10}>
-                          <Typography component="b">
-                            {iconDictionary[GarminActivityType] ||
-                              GarminActivityType}
-                          </Typography>
-                          <Typography> </Typography>
-                          <Typography component="b">
-                            {new Date(
-                              GarminActivityStartTime
-                            ).toLocaleDateString()}
-                          </Typography>
-                        </Col>
-                        <Col span={14}>
-                          <Typography style={{ fontWeight: 600 }}>
-                            {GarminActivityDescription}
-                          </Typography>
-                        </Col>
-                      </Row>
-                      <Divider />
-                      <Row>
-                        <Col
-                          span={9}
-                          style={{ "border-right": "1px solid grey" }}
-                        >
-                          <Typography>Distance: </Typography>
-                          <Typography style={{ fontWeight: 600 }}>
-                            {GarminActivityDistance}
-                          </Typography>
-                          <Typography>Time :</Typography>
-                          <Typography style={{ fontWeight: 600 }}>
-                            {GarminActivityDuration}
-                          </Typography>
-                          <Typography>Average Pace :</Typography>
-                          <Typography style={{ fontWeight: 600 }}>
-                            {GarminAveragePaceInMinutesPerKilometer}
-                          </Typography>
-                          <Typography>Average Heart rate :</Typography>
-                          <Typography style={{ fontWeight: 600 }}>
-                            {GarminAverageHeartRateInBeatsPerMinute}
-                          </Typography>
-                        </Col>
-                        <Col span={15}>
-                          <Box paddingX={3}>
-                            <Typography>How hard was that?</Typography>
-                            <Select
-                              value={dropdwon1}
-                              onChange={(e) => setDropdwon1(e)}
-                              placeholder="ActivityEffort"
-                              style={{ width: 200 }}
-                            >
-                              <Option value="SuperEasy">Super easy!</Option>
-
-                              <Option value="SeriousSweat">
-                                Serious sweat!
-                              </Option>
-                              <Option value="HardStrong">
-                                Hard but strong!
-                              </Option>
-                              <Option value="Hurt">That hurt!</Option>
-                              <Option value="Broke">Broke me!</Option>
-                            </Select>
-                          </Box>
-                          <Box paddingX={3}>
-                            <Typography>How's the body?</Typography>
-                            <Select
-                              value={dropdwon2}
-                              onChange={(e) => setDropdwon2(e)}
-                              placeholder="BodyFeedback"
-                              style={{ width: 200 }}
-                            >
-                              <Option value="SuperStrong">Super strong!</Option>
-
-                              <Option value="FeelGreat">Feel great</Option>
-                              <Option value="GladDone">Glad it’s done!</Option>
-                              <Option value="Sore">I'm sore!</Option>
-                              <Option value="Broken">Broken!</Option>
-                            </Select>
-                            <Button>Save</Button>
-                          </Box>
-                        </Col>
-                      </Row>
                     </Card>
                   </div>
                 );
