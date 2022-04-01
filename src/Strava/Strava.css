@@ -133,6 +133,14 @@ body{
     margin-left: 6% !important; 
     margin-top: 8% !important; 
 }
+
+.maincardDiv2{
+    width: 50% !important;
+    margin-left: 2% !important; 
+    margin-top: 2% !important; 
+}
+
+
 .mainavatarIcon{
     margin-top: -26% !important;
 }

@@ -295,10 +295,10 @@ function Strava() {
                       </IconButton>
                       <div>
                         <p className="nameDiv">{GarminActivityDescription}</p>
-                        <p className="distanceDiv1">
+                        <p className="metricValue">
                           {new Date(
                             GarminActivityStartTime
-                          ).toLocaleDateString()}
+                          ).toLocaleDateDateString()}
                         </p>
                       </div>
                       <div className="CalculationDiv">
