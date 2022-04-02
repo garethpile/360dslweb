@@ -60,4 +60,5 @@ function App() {
   );
 }
 
+//export default withAuthenticator(Strava);
 export default withAuthenticator(Strava);

@@ -138,18 +138,23 @@ body{
 .maincardDiv{
     width: 80% !important;
     margin-left: 6% !important; 
-    margin-top: 8% !important; 
+    margin-top: 4% !important; 
 }
 
 .maincardDiv2{
-    width: 50% !important;
+    width: 80% !important;
     margin-left: 2% !important; 
     margin-top: 2% !important; 
 }
 
 
 .mainavatarIcon{
-    margin-top: -26% !important;
+    margin-top: -15% !important;
+}
+.activityIcon{
+    margin-top: 0% !important;
+    font-weight: 700;
+    color:crimson
 }
 .latestDiv{
     text-align: start;

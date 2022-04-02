@@ -115,8 +115,14 @@ const data5 = [
 function Strava() {
   const [value, setValue] = React.useState(1);
   const [activities, setActivities] = React.useState([]);
-  const [dropdwon1, setDropdwon1] = React.useState("Super Easy");
-  const [dropdwon2, setDropdwon2] = React.useState("");
+  const [dropdownActivityEffort, setDropdownActivityEffort] =
+    React.useState("Super Easy");
+  const [dropdownBody, setDropdownBody] = React.useState("Feel great");
+  const [dropdownSleep, setDropdownSleep] = React.useState("8 Hours Plus");
+  const [dropdownWorkLifeStress, setDropdownWorkLifeStress] =
+    React.useState("Perfect balance");
+  const [dropdownInjury, setDropdownInjury] =
+    React.useState("No");
 
   const iconDictionary = {
     LAP_SWIMMING: <PoolIcon fontSize="large" />,
@@ -286,14 +292,18 @@ function Strava() {
                 return (
                   <div className="cardSpacingDiv">
                     <Card className="maincardDiv">
-                      <Typography className="mainavatarIcon" component="b">
-                        {iconDictionary[GarminActivityType] ||
-                          GarminActivityType}
-                      </Typography>
+                      <IconButton className="activityIcon">
+                        <Typography component="b">
+                          {iconDictionary[GarminActivityType] ||
+                            GarminActivityType}
+                        </Typography>
+                      </IconButton>
 
                       <div className="headingDiv">
                         <span className="spanDiv">
-                          <p className="metricValue">{GarminActivityDescription}</p>
+                          <p className="metricValue">
+                            {GarminActivityDescription}
+                          </p>
                           <p className="metricValue">
                             {new Date(
                               GarminActivityStartTime
@@ -331,8 +341,8 @@ function Strava() {
                       <Box paddingX={3}>
                         <Typography>How hard was that?</Typography>
                         <Select
-                          value={dropdwon1}
-                          onChange={(e) => setDropdwon1(e)}
+                          value={dropdownActivityEffort}
+                          onChange={(e) => setDropdownActivityEffort(e)}
                           placeholder="ActivityEffort"
                           style={{ width: 200 }}
                         >
@@ -348,8 +358,8 @@ function Strava() {
                       <Box paddingX={3}>
                         <Typography>How's the body?</Typography>
                         <Select
-                          value={dropdwon2}
-                          onChange={(e) => setDropdwon2(e)}
+                          value={dropdownBody}
+                          onChange={(e) => setDropdownBody(e)}
                           placeholder="BodyFeedback"
                           style={{ width: 200 }}
                         >
@@ -368,39 +378,87 @@ function Strava() {
               }
             )}
           </Col>
+
           <Col style={{ position: "absolute", left: "70%" }} span={8}>
             <div>
               <Row style={{ marginRight: "40px", marginTop: "35px" }}>
-                <Col span={6}>
-                  <Tooltip title="search">
-                    <Button
-                      shape="circle"
-                      icon={<SearchOutlined />}
-                      size="large"
-                    />
-                  </Tooltip>
-                </Col>
                 <Col span={18}>
-                  <b style={{ justifyContent: "left", display: "flex" }}>
-                    Challenges
+                  <b
+                    style={{
+                      justifyContent: "left",
+                      display: "flex",
+                      color: "crimson",
+                    }}
+                  >
+                    Overall Health
                   </b>
-                  <p style={{ textAlign: "start" }}>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum is simply dummy text of
-                    the printing and typesetting industry.
+                  <p style={{ textAlign: "start", marginTop: "10px" }}>
+                    Sleep is a key input factor to productive training and
+                    success!
+                  </p>
+                  <p style={{ textAlign: "start", marginTop: "10px" }}>
+                    Work / Life balance has a huge effect on your ability to
+                    train effectively.
                   </p>
                   <b
                     style={{
                       justifyContent: "left",
                       display: "flex",
-                      color: "orangered",
+                      color: "crimson",
                     }}
                   >
-                    View All Challenges
+                    Select and Save
                   </b>
+                  <Box paddingX={0}>
+                    <Typography>Are you injured?</Typography>
+                    <Select
+                      value={dropdownInjury}
+                      onChange={(e) => setDropdownInjury(e)}
+                      placeholder="InjuryFeedback"
+                      style={{ width: 200 }}
+                    >
+                      <Option value="InjuryNo">No</Option>
+                      <Option value="InuryYesNoTrain">Yes - cannot train</Option>
+                      <Option value="InjuryYesLightTraining">Yes - light training</Option>
+                      
+                    </Select>
+                  </Box>
+
+                  <Box paddingX={0}>
+                    <Typography>Average sleep per night?</Typography>
+                    <Select
+                      value={dropdownSleep}
+                      onChange={(e) => setDropdownSleep(e)}
+                      placeholder="SleepFeedback"
+                      style={{ width: 200 }}
+                    >
+                      <Option value="HardlyAny">Hardly any</Option>
+                      <Option value="6Less">Less Than 6</Option>
+                      <Option value="6To8">6-8 Hours</Option>
+                      <Option value="8HoursPlus">8 Hours Plus</Option>
+                    </Select>
+                  </Box>
+
+                  <Box paddingX={0}>
+                    <Typography>Recent Work / Life stress??</Typography>
+                    <Select
+                      value={dropdownWorkLifeStress}
+                      onChange={(e) => setDropdownWorkLifeStress(e)}
+                      placeholder="WorkLifeStressFeedback"
+                      style={{ width: 200 }}
+                    >
+                      <Option value="ZeroStress">Zero stress!</Option>
+                      <Option value="PerfectStress">Perfect balance</Option>
+                      <Option value="OverStress">Over stressed!</Option>
+                      <Option value="InsaneStress">Insanely stressed!</Option>
+                    </Select>
+                  </Box>
+                  <p></p>
+                  <Button>Save Feedback</Button>
                 </Col>
               </Row>
             </div>
+
             <div
               style={{
                 marginRight: "40px",
@@ -408,32 +466,11 @@ function Strava() {
                 marginLeft: "40px",
               }}
             >
-              <b style={{ justifyContent: "left", display: "flex" }}>
-                Your Clubs
-              </b>
-              {/* <p style={{ textAlign:'start' }}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                          </p> */}
-              <div
-                style={{
-                  textAlign: "start",
-                  marginTop: "10px",
-                  marginBottom: "10px",
-                }}
-              >
-                <Image
-                  width={80}
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </div>
-              <div style={{ textAlign: "start" }}>
-                <Button>View All Clubs</Button>
-              </div>
+            
             </div>
             <div>
               <Row style={{ marginRight: "40px", marginTop: "35px" }}>
-                <Col span={6}>
+                <Col span={4}>
                   <Tooltip title="Privacy">
                     <Button
                       shape="circle"
@@ -444,85 +481,14 @@ function Strava() {
                 </Col>
                 <Col span={18}>
                   <b style={{ justifyContent: "left", display: "flex" }}>
-                    Try a Privacy Zone
+                    Privacy
                   </b>
                   <p style={{ textAlign: "start" }}>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum is simply dummy text of
-                    the printing and typesetting industry.
+                    All your personal data and training information will never
+                    be shared with any 3rd parties.
                   </p>
-                  <b
-                    style={{
-                      justifyContent: "left",
-                      display: "flex",
-                      color: "orangered",
-                    }}
-                  >
-                    View All Privacy Zones
-                  </b>
                 </Col>
               </Row>
-            </div>
-            <div
-              style={{
-                marginRight: "40px",
-                marginTop: "35px",
-                marginLeft: "40px",
-              }}
-            >
-              <b style={{ justifyContent: "left", display: "flex" }}>
-                Suggested Friends
-              </b>
-              {/* <p style={{ textAlign:'start' }}>
-                          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        </p> */}
-              <div
-                style={{
-                  textAlign: "start",
-                  marginTop: "10px",
-                  marginBottom: "10px",
-                }}
-              >
-                <List
-                  itemLayout="horizontal"
-                  dataSource={data4}
-                  renderItem={(item) => (
-                    <List.Item>
-                      <List.Item.Meta
-                        avatar={
-                          <Avatar
-                            shape="circle"
-                            size={50}
-                            src="https://joeschmoe.io/api/v1/random"
-                          />
-                        }
-                        title={item.title}
-                        description={item.description}
-                      />
-                    </List.Item>
-                  )}
-                />
-                <List
-                  itemLayout="horizontal"
-                  dataSource={data5}
-                  renderItem={(item) => (
-                    <List.Item>
-                      <List.Item.Meta
-                        avatar={
-                          <Avatar
-                            shape="circle"
-                            size={50}
-                            src="https://joeschmoe.io/api/v1/random"
-                          />
-                        }
-                        title={item.title}
-                        description={item.description}
-                      />
-                    </List.Item>
-                  )}
-                />
-              </div>
             </div>
           </Col>
         </Row>
