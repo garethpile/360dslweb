@@ -44,8 +44,8 @@ function ThreeSixtyDSL() {
   // const [value, setValue] = React.useState(1);
   const [activities, setActivities] = React.useState([]);
   const [dropdownActivityEffort, setDropdownActivityEffort] =
-    React.useState("Super Easy");
-  const [dropdownBody, setDropdownBody] = React.useState("Feel great");
+    React.useState("Great workout");
+  const [dropdownBody, setDropdownBody] = React.useState("Feels great");
   const [dropdownSleep, setDropdownSleep] = React.useState("8 Hours Plus");
   const [dropdownWorkLifeStress, setDropdownWorkLifeStress] =
     React.useState("Perfect balance");
@@ -274,17 +274,17 @@ function ThreeSixtyDSL() {
                       </div>
                       <Divider light />
                       <Box paddingX={3}>
-                        <Typography>How hard was that?</Typography>
+                        <Typography>How was it?</Typography>
                         <Select
                           value={dropdownActivityEffort}
                           onChange={(e) => setDropdownActivityEffort(e)}
                           placeholder="ActivityEffort"
                           style={{ width: 200 }}
                         >
-                          <Option value="SuperEasy">Super easy!</Option>
+                          <Option value="SuperEasy">Super easy</Option>
 
-                          <Option value="SeriousSweat">Serious sweat!</Option>
-                          <Option value="HardStrong">Hard but strong!</Option>
+                          <Option value="GoodSweat">Good sweat</Option>
+                          <Option value="Great">Great workout</Option>
                           <Option value="Hurt">That hurt!</Option>
                           <Option value="Broke">Broke me!</Option>
                         </Select>
@@ -298,10 +298,10 @@ function ThreeSixtyDSL() {
                           placeholder="BodyFeedback"
                           style={{ width: 200 }}
                         >
-                          <Option value="SuperStrong">Super strong!</Option>
-
-                          <Option value="FeelGreat">Feel great</Option>
-                          <Option value="GladDone">Glad it’s done!</Option>
+                          <Option value="SuperStrong">Super strong</Option>
+                          
+                          <Option value="FeelGreat">Feels great</Option>
+                          <Option value="NotBad">Not too bad</Option>
                           <Option value="Sore">I'm sore!</Option>
                           <Option value="Broken">Broken!</Option>
                         </Select>
