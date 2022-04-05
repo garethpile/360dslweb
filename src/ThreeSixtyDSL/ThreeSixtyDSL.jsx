@@ -121,8 +121,7 @@ function ThreeSixtyDSL() {
   const [dropdownSleep, setDropdownSleep] = React.useState("8 Hours Plus");
   const [dropdownWorkLifeStress, setDropdownWorkLifeStress] =
     React.useState("Perfect balance");
-  const [dropdownInjury, setDropdownInjury] =
-    React.useState("No");
+  const [dropdownInjury, setDropdownInjury] = React.useState("No");
 
   const iconDictionary = {
     LAP_SWIMMING: <PoolIcon fontSize="large" />,
@@ -134,6 +133,23 @@ function ThreeSixtyDSL() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const [userId, setUserId] = useState("");
+  // const { loading, error, data } = useQuery(firstQuery)
+
+  useEffect(() => {
+    // Obtain current logged in Amplify user userId which needs to be passed into Garmin URL later
+    Auth.currentAuthenticatedUser({
+      bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    })
+      .then((user) => {
+        // userId = user.username;
+        setUserId(user.username);
+        console.log("Current userId: ", user.username); // This works and userId visible ...
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   async function fetchActivities() {
     try {
       const activity = await API.graphql(graphqlOperation(Activityquery));
@@ -418,9 +434,12 @@ function ThreeSixtyDSL() {
                       style={{ width: 200 }}
                     >
                       <Option value="InjuryNo">No</Option>
-                      <Option value="InuryYesNoTrain">Yes - cannot train</Option>
-                      <Option value="InjuryYesLightTraining">Yes - light training</Option>
-                      
+                      <Option value="InuryYesNoTrain">
+                        Yes - cannot train
+                      </Option>
+                      <Option value="InjuryYesLightTraining">
+                        Yes - light training
+                      </Option>
                     </Select>
                   </Box>
 
@@ -465,9 +484,7 @@ function ThreeSixtyDSL() {
                 marginTop: "35px",
                 marginLeft: "40px",
               }}
-            >
-            
-            </div>
+            ></div>
             <div>
               <Row style={{ marginRight: "40px", marginTop: "35px" }}>
                 <Col span={4}>
