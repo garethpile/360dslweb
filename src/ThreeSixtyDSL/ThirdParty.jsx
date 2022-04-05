@@ -1,13 +1,10 @@
-// import React, { useEffect, useState } from "react";
-// import "./App.css";
-import { withAuthenticator } from "@aws-amplify/ui-react";
-// import { Auth  } from "aws-amplify";
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { Auth } from "aws-amplify";
 
-import ThreeSixtyDSL from "./ThreeSixtyDSL/ThreeSixtyDSL";
-
-/* function App() {
+function ThirdParty() {
   const [userId, setUserId] = useState("");
-  // const { loading, error, data } = useQuery(firstQuery)
 
  useEffect(() => {
    // Obtain current logged in Amplify user userId which needs to be passed into Garmin URL later
@@ -17,14 +14,11 @@ import ThreeSixtyDSL from "./ThreeSixtyDSL/ThreeSixtyDSL";
     .then((user) => {
       // userId = user.username;
       setUserId(user.username)
-      console.log("Current userId: ", user.username); // This works and userId visible ...
+      console.log("Current userId: ", userId); // This works and userId visible ...
     })
     .catch((err) => console.log(err));
  }, [])
-//  console.log(error)
-//  if (loading) return <p>Loading...</p>;
-//   if (error) return <p>Error :(</p>;
-//   console.log(data , "333")
+
   // userId variable is not visoble in this return code below ????????
   return (
     <div className="App">
@@ -50,7 +44,7 @@ import ThreeSixtyDSL from "./ThreeSixtyDSL/ThreeSixtyDSL";
 
       <div>
         <a
-          href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=${userId}`}
+          href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId="${userId}`}
         >
           Connect your Garmin account
         </a>
@@ -60,6 +54,5 @@ import ThreeSixtyDSL from "./ThreeSixtyDSL/ThreeSixtyDSL";
     </div>
   );
 }
-*/
 
-export default withAuthenticator(ThreeSixtyDSL);
+export default ThirdParty;

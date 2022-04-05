@@ -7,113 +7,41 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 // import Button from '@mui/material/Button';
-import SearchIcon from "@mui/icons-material/Search";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+// import SearchIcon from "@mui/icons-material/Search";
+// import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+// import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PedalBikeIcon from "@mui/icons-material/PedalBike";
-import SportsMartialArtsIcon from "@mui/icons-material/SportsMartialArts";
+// import SportsMartialArtsIcon from "@mui/icons-material/SportsMartialArts";
 import "antd/dist/antd.min.css";
-import { List, Avatar } from "antd";
-import { Card, Input, Image } from "antd";
-import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
-import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
+import { Avatar } from "antd";
+import { Card } from "antd";
+//  import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
+// import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
 import Divider from "@mui/material/Divider";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import { Row, Col } from "antd";
 import { Button, Tooltip } from "antd";
-import { SearchOutlined, EyeOutlined } from "@ant-design/icons";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import IceSkatingIcon from "@mui/icons-material/IceSkating";
+import { EyeOutlined } from "@ant-design/icons";
+// import Tabs from "@mui/material/Tabs";
+// import Tab from "@mui/material/Tab";
+// import IceSkatingIcon from "@mui/icons-material/IceSkating";
 import PoolIcon from "@mui/icons-material/Pool";
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
-import EventIcon from "@mui/icons-material/Event";
-import SettingsInputComponentIcon from "@mui/icons-material/SettingsInputComponent";
-import TabPanel from "@mui/lab/TabPanel";
-import TabContext from "@mui/lab/TabContext";
+// import EventIcon from "@mui/icons-material/Event";
+// import SettingsInputComponentIcon from "@mui/icons-material/SettingsInputComponent";
+// import TabPanel from "@mui/lab/TabPanel";
+// import TabContext from "@mui/lab/TabContext";
 import { Auth, API, graphqlOperation } from "aws-amplify";
 import { Activityquery } from "../Apollo/queries";
-import { Select, Radio } from "antd";
+import { Select } from "antd";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-import SportsGymnasticsIcon from "@mui/icons-material/SportsBar";
+// import SportsGymnasticsIcon from "@mui/icons-material/SportsBar";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 const { Option } = Select;
-const data1 = [
-  {
-    title: (
-      <>
-        <p className="titleDiv">Robert</p>
-      </>
-    ),
-    description: (
-      <>
-        <p className="subtitleDiv">Positivity always wins</p>
-      </>
-    ),
-  },
-];
-
-const data2 = [
-  {
-    title: (
-      <>
-        <p className="titleDiv">Grayson</p>
-      </>
-    ),
-    description: (
-      <>
-        <p className="subtitleDiv">Positivity always wins</p>
-      </>
-    ),
-  },
-];
-
-const data3 = [
-  {
-    title: (
-      <>
-        <p className="titleDiv">James</p>
-      </>
-    ),
-    description: (
-      <>
-        <p className="subtitleDiv">Positivity always wins</p>
-      </>
-    ),
-  },
-];
-const data4 = [
-  {
-    title: (
-      <>
-        <p className="titleDiv">Steve Smith</p>
-      </>
-    ),
-    description: (
-      <>
-        <p className="subtitleDiv">Australia</p>
-      </>
-    ),
-  },
-];
-const data5 = [
-  {
-    title: (
-      <>
-        <p className="titleDiv">Alex Hales</p>
-      </>
-    ),
-    description: (
-      <>
-        <p className="subtitleDiv">England</p>
-      </>
-    ),
-  },
-];
 
 function ThreeSixtyDSL() {
-  const [value, setValue] = React.useState(1);
+  // const [value, setValue] = React.useState(1);
   const [activities, setActivities] = React.useState([]);
   const [dropdownActivityEffort, setDropdownActivityEffort] =
     React.useState("Super Easy");
@@ -130,10 +58,11 @@ function ThreeSixtyDSL() {
     CYCLING: <DirectionsBikeIcon fontSize="large" />,
     VIRTUAL_RIDE: <PedalBikeIcon fontSize="large" />,
   };
+  /*
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+*/
   const [userId, setUserId] = useState("");
   // const { loading, error, data } = useQuery(firstQuery)
 
@@ -176,15 +105,30 @@ function ThreeSixtyDSL() {
             </Typography>
 
             <div className="menuItems">
-              <div style={{ color: "black", cursor: "pointer" }}>Dashboard</div>
-              <KeyboardArrowDownIcon className="ArrowIcon" />
-              <div style={{ color: "black", cursor: "pointer" }}>Training</div>
-              <KeyboardArrowDownIcon className="ArrowIcon" />
-              <div style={{ color: "black", cursor: "pointer" }}>Athlete</div>
-              <KeyboardArrowDownIcon className="ArrowIcon" />
-              <div style={{ color: "black", cursor: "pointer" }}>
-                Applications
+              <div>
+                <a href="/#" className="menuItems">
+                  Dashboard
+                </a>
               </div>
+              <KeyboardArrowDownIcon className="ArrowIcon" />
+              <div>
+                <a href="/#" className="menuItems">
+                  Training
+                </a>
+              </div>
+              <KeyboardArrowDownIcon className="ArrowIcon" />
+              <div>
+                <a href="/ThirdParty.jsx" className="menuItems">
+                  3rd Parties
+                </a>
+              </div>
+              <KeyboardArrowDownIcon className="ArrowIcon" />
+              <div>
+                <a href="/#" className="menuItems">
+                  Athlete
+                </a>
+              </div>
+
               <KeyboardArrowDownIcon className="ArrowIcon" />
             </div>
             <div className="rightDiv">
@@ -231,65 +175,40 @@ function ThreeSixtyDSL() {
                   </span>
                 </div>
                 <Divider light />
-                <p className="latestDiv">Latest Activities</p>
-                <p className="ActivityDiv">
-                  WEEK: 2 - Sessions#1 - Intervals - Today
-                </p>
-                <Divider light />
-                <div className="LogIconDiv">
-                  <p className="LogDiv">Your Training Log</p>
-                  <IconButton className="LogIcon">
-                    <ArrowForwardIosOutlinedIcon />
-                  </IconButton>
+                <p></p>
+
+                <b
+                  style={{
+                    justifyContent: "left",
+                    display: "flex",
+                    color: "crimson",
+                  }}
+                >
+                  Third Party Applications
+                </b>
+                <p></p>
+                <div>
+                  <a href="https://oauth.sandbox.trainingpeaks.com/OAuth/Authorize?client_id=m360&response_type=code&scope=workouts athlete:profile&redirect_uri=https://cisx9pt2th.execute-api.us-east-1.amazonaws.com/dev/tpnotification">
+                    Connect your TP account
+                  </a>
+                </div>
+                <div>
+                  <a href="http://www.strava.com/oauth/authorize?client_id=7947&response_type=code&scope=activity:read_all&redirect_uri=https://6kjj2t9ega.execute-api.us-east-1.amazonaws.com/staging/oauthexchange">
+                    Connect your Strava account
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=${userId}`}
+                  >
+                    Connect your Garmin account
+                  </a>
                 </div>
               </Card>
             </div>
 
-            <div>
-              <Card className="maincardDiv">
-                <TabContext value={value}>
-                  <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    aria-label="icon tabs example"
-                  >
-                    <Tab value="1" icon={<EventIcon />} aria-label="phone" />
-                    <Tab
-                      value="2"
-                      icon={<IceSkatingIcon />}
-                      aria-label="favorite"
-                    />
-                    <Tab
-                      value="3"
-                      icon={<DirectionsBikeIcon />}
-                      aria-label="person"
-                    />
-                    <Tab
-                      value="4"
-                      icon={<SettingsInputComponentIcon />}
-                      aria-label="person"
-                    />
-                  </Tabs>
-                  <TabPanel value="1">Item One</TabPanel>
-                  <TabPanel value="2">Item Two</TabPanel>
-                  <TabPanel value="3">Item Three</TabPanel>
-                  <TabPanel value="4">
-                    <Card
-                      style={{
-                        textAlign: "start",
-                        backgroundColor: "#e9e9e9",
-                        marginBottom: "30px",
-                      }}
-                    >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </Card>
-                    <b>THIS INDEX</b>
-                    <h1 style={{ color: "green" }}>0 m</h1>
-                  </TabPanel>
-                </TabContext>
-              </Card>
-            </div>
+            <div></div>
           </Col>
           <Col
             style={{ position: "absolute", left: "35%", width: "100%" }}

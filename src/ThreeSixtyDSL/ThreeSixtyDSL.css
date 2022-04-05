@@ -187,6 +187,8 @@ body{
 }
 .menuItems{
     display: contents;
+    color: black;
+     cursor: pointer
 }
 .metricsDetai{
     font-weight: 600;
