@@ -3,6 +3,7 @@ import "./App.css";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { Auth , API , graphqlOperation } from "aws-amplify";
 import Strava from "./Strava/Strava";
+import ThreeSixtyDSL from "./ThreeSixtyDSL/ThreeSixtyDSL";
 
 function App() {
   const [userId, setUserId] = useState("");
@@ -61,4 +62,4 @@ function App() {
 }
 
 //export default withAuthenticator(Strava);
-export default withAuthenticator(Strava);
+export default withAuthenticator(ThreeSixtyDSL);

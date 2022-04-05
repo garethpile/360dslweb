@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Strava.css";
+import "./ThreeSixtyDSL.css";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -112,7 +112,7 @@ const data5 = [
   },
 ];
 
-function Strava() {
+function ThreeSixtyDSL() {
   const [value, setValue] = React.useState(1);
   const [activities, setActivities] = React.useState([]);
   const [dropdownActivityEffort, setDropdownActivityEffort] =
@@ -151,7 +151,7 @@ function Strava() {
       <AppBar className="headerDiv">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Typography className="StravaDiv" noWrap component="div">
+            <Typography className="ThreeSixtyDSLDiv" noWrap component="div">
               <img
                 src={process.env.PUBLIC_URL + "/360log.jpeg"}
                 width="150"
@@ -497,4 +497,4 @@ function Strava() {
   );
 }
 
-export default Strava;
+export default ThreeSixtyDSL;
