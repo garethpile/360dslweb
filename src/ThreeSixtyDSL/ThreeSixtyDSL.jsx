@@ -147,7 +147,10 @@ function ThreeSixtyDSL() {
 
       <div className="bodyDiv">
         <Row>
-          <Col style={{ position: "absolute", width: "100%" }} span={8}>
+          <Col className="firstCol" span={8} xs={24}
+            sm={24}
+            lg={8}
+            xl={8}>
             <div>
               <Card className="maincardDiv">
                 <IconButton className="mainavatarIcon">
@@ -211,8 +214,12 @@ function ThreeSixtyDSL() {
             <div></div>
           </Col>
           <Col
-            style={{ position: "absolute", left: "35%", width: "100%" }}
+            className="secondCol"
             span={8}
+            xs={24}
+            sm={24}
+            lg={8}
+            xl={8}
           >
             {activities.map(
               ({
@@ -227,12 +234,23 @@ function ThreeSixtyDSL() {
                 return (
                   <div className="cardSpacingDiv">
                     <Card className="maincardDiv">
-                      <IconButton className="activityIcon">
+                    <IconButton className="activityAvator">
+                  <Avatar
+                  // className="activityAvator"
+                    shape="circle"
+                    size={60}
+                    // style={{lineHeight : "76px !important"}}
+                  >
+                    {iconDictionary[GarminActivityType] ||
+                            GarminActivityType}
+                  </Avatar>
+                </IconButton>
+                      {/* <IconButton className="activityIcon">
                         <Typography component="b">
                           {iconDictionary[GarminActivityType] ||
                             GarminActivityType}
                         </Typography>
-                      </IconButton>
+                      </IconButton> */}
 
                       <div className="headingDiv">
                         <span className="spanDiv">
@@ -273,13 +291,13 @@ function ThreeSixtyDSL() {
                         </span>
                       </div>
                       <Divider light />
-                      <Box paddingX={3}>
-                        <Typography>How was it?</Typography>
+                      <Box padding={2}>
+                        <Typography className="dropDownLabel">How was it?</Typography>
                         <Select
                           value={dropdownActivityEffort}
                           onChange={(e) => setDropdownActivityEffort(e)}
                           placeholder="ActivityEffort"
-                          style={{ width: 200 }}
+                          style={{ width: "100%" }}
                         >
                           <Option value="SuperEasy">Super easy</Option>
 
@@ -290,13 +308,13 @@ function ThreeSixtyDSL() {
                         </Select>
                       </Box>
                       <Divider light />
-                      <Box paddingX={3}>
-                        <Typography>How's the body?</Typography>
+                      <Box padding={2}>
+                        <Typography className="dropDownLabel">How's the body?</Typography>
                         <Select
                           value={dropdownBody}
                           onChange={(e) => setDropdownBody(e)}
                           placeholder="BodyFeedback"
-                          style={{ width: 200 }}
+                          style={{ width: "100%" }}
                         >
                           <Option value="SuperStrong">Super strong</Option>
                           
@@ -305,7 +323,10 @@ function ThreeSixtyDSL() {
                           <Option value="Sore">I'm sore!</Option>
                           <Option value="Broken">Broken!</Option>
                         </Select>
-                        <Button>Save</Button>
+
+                        <Box mt={1}>
+                        <Button >Save</Button>
+                        </Box>
                       </Box>
                     </Card>
                   </div>
@@ -314,7 +335,8 @@ function ThreeSixtyDSL() {
             )}
           </Col>
 
-          <Col style={{ position: "absolute", left: "70%" }} span={8}>
+          <Col className="thirdCol" span={8} xs={24}
+            sm={24}>
             <div>
               <Row style={{ marginRight: "40px", marginTop: "35px" }}>
                 <Col span={18}>
