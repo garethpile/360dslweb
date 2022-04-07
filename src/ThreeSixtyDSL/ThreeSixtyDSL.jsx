@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ThreeSixtyDSL.css";
+import MenuAppBar from "../Components/MenuAppBar";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -7,37 +8,22 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import moment from "moment";
-// import Button from '@mui/material/Button';
-// import SearchIcon from "@mui/icons-material/Search";
-// import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-// import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PedalBikeIcon from "@mui/icons-material/PedalBike";
-// import SportsMartialArtsIcon from "@mui/icons-material/SportsMartialArts";
 import "antd/dist/antd.min.css";
 import { Avatar } from "antd";
 import { Card } from "antd";
-//  import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
-// import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
 import Divider from "@mui/material/Divider";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import { Row, Col } from "antd";
 import { Button, Tooltip } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
-// import Tabs from "@mui/material/Tabs";
-// import Tab from "@mui/material/Tab";
-// import IceSkatingIcon from "@mui/icons-material/IceSkating";
 import PoolIcon from "@mui/icons-material/Pool";
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
-// import EventIcon from "@mui/icons-material/Event";
-// import SettingsInputComponentIcon from "@mui/icons-material/SettingsInputComponent";
-// import TabPanel from "@mui/lab/TabPanel";
-// import TabContext from "@mui/lab/TabContext";
 import { Auth, API, graphqlOperation } from "aws-amplify";
 import { Activityquery } from "../Apollo/queries";
 import { Select } from "antd";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-// import SportsGymnasticsIcon from "@mui/icons-material/SportsBar";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 const { Option } = Select;
 
@@ -83,7 +69,7 @@ function MinPerKmFraction(MinPerKm, GarminActivityType) {
 }
 
 function ThreeSixtyDSL() {
-  // const [value, setValue] = React.useState(1);
+
   const [activities, setActivities] = React.useState([]);
   const [dropdownActivityEffort, setDropdownActivityEffort] =
     React.useState("");
@@ -100,11 +86,7 @@ function ThreeSixtyDSL() {
     CYCLING: <DirectionsBikeIcon fontSize="large" />,
     VIRTUAL_RIDE: <PedalBikeIcon fontSize="large" />,
   };
-  /*
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-*/
+
   const [userId, setUserId] = useState("");
   // const { loading, error, data } = useQuery(firstQuery)
 
@@ -135,6 +117,7 @@ function ThreeSixtyDSL() {
   }, []);
   return (
     <div>
+      
       <AppBar className="headerDiv">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
@@ -179,7 +162,7 @@ function ThreeSixtyDSL() {
           </Toolbar>
         </Container>
       </AppBar>
-
+      <MenuAppBar/>
       <div className="bodyDiv">
         <Row>
           <Col className="firstCol" span={8} xs={24} sm={24} lg={8} xl={8}>
