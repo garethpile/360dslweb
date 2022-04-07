@@ -165,13 +165,6 @@ function ThreeSixtyDSL() {
                 </a>
               </div>
               <KeyboardArrowDownIcon className="ArrowIcon" />
-              <div>
-                <a href="/#" className="menuItems">
-                  Athlete
-                </a>
-              </div>
-
-              <KeyboardArrowDownIcon className="ArrowIcon" />
             </div>
             <div className="rightDiv">
               <IconButton className="avatarIcon">
@@ -253,6 +246,11 @@ function ThreeSixtyDSL() {
             <div></div>
           </Col>
           <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
+            <h1 style={{
+                    justifyContent: "center",
+                    display: "flex",
+                    color: "crimson",
+                  }} >Athlete Feedback Corner</h1>
             {activities.map(
               ({
                 id,
@@ -360,9 +358,10 @@ function ThreeSixtyDSL() {
                           <Option value="Sore">I'm sore!</Option>
                           <Option value="Broken">Broken!</Option>
                         </Select>
-                        <Box mt={1}>
-                          <Button>Save</Button>
-                        </Box>
+                      </Box>
+                      <Divider light />
+                      <Box mt={1}>
+                        <Button>Save</Button>
                       </Box>
                     </Card>
                   </div>
