@@ -10,6 +10,8 @@ export const Activityquery = `query MyQuery {
   
       items {
   
+        id
+        
         GarminAccountId
   
         GarminActiveKilocalories

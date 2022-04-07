@@ -86,8 +86,8 @@ function ThreeSixtyDSL() {
   // const [value, setValue] = React.useState(1);
   const [activities, setActivities] = React.useState([]);
   const [dropdownActivityEffort, setDropdownActivityEffort] =
-    React.useState("Great workout");
-  const [dropdownBody, setDropdownBody] = React.useState("Feels great");
+    React.useState("");
+  const [dropdownActivityBody, setDropdownActivityBody] = React.useState("");
   const [dropdownSleep, setDropdownSleep] = React.useState("8 Hours Plus");
   const [dropdownWorkLifeStress, setDropdownWorkLifeStress] =
     React.useState("Perfect balance");
@@ -255,6 +255,8 @@ function ThreeSixtyDSL() {
           <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             {activities.map(
               ({
+                id,
+                GarminActivityId,
                 GarminActivityType,
                 GarminActivityDescription,
                 GarminAveragePaceInMinutesPerKilometer,
@@ -279,12 +281,7 @@ function ThreeSixtyDSL() {
                                 GarminActivityType}
                             </Avatar>
                           </IconButton>
-                          {/* <IconButton className="activityIcon">
-                        <Typography component="b">
-                          {iconDictionary[GarminActivityType] ||
-                            GarminActivityType}
-                        </Typography>
-                      </IconButton> */}
+                          {}
                         </span>
 
                         <span className="activityHead">
@@ -351,8 +348,8 @@ function ThreeSixtyDSL() {
                           How's the body?
                         </Typography>
                         <Select
-                          value={dropdownBody}
-                          onChange={(e) => setDropdownBody(e)}
+                          value={dropdownActivityBody}
+                          onChange={(e) => setDropdownActivityBody(e)}
                           placeholder="BodyFeedback"
                           style={{ width: "100%" }}
                         >
