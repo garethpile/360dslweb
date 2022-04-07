@@ -6,6 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import moment from "moment";
 // import Button from '@mui/material/Button';
 // import SearchIcon from "@mui/icons-material/Search";
 // import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -40,6 +41,47 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 const { Option } = Select;
 
+function secondsToHms(d) {
+  d = Number(d);
+  var h = Math.floor(d / 3600);
+  var m = Math.floor((d % 3600) / 60);
+  var s = Math.floor((d % 3600) % 60);
+
+  var hDisplay = h > 0 ? h + (h == 1 ? ":" : ":") : "";
+  var mDisplay = m > 0 ? m + (m == 1 ? ":" : ":") : "";
+  var sDisplay = s > 0 ? s + (s == 1 ? ":" : "") : "";
+  return hDisplay + mDisplay + sDisplay;
+}
+
+function MinPerKmFraction(MinPerKm, GarminActivityType) {
+  switch (GarminActivityType) {
+    case "LAP_SWIMMING":
+      MinPerKm = Number(MinPerKm);
+      var SecPerHundred = (MinPerKm / 10) * 60;
+      var Mins = Math.floor(SecPerHundred / 60);
+      var Secs = Math.floor(SecPerHundred - Mins * 60);
+      return Mins + ":" + Secs;
+    case "STRENGTH_TRAINING":
+      return "-";
+    case "RUNNING": {
+      MinPerKm = Number(MinPerKm);
+      var mins = Math.floor(MinPerKm / 1);
+      var fraction = Math.floor((MinPerKm - mins) * 60);
+      return mins + ":" + fraction;
+    }
+    case "CYCLING":
+      MinPerKm = Number(MinPerKm);
+      var KmPerHr = (1 / MinPerKm) * 60;
+      return KmPerHr.toFixed(2);
+    case "VIRTUAL_RIDE":
+      MinPerKm = Number(MinPerKm);
+      var KmPerHr = (1 / MinPerKm) * 60;
+      return KmPerHr.toFixed(2);
+    default:
+      return "-";
+  }
+}
+
 function ThreeSixtyDSL() {
   // const [value, setValue] = React.useState(1);
   const [activities, setActivities] = React.useState([]);
@@ -69,7 +111,7 @@ function ThreeSixtyDSL() {
   useEffect(() => {
     // Obtain current logged in Amplify user userId which needs to be passed into Garmin URL later
     Auth.currentAuthenticatedUser({
-      bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+      bypassCache: true, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     })
       .then((user) => {
         // userId = user.username;
@@ -147,10 +189,7 @@ function ThreeSixtyDSL() {
 
       <div className="bodyDiv">
         <Row>
-          <Col className="firstCol" span={8} xs={24}
-            sm={24}
-            lg={8}
-            xl={8}>
+          <Col className="firstCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             <div>
               <Card className="maincardDiv">
                 <IconButton className="mainavatarIcon">
@@ -213,14 +252,7 @@ function ThreeSixtyDSL() {
 
             <div></div>
           </Col>
-          <Col
-            className="secondCol"
-            span={8}
-            xs={24}
-            sm={24}
-            lg={8}
-            xl={8}
-          >
+          <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             {activities.map(
               ({
                 GarminActivityType,
@@ -234,65 +266,71 @@ function ThreeSixtyDSL() {
                 return (
                   <div className="cardSpacingDiv">
                     <Card className="maincardDiv">
-                    <IconButton className="activityAvator">
-                  <Avatar
-                  // className="activityAvator"
-                    shape="circle"
-                    size={60}
-                    // style={{lineHeight : "76px !important"}}
-                  >
-                    {iconDictionary[GarminActivityType] ||
-                            GarminActivityType}
-                  </Avatar>
-                </IconButton>
-                      {/* <IconButton className="activityIcon">
+                      <div className="activityDiv">
+                        <span className="activitySpan">
+                          <IconButton className="activityAvator">
+                            <Avatar
+                              // className="activityAvator"
+                              shape="circle"
+                              size={60}
+                              // style={{lineHeight : "76px !important"}}
+                            >
+                              {iconDictionary[GarminActivityType] ||
+                                GarminActivityType}
+                            </Avatar>
+                          </IconButton>
+                          {/* <IconButton className="activityIcon">
                         <Typography component="b">
                           {iconDictionary[GarminActivityType] ||
                             GarminActivityType}
                         </Typography>
                       </IconButton> */}
+                        </span>
 
-                      <div className="headingDiv">
-                        <span className="spanDiv">
+                        <span className="activityHead">
+                          <p>{GarminActivityDescription}</p>
                           <p className="metricValue">
-                            {GarminActivityDescription}
-                          </p>
-                          <p className="metricValue">
-                            {new Date(
-                              GarminActivityStartTime
-                            ).toLocaleTimeString()}
+                            {moment(
+                              new Date(GarminActivityStartTime * 1000)
+                            ).format("DD/MM/YYYY HH:MM")}
                           </p>
                         </span>
                       </div>
-                      <div className="calculationDiv">
-                        <span className="spanDiv">
-                          <p className="metricHead">Distance</p>
+
+                      <div className="metricDiv">
+                        <span className="metricSpan">
+                          <p className="metricHead">Distance(km)</p>
                           <p className="metricValue">
-                            {GarminActivityDistance}
+                            {(GarminActivityDistance / 1000).toFixed(2)}
                           </p>
                         </span>
-                        <span className="spanDiv">
+                        <span className="metricSpan">
                           <p className="metricHead">Time</p>
                           <p className="metricValue">
-                            {GarminActivityDuration}
+                            {secondsToHms(GarminActivityDuration)}
                           </p>
                         </span>
-                        <span className="spanDiv">
-                          <p className="metricHead">Avg Pace</p>
+                        <span className="metricSpan">
+                          <p className="metricHead">Pace</p>
                           <p className="metricValue">
-                            {GarminAveragePaceInMinutesPerKilometer}
+                            {MinPerKmFraction(
+                              GarminAveragePaceInMinutesPerKilometer,
+                              GarminActivityType
+                            )}
                           </p>
                         </span>
-                        <span className="spanDiv">
+                        <span className="metricSpan">
                           <p className="metricHead">Avg HR</p>
                           <p className="metricValue">
-                            {GarminAverageHeartRateInBeatsPerMinute}
+                            {Math.round(GarminAverageHeartRateInBeatsPerMinute)}
                           </p>
                         </span>
                       </div>
                       <Divider light />
                       <Box padding={2}>
-                        <Typography className="dropDownLabel">How was it?</Typography>
+                        <Typography className="dropDownLabel">
+                          How was it?
+                        </Typography>
                         <Select
                           value={dropdownActivityEffort}
                           onChange={(e) => setDropdownActivityEffort(e)}
@@ -309,7 +347,9 @@ function ThreeSixtyDSL() {
                       </Box>
                       <Divider light />
                       <Box padding={2}>
-                        <Typography className="dropDownLabel">How's the body?</Typography>
+                        <Typography className="dropDownLabel">
+                          How's the body?
+                        </Typography>
                         <Select
                           value={dropdownBody}
                           onChange={(e) => setDropdownBody(e)}
@@ -317,15 +357,14 @@ function ThreeSixtyDSL() {
                           style={{ width: "100%" }}
                         >
                           <Option value="SuperStrong">Super strong</Option>
-                          
+
                           <Option value="FeelGreat">Feels great</Option>
                           <Option value="NotBad">Not too bad</Option>
                           <Option value="Sore">I'm sore!</Option>
                           <Option value="Broken">Broken!</Option>
                         </Select>
-
                         <Box mt={1}>
-                        <Button >Save</Button>
+                          <Button>Save</Button>
                         </Box>
                       </Box>
                     </Card>
@@ -335,8 +374,7 @@ function ThreeSixtyDSL() {
             )}
           </Col>
 
-          <Col className="thirdCol" span={8} xs={24}
-            sm={24}>
+          <Col className="thirdCol" span={8} xs={24} sm={24}>
             <div>
               <Row style={{ marginRight: "40px", marginTop: "35px" }}>
                 <Col span={18}>

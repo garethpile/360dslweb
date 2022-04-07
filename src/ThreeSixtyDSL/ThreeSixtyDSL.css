@@ -39,6 +39,7 @@ body{
 .avatarIcon{
     margin-left: 1% !important;
 }
+
 .rightDiv{
     display: contents;
     margin-left: 20px !important;
@@ -100,16 +101,9 @@ body{
     font-size: 18px;
     margin-left: 1%;
     margin-top: -1.5%;
+
 }
-.metricHead{
-    font-size: 15px;
-    margin-bottom: 0%;
-}
-.metricValue{
-    font-size: 15px;
-    font-weight: 700;
-    text-align: center;
-}
+
 .timeDiv{
     font-size: 15px;
     margin-bottom: 0%;
@@ -129,17 +123,16 @@ body{
     text-align: center;
 }
 .spanDiv{
-    margin-right: 8%;
-    margin-left: 8%;
+    margin-right: 4%;
+    margin-left: 4%;
 }
 .spanDiv1{
     margin-right: 8%;
 }
 .maincardDiv{
-    /* width: 80% !important; */
     margin-left: 4% !important; 
     margin-top: 6% !important;
-    margin-bottom: 8% !important;; 
+    margin-bottom: 8% !important; 
 }
 
 .maincardDiv2{
@@ -153,24 +146,16 @@ body{
     margin-top: -15% !important;
 }
 
-.activityAvator {
-    margin-top: -18% !important;
-}
-.activityIcon{
-    margin-top: 0% !important;
-    font-weight: 700;
-    color:crimson
-}
+
+
 .latestDiv{
     text-align: start;
     font-weight: 610;
     margin-top: 5%  !important;
 }
-.ActivityDiv{
-    text-align: start;
-    margin-top: -5%;
-    font-weight: 700;
-}
+
+
+
 .LogDiv{
     text-align: start;
     margin-top: 5%;
@@ -198,6 +183,72 @@ body{
 .metricsDetai{
     font-weight: 600;
 }
+
+
+
+
+
+
+.activityAvator {
+    margin-top: -18% !important;
+}
+.activitySpan{
+    margin-right: 4%;
+    margin-left: 4%;
+}
+.activityDiv{
+    display: flex;
+    text-align: start;
+    font-size: 18px;
+    margin-left: 1%;
+    margin-top: -1.5%;
+
+}
+.activityIcon{
+    margin-top: 0% !important;
+    font-weight: 700;
+    color:crimson
+}
+.activityDiv{
+    text-align: start;
+    margin-top: -5%;
+    font-weight: 700;
+}
+.activityHead{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 2%;
+    font-weight: 700;
+}
+
+
+
+
+.metricDiv{
+    display: flex;
+    text-align: left;
+    font-size: 18px;
+    margin-left: 1%;
+    margin-top: -1.5%;
+}
+.metricSpan{
+    margin-right: 4%;
+    margin-left: 4%;
+}
+.metricHead{
+    font-size: 10px;
+    margin-bottom: 0%;
+    text-align: center;
+}
+.metricValue{
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+
+
 
 .firstCol {
     position: fixed !important;
@@ -230,13 +281,13 @@ body{
         position: relative !important;
         width: 100% !important
     }
-    
+
     .secondCol {
         position: relative !important;
         left: 0% !important;
         width: 100% !important;
     }
-    
+
     .thirdCol {
         padding-left: 20px;
         position: relative !important;
