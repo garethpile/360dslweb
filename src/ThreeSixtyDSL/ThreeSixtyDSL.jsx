@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./ThreeSixtyDSL.css";
-import MenuAppBar from "../Components/MenuAppBar";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -69,7 +68,6 @@ function MinPerKmFraction(MinPerKm, GarminActivityType) {
 }
 
 function ThreeSixtyDSL() {
-
   const [activities, setActivities] = React.useState([]);
   const [dropdownActivityEffort, setDropdownActivityEffort] =
     React.useState("");
@@ -117,7 +115,6 @@ function ThreeSixtyDSL() {
   }, []);
   return (
     <div>
-      
       <AppBar className="headerDiv">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
@@ -162,7 +159,7 @@ function ThreeSixtyDSL() {
           </Toolbar>
         </Container>
       </AppBar>
-      <MenuAppBar/>
+
       <div className="bodyDiv">
         <Row>
           <Col className="firstCol" span={8} xs={24} sm={24} lg={8} xl={8}>
@@ -229,11 +226,15 @@ function ThreeSixtyDSL() {
             <div></div>
           </Col>
           <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
-            <h1 style={{
-                    justifyContent: "center",
-                    display: "flex",
-                    color: "crimson",
-                  }} >Athlete Feedback Corner</h1>
+            <h1
+              style={{
+                justifyContent: "center",
+                display: "flex",
+                color: "crimson",
+              }}
+            >
+              Activity Feedback Corner
+            </h1>
             {activities.map(
               ({
                 id,
@@ -252,12 +253,7 @@ function ThreeSixtyDSL() {
                       <div className="activityDiv">
                         <span className="activitySpan">
                           <IconButton className="activityAvator">
-                            <Avatar
-                              // className="activityAvator"
-                              shape="circle"
-                              size={60}
-                              // style={{lineHeight : "76px !important"}}
-                            >
+                            <Avatar shape="circle" size={60}>
                               {iconDictionary[GarminActivityType] ||
                                 GarminActivityType}
                             </Avatar>
@@ -357,34 +353,18 @@ function ThreeSixtyDSL() {
             <div>
               <Row style={{ marginRight: "40px", marginTop: "35px" }}>
                 <Col span={18}>
-                  <b
-                    style={{
-                      justifyContent: "left",
-                      display: "flex",
-                      color: "crimson",
-                    }}
-                  >
-                    Overall Health
-                  </b>
-                  <p style={{ textAlign: "start", marginTop: "10px" }}>
+                  <b className="healthHead">Overall Health</b>
+                  <p className="healthText">
                     Sleep is a key input factor to productive training and
                     success!
                   </p>
-                  <p style={{ textAlign: "start", marginTop: "10px" }}>
+                  <p className="healthText">
                     Work / Life balance has a huge effect on your ability to
                     train effectively.
                   </p>
-                  <b
-                    style={{
-                      justifyContent: "left",
-                      display: "flex",
-                      color: "crimson",
-                    }}
-                  >
-                    Select and Save
-                  </b>
+                  <b className="healthHead">Select and Save</b>
                   <Box paddingX={0}>
-                    <Typography>Are you injured?</Typography>
+                    <Typography className="healthQuestion">Are you injured?</Typography>
                     <Select
                       value={dropdownInjury}
                       onChange={(e) => setDropdownInjury(e)}
