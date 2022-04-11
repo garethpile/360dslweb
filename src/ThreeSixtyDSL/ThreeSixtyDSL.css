@@ -268,18 +268,21 @@ body{
 
 .firstCol {
     position: fixed !important;
-    width: 100%
+    width: 100%;
+    padding-right: 10%;
 }
 
 .secondCol {
     position: absolute !important;
     left: 35%;
     width: 100%;
+    padding-right: 10%;
 }
 
 .thirdCol {
     position: fixed !important;
-    left: 72% !important
+    left: 72% !important;
+    padding-right: 10%;
 }
 
 .dropDownLabel {
