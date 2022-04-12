@@ -24,6 +24,8 @@ import { Activityquery } from "../Apollo/queries";
 import { Select } from "antd";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 const { Option } = Select;
 
 function secondsToHms(d) {
@@ -76,7 +78,22 @@ function ThreeSixtyDSL() {
   const [dropdownWorkLifeStress, setDropdownWorkLifeStress] =
     React.useState("Perfect balance");
   const [dropdownInjury, setDropdownInjury] = React.useState("No");
-
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [thirdanchorEl, setTHirdAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const thidPartyMenu = Boolean(thirdanchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleClickThirdParty = (event) => {
+    setTHirdAnchorEl(event.currentTarget);
+  };
+  const handleCloseThirdParty = () => {
+    setTHirdAnchorEl(null);
+  };
   const iconDictionary = {
     LAP_SWIMMING: <PoolIcon fontSize="large" />,
     STRENGTH_TRAINING: <FitnessCenterIcon fontSize="large" />,
@@ -101,11 +118,22 @@ function ThreeSixtyDSL() {
       .catch((err) => console.log(err));
   }, []);
 
+  const sortDesByDate = (a, b) => {
+    if (new Date(a.updatedAt) > new Date(b.updatedAt)) {
+      return -1;
+    }
+    if (new Date(a.updatedAt) < new Date(b.updatedAt)) {
+      return 1;
+    }
+    return 0;
+  }
   async function fetchActivities() {
     try {
       const activity = await API.graphql(graphqlOperation(Activityquery));
       console.log(activity.data.activitiesgarminByGarminAccountId.items);
-      setActivities(activity.data.activitiesgarminByGarminAccountId.items);
+      let sorted = activity.data.activitiesgarminByGarminAccountId.items.sort(sortDesByDate);
+      sorted = sorted.filter(exr => !exr.GarminActivityAthleteFeedback || exr.GarminActivityAthleteFeedback != 1);
+      setActivities(sorted.slice(0, 10));
     } catch (err) {
       console.log("Error fetching activities");
     }
@@ -139,22 +167,101 @@ function ThreeSixtyDSL() {
                 </a>
               </div>
               <KeyboardArrowDownIcon className="ArrowIcon" />
-              <div>
-                <a href="/ThirdParty.jsx" className="menuItems">
+              <div id="thirdParties"
+                aria-controls={thidPartyMenu ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={thidPartyMenu ? 'true' : undefined}
+                onClick={handleClickThirdParty}>
+                <p className="menuItems">
                   3rd Parties
-                </a>
+                </p>
               </div>
-              <KeyboardArrowDownIcon className="ArrowIcon" />
+              <KeyboardArrowDownIcon
+                // id="thirdParties"
+                aria-controls={thidPartyMenu ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={thidPartyMenu ? 'true' : undefined}
+                onClick={handleClickThirdParty}
+                className="ArrowIcon" />
+              <Menu
+                id="thirdParties"
+                anchorEl={thirdanchorEl}
+                open={thidPartyMenu}
+                onClose={handleCloseThirdParty}
+                MenuListProps={{
+                  'aria-labelledby': 'thirdParties',
+                }}
+              >
+                {/* <MenuItem onClick={handleCloseThirdParty} disabled>
+                  <b
+                    style={{
+                      justifyContent: "left",
+                      display: "flex",
+                      color: "crimson",
+                    }}
+                  >
+                    Third Party Applications
+                  </b>
+                </MenuItem> */}
+                <MenuItem onClick={handleCloseThirdParty}>
+                  <div>
+                    <a href="https://oauth.sandbox.trainingpeaks.com/OAuth/Authorize?client_id=m360&response_type=code&scope=workouts athlete:profile&redirect_uri=https://cisx9pt2th.execute-api.us-east-1.amazonaws.com/dev/tpnotification">
+                      Connect your TP account
+                    </a>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseThirdParty}>
+                  <div>
+                    <a
+                      href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=${userId}`}
+                    >
+                      Connect your Garmin account
+                    </a>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseThirdParty}>
+                  <div>
+                    <a href="http://www.strava.com/oauth/authorize?client_id=7947&response_type=code&scope=activity:read_all&redirect_uri=https://6kjj2t9ega.execute-api.us-east-1.amazonaws.com/staging/oauthexchange">
+                      Connect your Strava account
+                    </a>
+                  </div>
+                </MenuItem>
+              </Menu>
             </div>
             <div className="rightDiv">
-              <IconButton className="avatarIcon">
+              <IconButton
+                id="basic-button"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                className="avatarIcon">
                 <Avatar
                   shape="circle"
                   size={37}
                   src="https://joeschmoe.io/api/v1/random"
                 />
               </IconButton>
-              <KeyboardArrowDownIcon className="ArrowIcon" />
+              <KeyboardArrowDownIcon
+                id="basic-button"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                className="ArrowIcon" />
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  'aria-labelledby': 'basic-button',
+                }}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
+
             </div>
           </Toolbar>
         </Container>
@@ -258,7 +365,7 @@ function ThreeSixtyDSL() {
                                 GarminActivityType}
                             </Avatar>
                           </IconButton>
-                          {}
+                          { }
                         </span>
 
                         <span className="activityHead">
@@ -350,8 +457,8 @@ function ThreeSixtyDSL() {
           </Col>
 
           <Col className="thirdCol" span={8} xs={24} sm={24}>
-            <div>
-              <Row style={{ marginRight: "40px", marginTop: "35px" }}>
+            <Card>
+              <Row>
                 <Col span={18}>
                   <b className="healthHead">Overall Health</b>
                   <p className="healthText">
@@ -414,7 +521,7 @@ function ThreeSixtyDSL() {
                   <Button>Save Feedback</Button>
                 </Col>
               </Row>
-            </div>
+            </Card>
 
             <div
               style={{
@@ -423,7 +530,7 @@ function ThreeSixtyDSL() {
                 marginLeft: "40px",
               }}
             ></div>
-            <div>
+            <Card>
               <Row style={{ marginRight: "40px", marginTop: "35px" }}>
                 <Col span={4}>
                   <Tooltip title="Privacy">
@@ -444,7 +551,7 @@ function ThreeSixtyDSL() {
                   </p>
                 </Col>
               </Row>
-            </div>
+            </Card>
           </Col>
         </Row>
       </div>

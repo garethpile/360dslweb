@@ -42,7 +42,11 @@ body{
 
 .rightDiv{
     display: contents;
-    margin-left: 20px !important;
+    margin-left: auto !important;
+}
+
+.rightDiv > button{
+    margin-left: auto !important;
 }
 .bodyDiv{
     margin-top: 5% !important;

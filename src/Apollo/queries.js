@@ -2,7 +2,7 @@
 
 export const Activityquery = `query MyQuery {
 
-    activitiesgarminByGarminAccountId(GarminAccountId: "574dc5ad1b54a9fe210170d1fd34741c",limit:10) {
+    activitiesgarminByGarminAccountId(GarminAccountId: "574dc5ad1b54a9fe210170d1fd34741c") {
   
       nextToken
   
@@ -33,6 +33,10 @@ export const Activityquery = `query MyQuery {
         GarminAverageHeartRateInBeatsPerMinute
   
         GarminAveragePaceInMinutesPerKilometer
+
+        GarminActivityAthleteFeedback
+
+        updatedAt
   
       }
   
