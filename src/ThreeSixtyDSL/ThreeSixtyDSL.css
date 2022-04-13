@@ -253,7 +253,7 @@ body{
 
 
 .healthHead{
-
+    font-size: 15px;
     text-align: left;
     display: flex;
     color: crimson;
@@ -261,6 +261,7 @@ body{
 .healthText{
     text-align: start;
     margin-top: 10px;
+    
 }
 .healthQuestion{
     text-align: start;

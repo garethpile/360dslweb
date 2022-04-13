@@ -462,8 +462,7 @@ function ThreeSixtyDSL() {
                 <Col span={18}>
                   <b className="healthHead">Overall Health</b>
                   <p className="healthText">
-                    Sleep is a key input factor to productive training and
-                    success!
+                    Productive training comes from good sleep!!
                   </p>
                   <p className="healthText">
                     Work / Life balance has a huge effect on your ability to
