@@ -26,6 +26,7 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import TermsConditions from "../Components/TermsConditions";
 const { Option } = Select;
 
 function secondsToHms(d) {
@@ -328,9 +329,9 @@ function ThreeSixtyDSL() {
                   </a>
                 </div>
               </Card>
-            </div>
+             
 
-            <div></div>
+            </div>
           </Col>
           <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             <h1
@@ -529,28 +530,8 @@ function ThreeSixtyDSL() {
                 marginLeft: "40px",
               }}
             ></div>
-            <Card>
-              <Row style={{ marginRight: "40px", marginTop: "35px" }}>
-                <Col span={4}>
-                  <Tooltip title="Privacy">
-                    <Button
-                      shape="circle"
-                      icon={<EyeOutlined />}
-                      size="large"
-                    />
-                  </Tooltip>
-                </Col>
-                <Col span={18}>
-                  <b style={{ justifyContent: "left", display: "flex" }}>
-                    Privacy
-                  </b>
-                  <p style={{ textAlign: "start" }}>
-                    All your personal data and training information will never
-                    be shared with any 3rd parties and will never be used for marketing without your consent.
-                  </p>
-                </Col>
-              </Row>
-            </Card>
+            <TermsConditions/>
+        
           </Col>
         </Row>
       </div>

@@ -43,3 +43,9 @@ export const Activityquery = `query MyQuery {
     }
   
   }`
+
+  export const updateGarminActivity = `
+  mutation MyMutation ($id: Int, $GarminActivityAthleteBody: String, $GarminActivityAthleteEffort: String) {
+    updateACTIVITIESGARMIN (input : {id: $id, GarminActivityAthleteBody: $GarminActivityAthleteBody, GarminActivityAthleteEffort: $GarminActivityAthleteEffort})
+  
+  }`;

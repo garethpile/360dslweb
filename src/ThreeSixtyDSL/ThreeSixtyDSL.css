@@ -285,7 +285,7 @@ body{
 }
 
 .thirdCol {
-    position: fixed !important;
+    position: absolute !important;
     left: 72% !important;
     padding-right: 10%;
 }
