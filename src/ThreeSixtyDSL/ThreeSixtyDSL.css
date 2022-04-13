@@ -98,6 +98,7 @@ body{
     font-size: 18px;
     margin-left: 1%;
     margin-top: -1.5%;
+    justify-content: space-between;
 }
 .headingDiv{
     display: flex;
@@ -234,6 +235,7 @@ body{
     font-size: 18px;
     margin-left: 1%;
     margin-top: -1.5%;
+    justify-content: space-between;
 }
 .metricSpan{
     margin-right: 4%;

@@ -13,8 +13,8 @@ import PoolIcon from "@mui/icons-material/Pool";
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
 import PedalBikeIcon from "@mui/icons-material/PedalBike";
 import moment from "moment";
-import { Auth, API, graphqlOperation } from "aws-amplify";
-import { Activityquery, updateGarminActivity } from "../Apollo/queries";
+import { API, graphqlOperation } from "aws-amplify";
+import { updateGarminActivity } from "../Apollo/queries";
 
 const { Option } = Select;
 

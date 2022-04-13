@@ -96,13 +96,6 @@ function ThreeSixtyDSL() {
   const handleCloseThirdParty = () => {
     setTHirdAnchorEl(null);
   };
-  const iconDictionary = {
-    LAP_SWIMMING: <PoolIcon fontSize="large" />,
-    STRENGTH_TRAINING: <FitnessCenterIcon fontSize="large" />,
-    RUNNING: <DirectionsRunIcon fontSize="large" />,
-    CYCLING: <DirectionsBikeIcon fontSize="large" />,
-    VIRTUAL_RIDE: <PedalBikeIcon fontSize="large" />,
-  };
 
   const [userId, setUserId] = useState("");
   // const { loading, error, data } = useQuery(firstQuery)
@@ -282,6 +275,7 @@ function ThreeSixtyDSL() {
         <Row>
           <Col className="firstCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             <AthleteCard />
+            <ThirdParty/>
           </Col>
           <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             <h1
@@ -307,25 +301,6 @@ function ThreeSixtyDSL() {
                 GarminActivityAthleteBody,
                 GarminActivityAthleteEffort,
               }) => {
-                <div key={id} className="cardSpacingDiv">
-                  <ActivityCard
-                    id={id}
-                    GarminActivityType={GarminActivityType}
-                    GarminActivityDescription={GarminActivityDescription}
-                    GarminAveragePaceInMinutesPerKilometer={
-                      GarminAveragePaceInMinutesPerKilometer
-                    }
-                    GarminActivityStartTime={GarminActivityStartTime}
-                    GarminActivityDuration={GarminActivityDuration}
-                    GarminActivityDistance={GarminActivityDistance}
-                    GarminAverageHeartRateInBeatsPerMinute={
-                      GarminAverageHeartRateInBeatsPerMinute
-                    }
-                    GarminActivityAthleteBody={GarminActivityAthleteBody}
-                    GarminActivityAthleteEffort={GarminActivityAthleteEffort}
-                  />
-                </div>;
-
                 return (
                   <div className="cardSpacingDiv">
                     <ActivityCard
