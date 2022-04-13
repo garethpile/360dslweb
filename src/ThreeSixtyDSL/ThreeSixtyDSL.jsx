@@ -546,7 +546,7 @@ function ThreeSixtyDSL() {
                   </b>
                   <p style={{ textAlign: "start" }}>
                     All your personal data and training information will never
-                    be shared with any 3rd parties.
+                    be shared with any 3rd parties and will never be used for marketing without your consent.
                   </p>
                 </Col>
               </Row>
