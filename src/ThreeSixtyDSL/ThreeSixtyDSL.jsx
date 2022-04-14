@@ -76,10 +76,6 @@ function MinPerKmFraction(MinPerKm, GarminActivityType) {
 
 function ThreeSixtyDSL() {
   const [activities, setActivities] = React.useState([]);
-  const [dropdownActivityEffort, setDropdownActivityEffort] =
-    React.useState("");
-  const [dropdownActivityBody, setDropdownActivityBody] = React.useState("");
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [thirdanchorEl, setTHirdAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -125,7 +121,7 @@ function ThreeSixtyDSL() {
   async function fetchActivities() {
     try {
       const activity = await API.graphql(graphqlOperation(Activityquery));
-      console.log(activity.data.activitiesgarminByGarminAccountId.items);
+      console.log("Activity items returned:" + activity.data.activitiesgarminByGarminAccountId.items);
       let sorted =
         activity.data.activitiesgarminByGarminAccountId.items.sort(
           sortDesByDate
@@ -275,7 +271,7 @@ function ThreeSixtyDSL() {
         <Row>
           <Col className="firstCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             <AthleteCard />
-            <ThirdParty/>
+            <TermsConditions/>
           </Col>
           <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             <h1
@@ -334,7 +330,7 @@ function ThreeSixtyDSL() {
                 marginLeft: "40px",
               }}
             ></div>
-            <TermsConditions />
+            <ThirdParty />
           </Col>
         </Row>
       </div>
