@@ -111,7 +111,7 @@ export default function Header({user}) {
                 <MenuItem onClick={handleCloseThirdParty}>
                   <div>
                     <a
-                      href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=${user}`} target="_blank">
+                      href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=${user}`} target="_blank"
                     >
                       Connect your Garmin account
                     </a>
