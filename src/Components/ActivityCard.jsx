@@ -25,31 +25,6 @@ const iconDictionary = {
   CYCLING: <DirectionsBikeIcon fontSize="large" />,
   VIRTUAL_RIDE: <PedalBikeIcon fontSize="large" />,
 };
-
-async function updateActivity(
-    id,
-    dropdownActivityBody,
-    dropdownActivityEffort
-  ) {
-    try {
-console.log("GarminActivityAthleteBody: "+ dropdownActivityBody);
-
-      const updateActivity = await API.graphql(
-        graphqlOperation(updateGarminActivity, {
-          variables: {
-            id:  id ,
-            GarminActivityAthleteBody:  dropdownActivityBody ,
-            GarminActivityAthleteEffort: dropdownActivityEffort 
-          }
-        })
-      );
-      console.log("updateActivity response: " + updateActivity);
-      //setActivities(activity.data.activitiesgarminByGarminAccountId.items);
-    } catch (err) {
-      console.log("Error updating activity");
-    }
-  }
-
 function secondsToHms(d) {
   d = Number(d);
   var h = Math.floor(d / 3600);
@@ -94,6 +69,26 @@ function MinPerKmFraction(MinPerKm, GarminActivityType) {
 export default function ActivityCard(props) {
   const [dropdownActivityEffort, setDropdownActivityEffort] = React.useState("");
   const [dropdownActivityBody, setDropdownActivityBody] = React.useState("");
+  async function updateActivity(id) {
+    try {
+      console.log("GarminActivityAthleteBody: " + dropdownActivityBody);
+
+      const updateActivity = await API.graphql(
+        graphqlOperation(updateGarminActivity, {
+          variables: {
+            id: id,
+            GarminActivityAthleteBody: dropdownActivityBody,
+            GarminActivityAthleteEffort: dropdownActivityEffort
+          }
+        })
+      );
+      console.log("updateActivity response: " + updateActivity);
+      //setActivities(activity.data.activitiesgarminByGarminAccountId.items);
+    } catch (err) {
+      console.log("Error updating activity", err);
+    }
+  }
+
   return (
     <Card className="maincardDiv">
       <div className="activityDiv">
@@ -103,7 +98,7 @@ export default function ActivityCard(props) {
               {iconDictionary[props.GarminActivityType] || props.GarminActivityType}
             </Avatar>
           </IconButton>
-          {}
+          { }
         </span>
 
         <span className="activityHead">
@@ -180,11 +175,7 @@ export default function ActivityCard(props) {
       <Divider light />
       <Box mt={1}>
         <Button
-          onClick={updateActivity(
-            props.id,
-            dropdownActivityBody,
-            dropdownActivityEffort
-          )}
+          onClick={() => updateActivity(props.id)}
         >
           Save
         </Button>
