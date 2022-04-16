@@ -103,7 +103,7 @@ export default function Header({user}) {
                 </MenuItem> */}
                 <MenuItem onClick={handleCloseThirdParty}>
                   <div>
-                    <a href="https://oauth.sandbox.trainingpeaks.com/OAuth/Authorize?client_id=m360&response_type=code&scope=workouts athlete:profile&redirect_uri=https://cisx9pt2th.execute-api.us-east-1.amazonaws.com/dev/tpnotification">
+                    <a  href="https://oauth.sandbox.trainingpeaks.com/OAuth/Authorize?client_id=m360&response_type=code&scope=workouts athlete:profile&redirect_uri=https://cisx9pt2th.execute-api.us-east-1.amazonaws.com/dev/tpnotification" target="_blank">
                       Connect your TP account
                     </a>
                   </div>
@@ -111,7 +111,7 @@ export default function Header({user}) {
                 <MenuItem onClick={handleCloseThirdParty}>
                   <div>
                     <a
-                      href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=${user}`}
+                      href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=${user}`} target="_blank">
                     >
                       Connect your Garmin account
                     </a>
@@ -119,7 +119,7 @@ export default function Header({user}) {
                 </MenuItem>
                 <MenuItem onClick={handleCloseThirdParty}>
                   <div>
-                    <a href="http://www.strava.com/oauth/authorize?client_id=7947&response_type=code&scope=activity:read_all&redirect_uri=https://6kjj2t9ega.execute-api.us-east-1.amazonaws.com/staging/oauthexchange">
+                    <a href="http://www.strava.com/oauth/authorize?client_id=7947&response_type=code&scope=activity:read_all&redirect_uri=https://6kjj2t9ega.execute-api.us-east-1.amazonaws.com/staging/oauthexchange" target="_blank">
                       Connect your Strava account
                     </a>
                   </div>
