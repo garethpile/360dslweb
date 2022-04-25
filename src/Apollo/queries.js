@@ -37,6 +37,8 @@ export const Activityquery = `query MyQuery {
         GarminActivityAthleteFeedback
 
         updatedAt
+
+        _version
   
       }
   
@@ -44,8 +46,44 @@ export const Activityquery = `query MyQuery {
   
   }`
 
-  export const updateGarminActivity = `
-  mutation MyMutation ($id: Int, $GarminActivityAthleteBody: String, $GarminActivityAthleteEffort: String) {
-    updateACTIVITIESGARMIN (input : {id: $id, GarminActivityAthleteBody: $GarminActivityAthleteBody, GarminActivityAthleteEffort: $GarminActivityAthleteEffort})
-  
+export const updateGarminActivity = `
+  mutation MyMutation ($id: ID!, $GarminActivityAthleteBody: String, $GarminActivityAthleteEffort: String, $_version: Int) {
+    updateACTIVITIESGARMIN(input : {id: $id, GarminActivityAthleteBody: $GarminActivityAthleteBody, GarminActivityAthleteEffort: $GarminActivityAthleteEffort, _version: $_version}) {
+      GarminActivityAthleteEffort
+    }
   }`;
+
+
+export const getCustomerByID = `query myCustomerQuery($id: ID!) {
+    getCUSTOMER360DSL(id: $id) {
+    CUSTOMER3RDPARTIES {
+    items {
+      _version
+    }
+    }
+      EmailAddress
+      TrainingDays {
+      FridayTrain
+      FridayTrainHours
+      MondayTrain
+      MondayTrainHours
+      SaturdayTrain
+      WednesdayTrainHours
+      WednesdayTrain
+      TuesdayTrainHours
+      TuesdayTrain
+      ThursdayTrainHours
+      ThursdayTrain
+      SundayTrainHours
+      SundayTrain
+      SaturdayTrainHours
+      }
+      }
+    }`
+
+export const createCustomer360DSL = `mutation createCustomerMutation($id: ID!, $EmailAddress: AWSEmail!){
+  createCUSTOMER360DSL(input: {id : $id, EmailAddress: $EmailAddress}){
+    EmailAddress
+    id
+  }
+}`

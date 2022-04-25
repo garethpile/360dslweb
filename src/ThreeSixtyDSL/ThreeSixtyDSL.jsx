@@ -89,7 +89,7 @@ function ThreeSixtyDSL() {
       .then((user) => {
         // userId = user.username;
         setUserId(user.username);
-        console.log("Current userId: ", user.username); // This works and userId visible ...
+        console.log("Current userId: ", user); // This works and userId visible ...
       })
       .catch((err) => console.log(err));
   }, []);
@@ -156,12 +156,13 @@ function ThreeSixtyDSL() {
                 GarminAverageHeartRateInBeatsPerMinute,
                 GarminActivityAthleteBody,
                 GarminActivityAthleteEffort,
+                _version
               }) => {
                 return (
                   <div key={id} className="cardSpacingDiv">
                     <ActivityCard
                       id={id}
-                      
+                      version={_version}
                       GarminActivityType={GarminActivityType}
                       GarminActivityDescription={GarminActivityDescription}
                       GarminAveragePaceInMinutesPerKilometer={

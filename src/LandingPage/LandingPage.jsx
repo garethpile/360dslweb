@@ -1,4 +1,7 @@
 import React, {useEffect , useState} from "react";
+import { Auth, API, graphqlOperation } from "aws-amplify";
+import { createCustomer360DSL, getCustomerByID } from "../Apollo/queries";
+
 import Header from "../Components/Header"
 import {
     BrowserRouter as Router,
@@ -7,18 +10,29 @@ import {
     BrowserRouter
 } from "react-router-dom";
 import ThreeSixtyDSL from "../ThreeSixtyDSL/ThreeSixtyDSL";
-import { Auth } from 'aws-amplify';
+import Profile from "../ProfilePage/Profile";
 
 
 const LandingPage = () => {
     const [userId, setUserId] = useState("");
-  
+    const [customer, setCustomer] = useState({});
+    const getCustomer = async (id, EmailAddress) => {
+      const customerData = await API.graphql(graphqlOperation(getCustomerByID , {id: id}));
+      console.log("customerData : ", customerData.data.getCUSTOMER360DSL);
+      if(!customerData.data.getCUSTOMER360DSL){
+        const createCustomer = await API.graphql(graphqlOperation(createCustomer360DSL , {id, EmailAddress}));
+        console.log("createCustomer : ", createCustomer);
+
+      }
+      setCustomer(customerData);
+    }
     useEffect(() => {
       Auth.currentAuthenticatedUser({
         bypassCache: true, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
       })
         .then((user) => {
           setUserId(user.username);
+          getCustomer(user.username, user.attributes.email);
           console.log("Current userId: ", user.username);
         })
         .catch((err) => console.log(err));
@@ -27,7 +41,7 @@ const LandingPage = () => {
         <BrowserRouter>
         <Header user={userId}></Header>
             <Routes>
-                <Route path="/Profile" element={<h1>Hello world</h1>} />
+                <Route path="/Profile" element={<Profile />} />
                 <Route exact path="/" element={<ThreeSixtyDSL />} />
             </Routes>
         </BrowserRouter>

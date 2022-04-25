@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,6 +13,8 @@ import { Avatar } from "antd";
 import { Auth } from 'aws-amplify';
 
 export default function Header({user}) {
+  const navigate = useNavigate();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [thirdanchorEl, setTHirdAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -158,7 +161,7 @@ export default function Header({user}) {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={() => navigate("Profile")}>Profile</MenuItem>
                 <MenuItem onClick={signOut}>Logout</MenuItem>
               </Menu>
             </div>

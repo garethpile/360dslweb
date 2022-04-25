@@ -14,7 +14,7 @@ import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
 import PedalBikeIcon from "@mui/icons-material/PedalBike";
 import moment from "moment";
 import { API, graphqlOperation } from "aws-amplify";
-import { updateGarminActivity } from "../Apollo/queries";
+import { updateGarminActivity , testMutation} from "../Apollo/queries";
 
 const { Option } = Select;
 
@@ -75,11 +75,12 @@ export default function ActivityCard(props) {
 
       const updateActivity = await API.graphql(
         graphqlOperation(updateGarminActivity, {
-          variables: {
+          // variables: {
             id: id,
             GarminActivityAthleteBody: dropdownActivityBody,
-            GarminActivityAthleteEffort: dropdownActivityEffort
-          }
+            GarminActivityAthleteEffort: dropdownActivityEffort,
+            _version : props.version
+          // }
         })
       );
       console.log("updateActivity response: " + updateActivity);
