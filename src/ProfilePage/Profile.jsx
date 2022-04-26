@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { TextField, Select, MenuItem , Grid , InputLabel, FormControl , Autocomplete} from "@mui/material";
+import { TextField, Select, MenuItem , Grid , FormControlLabel, InputLabel, FormControl , Autocomplete, Checkbox} from "@mui/material";
 import CountryList from "./ContryList"
 import "./Profile.css";
+import { Box } from "@mui/system";
 
 
 
 const Profile = () => {
     const [user, setUser] = useState({});
     const handleChange = (e) => {
-        setUser({...user , [e.target.name] : e.target.value });
+        debugger
+        setUser({...user , [e.target.name] :  e.target.value });
     }
     return (
     <div className="ProfileMainDiv">
@@ -55,6 +57,47 @@ const Profile = () => {
                         fullWidth
                         renderInput={(params) => <TextField {...params} label="Select Country" />}
                     />
+                </Grid>
+                <Grid xs={12} lg={3} md={3} sm={6} />
+                <Grid xs={12} lg={12} md={12} sm={12}>
+                    <Box textAlign="center" my={2}>
+                       <h1>TrainingDays</h1> 
+                    </Box>
+                </Grid>
+                <Grid item xs={12} lg={3} md={3} sm={6}>
+                    <FormControlLabel control={<Checkbox name="FridayTrain" checked={user.FridayTrain} onChange={handleChange} />}  label="FridayTrain" />
+                    <br />
+                    <TextField type="number" name="FridayTrainHours" label="Friday Train Hours" onChange={handleChange} fullWidth />
+                </Grid>
+                <Grid item xs={12} lg={3} md={3} sm={6}>
+                    <FormControlLabel control={<Checkbox name="SaturdayTrain" checked={user.SaturdayTrain} onChange={handleChange} />} label="SaturdayTrain" />
+                    <br />
+                    <TextField type="number" name="SaturdayTrainHours" label="Saturday Train Hours" onChange={handleChange} fullWidth />
+                </Grid>
+                <Grid item xs={12} lg={3} md={3} sm={6}>
+                    <FormControlLabel control={<Checkbox name="SundayTrain" checked={user.SundayTrain}  onChange={handleChange} />} label="SundayTrain" />
+                    <br />
+                    <TextField type="number" name="SundayTrainHours" label="Sunday Train Hours" onChange={handleChange} fullWidth />
+                </Grid>
+                <Grid item xs={12} lg={3} md={3} sm={6}>
+                    <FormControlLabel control={<Checkbox name="MondayTrain" checked={user.MondayTrain} onChange={handleChange}  />} label="MondayTrain" />
+                    <br />
+                    <TextField type="number" name="MondayTrainHours" label="Monday Train Hours" onChange={handleChange} fullWidth />
+                </Grid>
+                <Grid item xs={12} lg={3} md={3} sm={6}>
+                    <FormControlLabel control={<Checkbox onChange={handleChange} checked={user.TuesdayTrain}  name="TuesdayTrain" />} label="TuesdayTrain" />
+                    <br />
+                    <TextField type="number" name="TuesdayTrainHours" label="Tuesday Train Hours" onChange={handleChange} fullWidth />
+                </Grid>
+                <Grid item xs={12} lg={3} md={3} sm={6}>
+                    <FormControlLabel control={<Checkbox name="WednesdayTrain" checked={user.WednesdayTrain}  onChange={handleChange} />} label="WednesdayTrain" />
+                    <br />
+                    <TextField type="number" name="WednesdayTrainHours" label="Wednesday Train Hours" onChange={handleChange} fullWidth />
+                </Grid>
+                <Grid item xs={12} lg={3} md={3} sm={6}>
+                    <FormControlLabel control={<Checkbox name="ThursdayTrain" checked={user.ThursdayTrain === "on" ? true : false} onChange={handleChange} />} label="ThursdayTrain" />
+                    <br />
+                    <TextField type="number" disabled={!user.ThursdayTrain} name="ThursdayTrainHours" label="Thursday Train Hours" onChange={handleChange} fullWidth />
                 </Grid>
             </Grid>
         {/* </Paper> */}
