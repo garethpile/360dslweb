@@ -140,7 +140,7 @@ function ThirdParty() {
                 color: "crimson",
               }}
             >
-              Connect 3rd Parties
+              Connect third Parties
             </h1>
             {activities.map(
               ({
