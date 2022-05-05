@@ -24,8 +24,14 @@ import { Activityquery } from "../Apollo/queries";
 import { Select } from "antd";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import TermsConditions from "../Components/TermsConditions";
+import AthleteFeedback from "../Components/AthleteFeedback";
+import ThirdPartyCard from "../Components/ThirdPartyCard";
+import AthleteCard from "../Components/AthleteCard";
+import ActivityCard from "../Components/ActivityCard";
+import Header from "../Components/Header";
 const { Option } = Select;
 
 function secondsToHms(d) {
@@ -71,36 +77,6 @@ function MinPerKmFraction(MinPerKm, GarminActivityType) {
 
 function ThreeSixtyDSL() {
   const [activities, setActivities] = React.useState([]);
-  const [dropdownActivityEffort, setDropdownActivityEffort] =
-    React.useState("");
-  const [dropdownActivityBody, setDropdownActivityBody] = React.useState("");
-  const [dropdownSleep, setDropdownSleep] = React.useState("8 Hours Plus");
-  const [dropdownWorkLifeStress, setDropdownWorkLifeStress] =
-    React.useState("Perfect balance");
-  const [dropdownInjury, setDropdownInjury] = React.useState("No");
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [thirdanchorEl, setTHirdAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const thidPartyMenu = Boolean(thirdanchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const handleClickThirdParty = (event) => {
-    setTHirdAnchorEl(event.currentTarget);
-  };
-  const handleCloseThirdParty = () => {
-    setTHirdAnchorEl(null);
-  };
-  const iconDictionary = {
-    LAP_SWIMMING: <PoolIcon fontSize="large" />,
-    STRENGTH_TRAINING: <FitnessCenterIcon fontSize="large" />,
-    RUNNING: <DirectionsRunIcon fontSize="large" />,
-    CYCLING: <DirectionsBikeIcon fontSize="large" />,
-    VIRTUAL_RIDE: <PedalBikeIcon fontSize="large" />,
-  };
 
   const [userId, setUserId] = useState("");
   // const { loading, error, data } = useQuery(firstQuery)
@@ -113,7 +89,7 @@ function ThreeSixtyDSL() {
       .then((user) => {
         // userId = user.username;
         setUserId(user.username);
-        console.log("Current userId: ", user.username); // This works and userId visible ...
+        console.log("Current userId: ", user); // This works and userId visible ...
       })
       .catch((err) => console.log(err));
   }, []);
@@ -126,13 +102,20 @@ function ThreeSixtyDSL() {
       return 1;
     }
     return 0;
-  }
+  };
   async function fetchActivities() {
     try {
       const activity = await API.graphql(graphqlOperation(Activityquery));
-      console.log(activity.data.activitiesgarminByGarminAccountId.items);
-      let sorted = activity.data.activitiesgarminByGarminAccountId.items.sort(sortDesByDate);
-      sorted = sorted.filter(exr => !exr.GarminActivityAthleteFeedback || exr.GarminActivityAthleteFeedback != 1);
+      console.log("Activity items returned:" + activity.data.activitiesgarminByGarminAccountId.items);
+      let sorted =
+        activity.data.activitiesgarminByGarminAccountId.items.sort(
+          sortDesByDate
+        );
+      sorted = sorted.filter(
+        (exr) =>
+          !exr.GarminActivityAthleteFeedback ||
+          exr.GarminActivityAthleteFeedback != 1
+      );
       setActivities(sorted.slice(0, 10));
     } catch (err) {
       console.log("Error fetching activities");
@@ -143,194 +126,12 @@ function ThreeSixtyDSL() {
   }, []);
   return (
     <div>
-      <AppBar className="headerDiv">
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <Typography className="ThreeSixtyDSLDiv" noWrap component="div">
-              <img
-                src={process.env.PUBLIC_URL + "/360log.jpeg"}
-                width="150"
-                height={50}
-              />
-            </Typography>
-
-            <div className="menuItems">
-              <div>
-                <a href="/#" className="menuItems">
-                  Dashboard
-                </a>
-              </div>
-              <KeyboardArrowDownIcon className="ArrowIcon" />
-              <div>
-                <a href="/#" className="menuItems">
-                  Training
-                </a>
-              </div>
-              <KeyboardArrowDownIcon className="ArrowIcon" />
-              <div id="thirdParties"
-                aria-controls={thidPartyMenu ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={thidPartyMenu ? 'true' : undefined}
-                onClick={handleClickThirdParty}>
-                <p className="menuItems">
-                  3rd Parties
-                </p>
-              </div>
-              <KeyboardArrowDownIcon
-                // id="thirdParties"
-                aria-controls={thidPartyMenu ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={thidPartyMenu ? 'true' : undefined}
-                onClick={handleClickThirdParty}
-                className="ArrowIcon" />
-              <Menu
-                id="thirdParties"
-                anchorEl={thirdanchorEl}
-                open={thidPartyMenu}
-                onClose={handleCloseThirdParty}
-                MenuListProps={{
-                  'aria-labelledby': 'thirdParties',
-                }}
-              >
-                {/* <MenuItem onClick={handleCloseThirdParty} disabled>
-                  <b
-                    style={{
-                      justifyContent: "left",
-                      display: "flex",
-                      color: "crimson",
-                    }}
-                  >
-                    Third Party Applications
-                  </b>
-                </MenuItem> */}
-                <MenuItem onClick={handleCloseThirdParty}>
-                  <div>
-                    <a href="https://oauth.sandbox.trainingpeaks.com/OAuth/Authorize?client_id=m360&response_type=code&scope=workouts athlete:profile&redirect_uri=https://cisx9pt2th.execute-api.us-east-1.amazonaws.com/dev/tpnotification">
-                      Connect your TP account
-                    </a>
-                  </div>
-                </MenuItem>
-                <MenuItem onClick={handleCloseThirdParty}>
-                  <div>
-                    <a
-                      href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=${userId}`}
-                    >
-                      Connect your Garmin account
-                    </a>
-                  </div>
-                </MenuItem>
-                <MenuItem onClick={handleCloseThirdParty}>
-                  <div>
-                    <a href="http://www.strava.com/oauth/authorize?client_id=7947&response_type=code&scope=activity:read_all&redirect_uri=https://6kjj2t9ega.execute-api.us-east-1.amazonaws.com/staging/oauthexchange">
-                      Connect your Strava account
-                    </a>
-                  </div>
-                </MenuItem>
-              </Menu>
-            </div>
-            <div className="rightDiv">
-              <IconButton
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                className="avatarIcon">
-                <Avatar
-                  shape="circle"
-                  size={37}
-                  src="https://joeschmoe.io/api/v1/random"
-                />
-              </IconButton>
-              <KeyboardArrowDownIcon
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                className="ArrowIcon" />
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  'aria-labelledby': 'basic-button',
-                }}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
-              </Menu>
-
-            </div>
-          </Toolbar>
-        </Container>
-      </AppBar>
-
+      {/* <Header user={userId} /> */}
       <div className="bodyDiv">
         <Row>
           <Col className="firstCol" span={8} xs={24} sm={24} lg={8} xl={8}>
-            <div>
-              <Card className="maincardDiv">
-                <IconButton className="mainavatarIcon">
-                  <Avatar
-                    shape="circle"
-                    size={60}
-                    src="https://joeschmoe.io/api/v1/random"
-                  />
-                </IconButton>
-                <div>
-                  <p className="nameDiv">Athlete A</p>
-                </div>
-                <div className="calculationDiv">
-                  <span className="spanDiv">
-                    <p className="metricHead">Following</p>
-                    <p className="metricValue">33</p>
-                  </span>
-                  <span className="spanDiv">
-                    <p className="metricHead">Followers</p>
-                    <p className="metricValue">32</p>
-                  </span>
-                  <span className="spanDiv">
-                    <p className="metricHead">Activities</p>
-                    <p className="metricValue">1,583</p>
-                  </span>
-                </div>
-                <Divider light />
-                <p></p>
-
-                <b
-                  style={{
-                    justifyContent: "left",
-                    display: "flex",
-                    color: "crimson",
-                  }}
-                >
-                  Third Party Applications
-                </b>
-                <p></p>
-                <div>
-                  <a href="https://oauth.sandbox.trainingpeaks.com/OAuth/Authorize?client_id=m360&response_type=code&scope=workouts athlete:profile&redirect_uri=https://cisx9pt2th.execute-api.us-east-1.amazonaws.com/dev/tpnotification">
-                    Connect your TP account
-                  </a>
-                </div>
-                <div>
-                  <a href="http://www.strava.com/oauth/authorize?client_id=7947&response_type=code&scope=activity:read_all&redirect_uri=https://6kjj2t9ega.execute-api.us-east-1.amazonaws.com/staging/oauthexchange">
-                    Connect your Strava account
-                  </a>
-                </div>
-
-                <div>
-                  <a
-                    href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=${userId}`}
-                  >
-                    Connect your Garmin account
-                  </a>
-                </div>
-              </Card>
-            </div>
-
-            <div></div>
+            <AthleteCard />
+          <TermsConditions/>
           </Col>
           <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             <h1
@@ -353,103 +154,29 @@ function ThreeSixtyDSL() {
                 GarminActivityDuration,
                 GarminActivityDistance,
                 GarminAverageHeartRateInBeatsPerMinute,
+                GarminActivityAthleteBody,
+                GarminActivityAthleteEffort,
+                _version
               }) => {
                 return (
-                  <div className="cardSpacingDiv">
-                    <Card className="maincardDiv">
-                      <div className="activityDiv">
-                        <span className="activitySpan">
-                          <IconButton className="activityAvator">
-                            <Avatar shape="circle" size={60}>
-                              {iconDictionary[GarminActivityType] ||
-                                GarminActivityType}
-                            </Avatar>
-                          </IconButton>
-                          { }
-                        </span>
-
-                        <span className="activityHead">
-                          <p>{GarminActivityDescription}</p>
-                          <p className="metricValue">
-                            {moment(
-                              new Date(GarminActivityStartTime * 1000)
-                            ).format("DD/MM/YYYY HH:MM")}
-                          </p>
-                        </span>
-                      </div>
-
-                      <div className="metricDiv">
-                        <span className="metricSpan">
-                          <p className="metricHead">Distance(km)</p>
-                          <p className="metricValue">
-                            {(GarminActivityDistance / 1000).toFixed(2)}
-                          </p>
-                        </span>
-                        <span className="metricSpan">
-                          <p className="metricHead">Time</p>
-                          <p className="metricValue">
-                            {secondsToHms(GarminActivityDuration)}
-                          </p>
-                        </span>
-                        <span className="metricSpan">
-                          <p className="metricHead">Pace</p>
-                          <p className="metricValue">
-                            {MinPerKmFraction(
-                              GarminAveragePaceInMinutesPerKilometer,
-                              GarminActivityType
-                            )}
-                          </p>
-                        </span>
-                        <span className="metricSpan">
-                          <p className="metricHead">Avg HR</p>
-                          <p className="metricValue">
-                            {Math.round(GarminAverageHeartRateInBeatsPerMinute)}
-                          </p>
-                        </span>
-                      </div>
-                      <Divider light />
-                      <Box padding={2}>
-                        <Typography className="dropDownLabel">
-                          How was it?
-                        </Typography>
-                        <Select
-                          value={dropdownActivityEffort}
-                          onChange={(e) => setDropdownActivityEffort(e)}
-                          placeholder="ActivityEffort"
-                          style={{ width: "100%" }}
-                        >
-                          <Option value="SuperEasy">Super easy</Option>
-
-                          <Option value="GoodSweat">Good sweat</Option>
-                          <Option value="Great">Great workout</Option>
-                          <Option value="Hurt">That hurt!</Option>
-                          <Option value="Broke">Broke me!</Option>
-                        </Select>
-                      </Box>
-                      <Divider light />
-                      <Box padding={2}>
-                        <Typography className="dropDownLabel">
-                          How's the body?
-                        </Typography>
-                        <Select
-                          value={dropdownActivityBody}
-                          onChange={(e) => setDropdownActivityBody(e)}
-                          placeholder="BodyFeedback"
-                          style={{ width: "100%" }}
-                        >
-                          <Option value="SuperStrong">Super strong</Option>
-
-                          <Option value="FeelGreat">Feels great</Option>
-                          <Option value="NotBad">Not too bad</Option>
-                          <Option value="Sore">I'm sore!</Option>
-                          <Option value="Broken">Broken!</Option>
-                        </Select>
-                      </Box>
-                      <Divider light />
-                      <Box mt={1}>
-                        <Button>Save</Button>
-                      </Box>
-                    </Card>
+                  <div key={id} className="cardSpacingDiv">
+                    <ActivityCard
+                      id={id}
+                      version={_version}
+                      GarminActivityType={GarminActivityType}
+                      GarminActivityDescription={GarminActivityDescription}
+                      GarminAveragePaceInMinutesPerKilometer={
+                        GarminAveragePaceInMinutesPerKilometer
+                      }
+                      GarminActivityStartTime={GarminActivityStartTime}
+                      GarminActivityDuration={GarminActivityDuration}
+                      GarminActivityDistance={GarminActivityDistance}
+                      GarminAverageHeartRateInBeatsPerMinute={
+                        GarminAverageHeartRateInBeatsPerMinute
+                      }
+                      GarminActivityAthleteBody={GarminActivityAthleteBody}
+                      GarminActivityAthleteEffort={GarminActivityAthleteEffort}
+                    />
                   </div>
                 );
               }
@@ -457,71 +184,7 @@ function ThreeSixtyDSL() {
           </Col>
 
           <Col className="thirdCol" span={8} xs={24} sm={24}>
-            <Card>
-              <Row>
-                <Col span={18}>
-                  <b className="healthHead">Overall Health</b>
-                  <p className="healthText">
-                    Productive training comes from good sleep!!
-                  </p>
-                  <p className="healthText">
-                    Work / Life balance has a huge effect on your ability to
-                    train effectively.
-                  </p>
-                  <b className="healthHead">Select and Save</b>
-                  <Box paddingX={0}>
-                    <Typography className="healthQuestion">Are you injured?</Typography>
-                    <Select
-                      value={dropdownInjury}
-                      onChange={(e) => setDropdownInjury(e)}
-                      placeholder="InjuryFeedback"
-                      style={{ width: 200 }}
-                    >
-                      <Option value="InjuryNo">No</Option>
-                      <Option value="InuryYesNoTrain">
-                        Yes - cannot train
-                      </Option>
-                      <Option value="InjuryYesLightTraining">
-                        Yes - light training
-                      </Option>
-                    </Select>
-                  </Box>
-
-                  <Box paddingX={0}>
-                    <Typography>Average sleep per night?</Typography>
-                    <Select
-                      value={dropdownSleep}
-                      onChange={(e) => setDropdownSleep(e)}
-                      placeholder="SleepFeedback"
-                      style={{ width: 200 }}
-                    >
-                      <Option value="HardlyAny">Hardly any</Option>
-                      <Option value="6Less">Less Than 6</Option>
-                      <Option value="6To8">6-8 Hours</Option>
-                      <Option value="8HoursPlus">8 Hours Plus</Option>
-                    </Select>
-                  </Box>
-
-                  <Box paddingX={0}>
-                    <Typography>Recent Work / Life stress??</Typography>
-                    <Select
-                      value={dropdownWorkLifeStress}
-                      onChange={(e) => setDropdownWorkLifeStress(e)}
-                      placeholder="WorkLifeStressFeedback"
-                      style={{ width: 200 }}
-                    >
-                      <Option value="ZeroStress">Zero stress!</Option>
-                      <Option value="PerfectStress">Perfect balance</Option>
-                      <Option value="OverStress">Over stressed!</Option>
-                      <Option value="InsaneStress">Insanely stressed!</Option>
-                    </Select>
-                  </Box>
-                  <p></p>
-                  <Button>Save Feedback</Button>
-                </Col>
-              </Row>
-            </Card>
-
+            <AthleteFeedback />
             <div
               style={{
                 marginRight: "40px",
@@ -529,28 +192,7 @@ function ThreeSixtyDSL() {
                 marginLeft: "40px",
               }}
             ></div>
-            <Card>
-              <Row style={{ marginRight: "40px", marginTop: "35px" }}>
-                <Col span={4}>
-                  <Tooltip title="Privacy">
-                    <Button
-                      shape="circle"
-                      icon={<EyeOutlined />}
-                      size="large"
-                    />
-                  </Tooltip>
-                </Col>
-                <Col span={18}>
-                  <b style={{ justifyContent: "left", display: "flex" }}>
-                    Privacy
-                  </b>
-                  <p style={{ textAlign: "start" }}>
-                    All your personal data and training information will never
-                    be shared with any 3rd parties.
-                  </p>
-                </Col>
-              </Row>
-            </Card>
+           
           </Col>
         </Row>
       </div>

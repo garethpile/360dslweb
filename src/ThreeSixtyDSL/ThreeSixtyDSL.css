@@ -98,6 +98,7 @@ body{
     font-size: 18px;
     margin-left: 1%;
     margin-top: -1.5%;
+    justify-content: space-between;
 }
 .headingDiv{
     display: flex;
@@ -234,6 +235,7 @@ body{
     font-size: 18px;
     margin-left: 1%;
     margin-top: -1.5%;
+    justify-content: space-between;
 }
 .metricSpan{
     margin-right: 4%;
@@ -274,18 +276,18 @@ body{
 .firstCol {
     position: fixed !important;
     width: 100%;
-    padding-right: 10%;
+    padding-right: 5%;
 }
 
 .secondCol {
     position: absolute !important;
     left: 35%;
     width: 100%;
-    padding-right: 10%;
+    padding-right: 5%;
 }
 
 .thirdCol {
-    position: fixed !important;
+    position: absolute !important;
     left: 72% !important;
     padding-right: 10%;
 }
