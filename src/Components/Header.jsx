@@ -55,17 +55,14 @@ export default function Header({user}) {
             </Typography>
 
             <div className="menuItems">
+            <div> </div>
               <div>
-                <a href="/#" className="menuItems">
+                <a href="../#" className="menuItems">
                   Dashboard
                 </a>
               </div>
-              <KeyboardArrowDownIcon className="ArrowIcon" />
-              <div>
-                <a href="/#" className="menuItems">
-                  Training
-                </a>
-              </div>
+
+              
               <KeyboardArrowDownIcon className="ArrowIcon" />
               <div
                 id="thirdParties"
@@ -93,42 +90,19 @@ export default function Header({user}) {
                   "aria-labelledby": "thirdParties",
                 }}
               >
-                {/* <MenuItem onClick={handleCloseThirdParty} disabled>
-                  <b
-                    style={{
-                      justifyContent: "left",
-                      display: "flex",
-                      color: "crimson",
-                    }}
-                  >
-                    Third Party Applications
-                  </b>
-                </MenuItem> */}
-                <MenuItem onClick={handleCloseThirdParty}>
-                  <div>
-                    <a  href="https://oauth.sandbox.trainingpeaks.com/OAuth/Authorize?client_id=m360&response_type=code&scope=workouts athlete:profile&redirect_uri=https://cisx9pt2th.execute-api.us-east-1.amazonaws.com/dev/tpnotification" target="_blank">
-                      Connect your TP account
-                    </a>
-                  </div>
-                </MenuItem>
-                <MenuItem onClick={handleCloseThirdParty}>
-                  <div>
-                    <a
-                      href={`https://7t2zui1c0h.execute-api.us-east-1.amazonaws.com/staging/requesttoken/?userId=${user}`} target="_blank"
-                    >
-                      Connect your Garmin account
-                    </a>
-                  </div>
-                </MenuItem>
-                <MenuItem onClick={handleCloseThirdParty}>
-                  <div>
-                    <a href="http://www.strava.com/oauth/authorize?client_id=7947&response_type=code&scope=activity:read_all&redirect_uri=https://6kjj2t9ega.execute-api.us-east-1.amazonaws.com/staging/oauthexchange" target="_blank">
-                      Connect your Strava account
-                    </a>
-                  </div>
-                </MenuItem>
+        
+  
+          
+     
+                <MenuItem onClick={() => navigate("ThirdParty")}>Connect 3rd Parties</MenuItem>
               </Menu>
+              
             </div>
+
+
+
+
+            
             <div className="rightDiv">
               <IconButton
                 id="basic-button"

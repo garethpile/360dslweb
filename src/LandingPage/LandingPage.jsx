@@ -10,6 +10,7 @@ import {
     BrowserRouter
 } from "react-router-dom";
 import ThreeSixtyDSL from "../ThreeSixtyDSL/ThreeSixtyDSL";
+import ThirdParty from "../ThreeSixtyDSL/ThirdParty";
 import Profile from "../ProfilePage/Profile";
 
 
@@ -42,6 +43,7 @@ const LandingPage = () => {
         <Header user={userId}></Header>
             <Routes>
                 <Route path="/Profile" element={<Profile />} />
+                <Route path="/ThirdParty" element={<ThirdParty />} />
                 <Route exact path="/" element={<ThreeSixtyDSL />} />
             </Routes>
         </BrowserRouter>

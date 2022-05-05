@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "antd";
 
 
-export default function ThirdParty(userId) {
+export default function ThirdPartyCard(userId) {
    
   return (
    

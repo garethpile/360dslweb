@@ -2,7 +2,7 @@
 
 export const Activityquery = `query MyQuery {
 
-    activitiesgarminByGarminAccountId(GarminAccountId: "574dc5ad1b54a9fe210170d1fd34741c") {
+    activitiesgarminByGarminAccountId(GarminAccountId: "574dc5ad1b54a9fe210170d1fd34741c",filter: {GarminActivityAthleteFeedback: {eq: false}}) {
   
       nextToken
   

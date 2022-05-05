@@ -28,7 +28,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import TermsConditions from "../Components/TermsConditions";
 import AthleteFeedback from "../Components/AthleteFeedback";
-import ThirdParty from "../Components/ThirdParty";
+import ThirdPartyCard from "../Components/ThirdPartyCard";
 import AthleteCard from "../Components/AthleteCard";
 import ActivityCard from "../Components/ActivityCard";
 import Header from "../Components/Header";
@@ -131,7 +131,7 @@ function ThreeSixtyDSL() {
         <Row>
           <Col className="firstCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             <AthleteCard />
-            <TermsConditions/>
+          <TermsConditions/>
           </Col>
           <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
             <h1
@@ -192,7 +192,7 @@ function ThreeSixtyDSL() {
                 marginLeft: "40px",
               }}
             ></div>
-            <ThirdParty />
+           
           </Col>
         </Row>
       </div>
