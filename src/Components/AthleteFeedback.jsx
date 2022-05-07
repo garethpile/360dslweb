@@ -15,8 +15,8 @@ export default function AthleteFeedback() {
   const [dropdownInjury, setDropdownInjury] = React.useState("No");
   return (
     <Card className="maincardDiv">
-      <Row>
-        <Col span={18}>
+      <Row style={{ marginRight: "10px", marginTop: "10px" }}>
+        <Col >
           <b className="healthHead">Overall Health</b>
           <p className="healthText">
             Productive training comes from good sleep!!
