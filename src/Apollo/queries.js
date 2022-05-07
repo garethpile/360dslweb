@@ -87,9 +87,23 @@ export const createCustomer360DSL = `mutation createCustomerMutation($id: ID!, $
   }
 }`;
 
-export const updateAthleteMetricsMutation = `mutation updateAthleteMetricsMutation ($id:ID!, $AthleteMetrics: [AthleteMetrics], $_version : Int) {
- 
-  updateCUSTOMER360DSL(input: {id: $id, AthleteMetrics: $AthleteMetrics, _version: $_version} ) {
+export const updateAthleteMetricsMutation = `mutation updateAthleteMetricsMutation 
+(
+    $id:ID!, 
+    $AthleteMetrics: [
+      AthleteMetricsInput
+      ],
+    $_version : Int
+) 
+  
+{
+  updateCUSTOMER360DSL(
+    input: {
+            id: $id, 
+            AthleteMetrics: $AthleteMetrics,         
+            _version: $_version
+    }
+  ) {
     AthleteMetrics
   }
 }`;

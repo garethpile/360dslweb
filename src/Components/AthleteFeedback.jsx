@@ -24,18 +24,18 @@ export default function AthleteFeedback(props) {
       );
 
       const athleteMetricsData = {
-        MetricInjury: dropdownInjury,
-        MetricSleep: dropdownSleep,
-        MetricWorkLifeBalance: dropdownWorkLifeStress,
-        MetricsDateCapture: moment(new Date()).format("YYYY-MM-DD")
+        'MetricInjury': dropdownInjury,
+        'MetricSleep': dropdownSleep,
+        'MetricWorkLifeBalance': dropdownWorkLifeStress,
+        'MetricsDateCapture': moment(new Date()).format("YYYY-MM-DD")
        
       };
-      console.log("athleteMetricsData tostring :" + athleteMetricsData.toString());
+      console.log("athleteMetricsData: " + athleteMetricsData);
 
       const updateAthleteMetricsResponse = await API.graphql(
         graphqlOperation(updateAthleteMetricsMutation, {
           id: userId,
-          AthleteMetrics: athleteMetricsData,
+          AthleteMetrics:athleteMetricsData,
           _version: 1
         })
       );
