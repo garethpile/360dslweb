@@ -1,5 +1,3 @@
-
-
 export const Activityquery = `query MyQuery {
 
     activitiesgarminByGarminAccountId(GarminAccountId: "574dc5ad1b54a9fe210170d1fd34741c",filter: {GarminActivityAthleteFeedback: {eq: false}}) {
@@ -44,7 +42,7 @@ export const Activityquery = `query MyQuery {
   
     }
   
-  }`
+  }`;
 
 export const updateGarminActivity = `
   mutation MyMutation ($id: ID!, $GarminActivityAthleteBody: String, $GarminActivityAthleteEffort: String, $GarminActivityAthleteFeedback: Boolean,  $_version: Int) {
@@ -54,7 +52,6 @@ export const updateGarminActivity = `
       GarminActivityAthleteFeedback
     }
   }`;
-
 
 export const getCustomerByID = `query myCustomerQuery($id: ID!) {
     getCUSTOMER360DSL(id: $id) {
@@ -81,11 +78,18 @@ export const getCustomerByID = `query myCustomerQuery($id: ID!) {
       SaturdayTrainHours
       }
       }
-    }`
+    }`;
 
 export const createCustomer360DSL = `mutation createCustomerMutation($id: ID!, $EmailAddress: AWSEmail!){
   createCUSTOMER360DSL(input: {id : $id, EmailAddress: $EmailAddress}){
     EmailAddress
     id
   }
-}`
+}`;
+
+export const updateAthleteMetricsMutation = `mutation updateAthleteMetricsMutation ($id:ID!, $AthleteMetrics: [AthleteMetrics], $_version : Int) {
+ 
+  updateCUSTOMER360DSL(input: {id: $id, AthleteMetrics: $AthleteMetrics, _version: $_version} ) {
+    AthleteMetrics
+  }
+}`;

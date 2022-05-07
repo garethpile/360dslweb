@@ -5,17 +5,47 @@ import { Button } from "antd";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Select } from "antd";
-
+import { updateAthleteMetricsMutation } from "../Apollo/queries";
+import moment from "moment";
+import { API, graphqlOperation } from "aws-amplify";
 
 const { Option } = Select;
 
-export default function AthleteFeedback() {
+export default function AthleteFeedback(props) {
   const [dropdownSleep, setDropdownSleep] = React.useState("8 Hours Plus");
   const [dropdownWorkLifeStress, setDropdownWorkLifeStress] =
     React.useState("Perfect balance");
   const [dropdownInjury, setDropdownInjury] = React.useState("No");
 
+  async function updateAthleteMetrics(userId) {
+    try {
+      console.log(
+        "Function updateAthleteMetrics executing with parameter id: " + userId
+      );
 
+      const athleteMetricsData = {
+        MetricInjury: dropdownInjury,
+        MetricSleep: dropdownSleep,
+        MetricWorkLifeBalance: dropdownWorkLifeStress,
+        MetricsDateCapture: moment(new Date()).format("YYYY-MM-DD")
+       
+      };
+      console.log("athleteMetricsData tostring :" + athleteMetricsData.toString());
+
+      const updateAthleteMetricsResponse = await API.graphql(
+        graphqlOperation(updateAthleteMetricsMutation, {
+          id: userId,
+          AthleteMetrics: athleteMetricsData,
+          _version: 1
+        })
+      );
+      console.log(
+        "updateAthleteMetricsMutation response: " + updateAthleteMetricsResponse
+      );
+    } catch (err) {
+      console.log("Error updating Athlete metrics", err);
+    }
+  }
 
   return (
     <Card className="maincardDiv">
@@ -76,9 +106,7 @@ export default function AthleteFeedback() {
             </Select>
           </Box>
           <p></p>
-          <Button >
-            Save Feedback
-          </Button>
+          <Button onClick={() => updateAthleteMetrics(props.userId)}>Save</Button>
         </Col>
       </Row>
     </Card>

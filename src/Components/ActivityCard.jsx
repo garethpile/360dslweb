@@ -69,6 +69,7 @@ function MinPerKmFraction(MinPerKm, GarminActivityType) {
 export default function ActivityCard(props) {
   const [dropdownActivityEffort, setDropdownActivityEffort] = React.useState("Great workout");
   const [dropdownActivityBody, setDropdownActivityBody] = React.useState("Feels great");
+
   async function updateActivity(id) {
     try {
       console.log("GarminActivityAthleteBody: " + dropdownActivityBody);

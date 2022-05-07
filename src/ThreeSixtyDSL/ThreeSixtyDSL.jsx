@@ -186,7 +186,7 @@ function ThreeSixtyDSL() {
           </Col>
 
           <Col className="thirdCol" span={8} xs={24} sm={24}>
-            <AthleteFeedback />
+            <AthleteFeedback userId={userId}/>
             <div
               style={{
                 marginRight: "40px",
