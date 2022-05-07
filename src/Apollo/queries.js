@@ -90,9 +90,10 @@ export const createCustomer360DSL = `mutation createCustomerMutation($id: ID!, $
 export const updateAthleteMetricsMutation = `mutation updateAthleteMetricsMutation 
 (
     $id:ID!, 
-    $AthleteMetrics: [
-      AthleteMetricsInput
-      ],
+    $MetricsDateCapture: AWSDate
+    $MetricInjury: String
+    $MetricSleep: String
+    $MetricWorkLifeBalance: String,
     $_version : Int
 ) 
   
@@ -100,10 +101,16 @@ export const updateAthleteMetricsMutation = `mutation updateAthleteMetricsMutati
   updateCUSTOMER360DSL(
     input: {
             id: $id, 
-            AthleteMetrics: $AthleteMetrics,         
+            MetricsDateCapture: $MetricsDateCapture
+            MetricInjury: $MetricInjury
+            MetricSleep: $MetricSleep
+            MetricWorkLifeBalance: $MetricWorkLifeBalance         
             _version: $_version
     }
   ) {
-    AthleteMetrics
+    MetricsDateCapture
+    MetricInjury
+    MetricSleep
+    MetricWorkLifeBalance
   }
 }`;

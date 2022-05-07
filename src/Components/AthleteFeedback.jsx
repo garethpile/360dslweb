@@ -23,19 +23,13 @@ export default function AthleteFeedback(props) {
         "Function updateAthleteMetrics executing with parameter id: " + userId
       );
 
-      const athleteMetricsData = {
-        'MetricInjury': dropdownInjury,
-        'MetricSleep': dropdownSleep,
-        'MetricWorkLifeBalance': dropdownWorkLifeStress,
-        'MetricsDateCapture': moment(new Date()).format("YYYY-MM-DD")
-       
-      };
-      console.log("athleteMetricsData: " + athleteMetricsData);
-
       const updateAthleteMetricsResponse = await API.graphql(
         graphqlOperation(updateAthleteMetricsMutation, {
           id: userId,
-          AthleteMetrics:athleteMetricsData,
+          MetricInjury: dropdownInjury,
+          MetricSleep: dropdownSleep,
+          MetricWorkLifeBalance: dropdownWorkLifeStress,
+          MetricsDateCapture: moment(new Date()).format("YYYY-MM-DD"),
           _version: 1
         })
       );
