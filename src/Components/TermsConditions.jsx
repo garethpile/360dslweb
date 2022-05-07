@@ -8,8 +8,8 @@ import { EyeOutlined } from "@ant-design/icons";
 export default function TermsConditions() {
   return (
     <Card className="maincardDiv">
-      <Row style={{ marginRight: "40px", marginTop: "35px" }}>
-        <Col span={4}>
+      <Row style={{ marginRight: "10px", marginTop: "10px" }}>
+        <Col span={6}>
           <Tooltip title="Privacy">
             <Button shape="circle" icon={<EyeOutlined />} size="large" />
           </Tooltip>

@@ -130,19 +130,21 @@ function ThreeSixtyDSL() {
       <div className="bodyDiv">
         <Row>
           <Col className="firstCol" span={8} xs={24} sm={24} lg={8} xl={8}>
-            <AthleteCard />
-          <TermsConditions/>
-          </Col>
-          <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
-            <h1
+          <h1
               style={{
                 justifyContent: "center",
                 display: "flex",
                 color: "crimson",
+                marginTop:"15px"
               }}
             >
               Activity Feedback Corner
             </h1>
+            <AthleteCard />
+          <TermsConditions/>
+          </Col>
+          <Col className="secondCol" span={8} xs={24} sm={24} lg={8} xl={8}>
+           
             {activities.map(
               ({
                 id,

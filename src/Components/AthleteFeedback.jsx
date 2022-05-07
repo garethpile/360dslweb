@@ -14,7 +14,7 @@ export default function AthleteFeedback() {
     React.useState("Perfect balance");
   const [dropdownInjury, setDropdownInjury] = React.useState("No");
   return (
-    <Card>
+    <Card className="maincardDiv">
       <Row>
         <Col span={18}>
           <b className="healthHead">Overall Health</b>
