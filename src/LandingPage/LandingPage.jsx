@@ -18,6 +18,7 @@ import Profile from "../ProfilePage/Profile";
 const LandingPage = () => {
     const [userId, setUserId] = useState("");
     const [customer, setCustomer] = useState("");
+    const [redirect, setRedirect] = useState(false);
     let customerDataVersion = 0;
 
 
@@ -31,7 +32,7 @@ const LandingPage = () => {
 
       }
       setCustomer(customerData);
-      customerDataVersion = customerData.data.getCUSTOMER360DSL._version;
+      customerDataVersion = customerData.data?.getCUSTOMER360DSL?._version;
       console.log("Customer Data returned: " + JSON.stringify(customer));
       console.log("Customer version (Landing Page): " + customerDataVersion);
 
