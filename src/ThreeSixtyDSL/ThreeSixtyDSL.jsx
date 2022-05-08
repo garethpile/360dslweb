@@ -75,7 +75,11 @@ function MinPerKmFraction(MinPerKm, GarminActivityType) {
   }
 }
 
-function ThreeSixtyDSL() {
+function ThreeSixtyDSL(props) {
+
+
+console.log("CustomerVersion (ThreeSixtyDSL) " + props.customerDataVersion);
+
   const [activities, setActivities] = React.useState([]);
 
   const [userId, setUserId] = useState("");
@@ -186,7 +190,7 @@ function ThreeSixtyDSL() {
           </Col>
 
           <Col className="thirdCol" span={8} xs={24} sm={24}>
-            <AthleteFeedback userId={userId}/>
+            <AthleteFeedback userId={userId} customerVersion={props.customerDataVersion}/>
             <div
               style={{
                 marginRight: "40px",

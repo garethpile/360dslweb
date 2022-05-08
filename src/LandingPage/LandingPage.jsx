@@ -16,7 +16,10 @@ import Profile from "../ProfilePage/Profile";
 
 const LandingPage = () => {
     const [userId, setUserId] = useState("");
-    const [customer, setCustomer] = useState({});
+    const [customer, setCustomer] = useState("");
+    let customerDataVersion = 0;
+
+
     const getCustomer = async (id, EmailAddress) => {
       const customerData = await API.graphql(graphqlOperation(getCustomerByID , {id: id}));
       console.log("customerData : ", customerData.data.getCUSTOMER360DSL);
@@ -26,6 +29,10 @@ const LandingPage = () => {
 
       }
       setCustomer(customerData);
+      customerDataVersion = customerData.data.getCUSTOMER360DSL._version;
+      console.log("Customer Data returned: " + JSON.stringify(customer));
+      console.log("Customer version (Landing Page): " + customerDataVersion);
+
     }
     useEffect(() => {
       Auth.currentAuthenticatedUser({
@@ -44,7 +51,7 @@ const LandingPage = () => {
             <Routes>
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/ThirdParty" element={<ThirdParty />} />
-                <Route exact path="/" element={<ThreeSixtyDSL />} />
+                <Route exact path="/" element={<ThreeSixtyDSL customerDataVersion={customerDataVersion}/>} />
             </Routes>
         </BrowserRouter>
     )

@@ -17,11 +17,13 @@ export default function AthleteFeedback(props) {
     React.useState("Perfect balance");
   const [dropdownInjury, setDropdownInjury] = React.useState("No");
 
-  async function updateAthleteMetrics(userId) {
+  async function updateAthleteMetrics(userId,customerVersion) {
     try {
       console.log(
         "Function updateAthleteMetrics executing with parameter id: " + userId
       );
+      
+      console.log("AthleteFeedback Component - customerVersion: " + props.customerDataVersion);
 
       const updateAthleteMetricsResponse = await API.graphql(
         graphqlOperation(updateAthleteMetricsMutation, {
@@ -30,7 +32,7 @@ export default function AthleteFeedback(props) {
           MetricSleep: dropdownSleep,
           MetricWorkLifeBalance: dropdownWorkLifeStress,
           MetricsDateCapture: moment(new Date()).format("YYYY-MM-DD"),
-          _version: 1
+          _version: props.customerDataVersion + 1
         })
       );
       console.log(
@@ -100,7 +102,7 @@ export default function AthleteFeedback(props) {
             </Select>
           </Box>
           <p></p>
-          <Button onClick={() => updateAthleteMetrics(props.userId)}>Save</Button>
+          <Button onClick={() => updateAthleteMetrics(props.userId,props.customerVersion)}>Save</Button>
         </Col>
       </Row>
     </Card>

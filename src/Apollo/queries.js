@@ -61,6 +61,7 @@ export const getCustomerByID = `query myCustomerQuery($id: ID!) {
     }
     }
       EmailAddress
+      _version
       TrainingDays {
       FridayTrain
       FridayTrainHours
@@ -112,5 +113,6 @@ export const updateAthleteMetricsMutation = `mutation updateAthleteMetricsMutati
     MetricInjury
     MetricSleep
     MetricWorkLifeBalance
+    _version
   }
 }`;
