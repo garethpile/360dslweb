@@ -1,6 +1,7 @@
 import React, {useEffect , useState} from "react";
 import { Auth, API, graphqlOperation } from "aws-amplify";
 import { createCustomer360DSL, getCustomerByID } from "../Apollo/queries";
+import {Navigate } from "react-router-dom"
 
 import Header from "../Components/Header"
 import {
@@ -17,15 +18,17 @@ import Profile from "../ProfilePage/Profile";
 const LandingPage = () => {
     const [userId, setUserId] = useState("");
     const [customer, setCustomer] = useState({});
+    const [redirect, setRedirect] = useState(false);
     const getCustomer = async (id, EmailAddress) => {
       const customerData = await API.graphql(graphqlOperation(getCustomerByID , {id: id}));
       console.log("customerData : ", customerData.data.getCUSTOMER360DSL);
       if(!customerData.data.getCUSTOMER360DSL){
-        const createCustomer = await API.graphql(graphqlOperation(createCustomer360DSL , {id, EmailAddress}));
-        console.log("createCustomer : ", createCustomer);
+        setRedirect(true);
+        // const createCustomer = await API.graphql(graphqlOperation(createCustomer360DSL , {id, EmailAddress}));
+        // console.log("createCustomer : ", createCustomer);
 
       }
-      setCustomer(customerData);
+      // setCustomer(customerData);
     }
     useEffect(() => {
       Auth.currentAuthenticatedUser({
@@ -41,11 +44,13 @@ const LandingPage = () => {
     return (
         <BrowserRouter>
         <Header user={userId}></Header>
+            {redirect ? <Profile /> :
             <Routes>
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/ThirdParty" element={<ThirdParty />} />
                 <Route exact path="/" element={<ThreeSixtyDSL />} />
             </Routes>
+            }
         </BrowserRouter>
     )
 }
