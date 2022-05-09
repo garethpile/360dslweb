@@ -174,6 +174,7 @@ console.log("CustomerVersion (ThreeSixtyDSL) " + props.customerDataVersion);
                       GarminAveragePaceInMinutesPerKilometer={
                         GarminAveragePaceInMinutesPerKilometer
                       }
+                      fetcchActivity={fetchActivities}
                       GarminActivityStartTime={GarminActivityStartTime}
                       GarminActivityDuration={GarminActivityDuration}
                       GarminActivityDistance={GarminActivityDistance}

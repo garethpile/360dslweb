@@ -67,11 +67,14 @@ function MinPerKmFraction(MinPerKm, GarminActivityType) {
 }
 
 export default function ActivityCard(props) {
-  const [dropdownActivityEffort, setDropdownActivityEffort] = React.useState("Great workout");
-  const [dropdownActivityBody, setDropdownActivityBody] = React.useState("Feels great");
+  const [dropdownActivityEffort, setDropdownActivityEffort] = React.useState("");
+  const [dropdownActivityBody, setDropdownActivityBody] = React.useState("");
 
   async function updateActivity(id) {
     try {
+      if(!dropdownActivityBody || !dropdownActivityEffort) {
+        alert("Please Select Required Fields")
+      }
       console.log("GarminActivityAthleteBody: " + dropdownActivityBody);
 
       const updateActivity = await API.graphql(
@@ -86,6 +89,7 @@ export default function ActivityCard(props) {
         })
       );
       console.log("updateActivity response: " + updateActivity);
+      props.fetcchActivity()
       //setActivities(activity.data.activitiesgarminByGarminAccountId.items);
     } catch (err) {
       console.log("Error updating activity", err);
@@ -150,6 +154,7 @@ export default function ActivityCard(props) {
           placeholder="ActivityEffort"
           style={{ width: "100%" }}
         >
+          <Option selected disabled value="">Please Select ActivityEffort</Option>
           <Option value="SuperEasy">Super easy</Option>
 
           <Option value="GoodSweat">Good sweat</Option>
@@ -167,8 +172,8 @@ export default function ActivityCard(props) {
           placeholder="BodyFeedback"
           style={{ width: "100%" }}
         >
+          <Option selected disabled value="">Please Select BodyFeedback</Option>
           <Option value="SuperStrong">Super strong</Option>
-
           <Option value="FeelGreat">Feels great</Option>
           <Option value="NotBad">Not too bad</Option>
           <Option value="Sore">I'm sore!</Option>

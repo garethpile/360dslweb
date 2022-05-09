@@ -34,7 +34,7 @@ const LandingPage = () => {
       setCustomer(customerData);
       customerDataVersion = customerData.data?.getCUSTOMER360DSL?._version;
       console.log("Customer Data returned: " + JSON.stringify(customer));
-      console.log("Customer version (Landing Page): " + customerDataVersion);
+      console.log("Customer version (Landing Page): " , customerDataVersion);
 
     }
     useEffect(() => {
@@ -51,11 +51,11 @@ const LandingPage = () => {
     return (
         <BrowserRouter>
         <Header user={userId}></Header>
-            {redirect ? <Profile /> :
+            {redirect ? <Profile redirect={redirect} /> :
             <Routes>
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/ThirdParty" element={<ThirdParty />} />
-                <Route exact path="/" element={<ThreeSixtyDSL customerDataVersion={customerDataVersion}/>} />
+                <Route exact path="/" element={<ThreeSixtyDSL customerDataVersion={customer}/>} />
             </Routes>
             }
         </BrowserRouter>
