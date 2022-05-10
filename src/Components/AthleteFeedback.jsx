@@ -16,6 +16,7 @@ export default function AthleteFeedback(props) {
   const [dropdownWorkLifeStress, setDropdownWorkLifeStress] =
     React.useState("Perfect balance");
   const [dropdownInjury, setDropdownInjury] = React.useState("No");
+  const [dropdownSick, setDropdownSick] = React.useState("No");
 
   async function updateAthleteMetrics(userId,customerVersion) {
     try {
@@ -57,8 +58,23 @@ export default function AthleteFeedback(props) {
           </p>
           <b className="healthHead">Select and Save</b>
           <Box paddingX={0}>
-            <Typography className="healthQuestion">Are you injured?</Typography>
+            <Typography className="healthQuestion">Are you Sick?</Typography>
             <Select
+              value={dropdownSick}
+              onChange={(e) => setDropdownSick(e)}
+              placeholder="SickFeedback"
+              style={{ width: 200 }}
+            >
+              <Option value="SickNo">No</Option>
+              <Option value="SickYesNoTrain">Yes - cannot train</Option>
+              <Option value="SickYesLightTraining">
+                Yes - light training
+              </Option>
+            </Select>
+          </Box>
+          <Box>
+          <Typography className="healthQuestion">Are you injured?</Typography>
+          <Select
               value={dropdownInjury}
               onChange={(e) => setDropdownInjury(e)}
               placeholder="InjuryFeedback"
@@ -71,7 +87,6 @@ export default function AthleteFeedback(props) {
               </Option>
             </Select>
           </Box>
-
           <Box paddingX={0}>
             <Typography>Average sleep per night?</Typography>
             <Select
