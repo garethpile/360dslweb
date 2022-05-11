@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextField, Select, Card, MenuItem, Button, Grid, FormControlLabel, InputLabel, FormControl, Autocomplete, Checkbox } from "@mui/material";
 import CountryList from "./ContryList"
 import "./Profile.css";
@@ -9,7 +9,9 @@ import { createCustomer360DSL, getCustomerByID } from "../Apollo/queries";
 
 
 const Profile = () => {
+    const [customer, setCustomer] = useState("");
     const [user, setUser] = useState({
+        id: "",
         FirstName: "",
         LastName: "",
         EmailAddress: "",
@@ -31,6 +33,51 @@ const Profile = () => {
         ThursdayTrainHours: 1,
         FridayTrainHours: 1,
     });
+    const getCustomer = async (id) => {
+        const customerData = await API.graphql(graphqlOperation(getCustomerByID , {id: id}));
+        console.log("customerData : ", customerData.data.getCUSTOMER360DSL);
+        const userData = customerData.data.getCUSTOMER360DSL;
+        if(customerData.data.getCUSTOMER360DSL){
+            setCustomer(customerData);
+            setUser({
+                ...user,
+                id: userData.id,
+                EmailAddress: userData.EmailAddress,
+                MobileNumber: userData.MobileNumber,
+                gender: userData.Male  ? "Male": "Female",
+                FirstName: userData.FirstName,
+                LastName: userData.LastName,
+                Country: userData.Country,
+                DateOfBirth: userData.DateOfBirth,
+                SaturdayTrain :userData.TrainingDays.SaturdayTrain,
+                SaturdayTrainHours :Number(userData.TrainingDays.SundayTrainHours),
+                SundayTrain :userData.TrainingDays.SundaydayTrain,
+                SundayTrainHours :Number(userData.TrainingDays.SundayTrainHours),
+                MondayTrain :userData.TrainingDays.MondayTrain,
+                MondayTrainHours :Number(userData.TrainingDays.MondayTrainHours),
+                TuesdayTrain :userData.TrainingDays.TuesdayTrain,
+                TuesdayTrainHours :Number(userData.TrainingDays.TuesdayTrainHours),
+                WednesdayTrain :userData.TrainingDays.WednesdayTrain,
+                WednesdayTrainHours :Number(userData.TrainingDays.WednesdayTrainHours),
+                ThursdayTrain :userData.TrainingDays.ThursdayTrain,
+                ThursdayTrainHours :Number(userData.TrainingDays.ThursdayTrainHours),
+                FridayTrain :userData.TrainingDays.FridayTrain,
+                FridayTrainHours :Number(userData.TrainingDays.FridayTrainHours),
+            })
+        }
+  
+    }
+    useEffect(() => {
+        Auth.currentAuthenticatedUser({
+            bypassCache: true, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+          })
+            .then((userData) => {
+              setUser({...user, id: userData.username});
+              getCustomer(userData.username);
+              console.log("Current userId: ", userData.username);
+            })
+            .catch((err) => console.log(err));
+    }, []);
     const handleChange = (e) => {
         console.log(e)
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -42,7 +89,7 @@ const Profile = () => {
         // const {} = user;
         if (Object.keys(user).every(key => user[key] !== "")) {
             const createCustomer = await API.graphql(graphqlOperation(createCustomer360DSL , {
-                id: new Date().getTime(),
+                id: user.id,
                 EmailAddress: user.EmailAddress,
                 MobileNumber: user.MobileNumber,
                 Male: user.gender == "Male" ? true: false,
@@ -51,19 +98,19 @@ const Profile = () => {
                 Country: user.Country,
                 DateOfBirth: new Date(user.DateOfBirth).toISOString().substring(0, 10),
                 SaturdayTrain :user.SaturdayTrain,
-                SaturdayTrainHours :user.SundaydayTrainHours,
+                SaturdayTrainHours :Number(user.SundaydayTrainHours),
                 SundayTrain :user.SundaydayTrain,
-                SundayTrainHours :user.SundaydayTrainHours,
+                SundayTrainHours :Number(user.SundaydayTrainHours),
                 MondayTrain :user.MondayTrain,
-                MondayTrainHours :user.MondayTrainHours,
+                MondayTrainHours :Number(user.MondayTrainHours),
                 TuesdayTrain :user.TuesdayTrain,
-                TuesdayTrainHours :user.TuesdayTrainHours,
+                TuesdayTrainHours :Number(user.TuesdayTrainHours),
                 WednesdayTrain :user.WednesdayTrain,
-                WednesdayTrainHours :user.WednesdayTrainHours,
+                WednesdayTrainHours :Number(user.WednesdayTrainHours),
                 ThursdayTrain :user.ThursdayTrain,
-                ThursdayTrainHours :user.ThursdayTrainHours,
+                ThursdayTrainHours :Number(user.ThursdayTrainHours),
                 FridayTrain :user.FridayTrain,
-                FridayTrainHours :user.FridayTrainHours,
+                FridayTrainHours :Number(user.FridayTrainHours),
 
 
             }));
@@ -84,13 +131,13 @@ const Profile = () => {
                         </Box>
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
-                        <TextField name="FirstName" label="First Name" onChange={handleChange} fullWidth />
+                        <TextField name="FirstName" value={user.FirstName} label="First Name" onChange={handleChange} fullWidth />
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
-                        <TextField name="LastName" label="Last Name" onChange={handleChange} fullWidth />
+                        <TextField name="LastName" value={user.LastName} label="Last Name" onChange={handleChange} fullWidth />
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
-                        <TextField name="EmailAddress" label="Email Address" onChange={handleChange} fullWidth />
+                        <TextField name="EmailAddress" value={user.EmailAddress} label="Email Address" onChange={handleChange} fullWidth />
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
                         <FormControl fullWidth>
@@ -110,16 +157,17 @@ const Profile = () => {
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
-                        <TextField type="text" defaultValue={1} name="MobileNumber" label="Mobile Number" onChange={handleChange} fullWidth />
+                        <TextField type="text" value={user.MobileNumber} name="MobileNumber" label="Mobile Number" onChange={handleChange} fullWidth />
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
-                        <TextField name="DateOfBirth" type="date" label="Date Of Birth" onChange={handleChange} fullWidth />
+                        <TextField name="DateOfBirth" value={user.DateOfBirth} type="date" label="Date Of Birth" onChange={handleChange} fullWidth />
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
                         <Autocomplete
                             disablePortal
                             id="country"
-                            getOptionLabel={(option) => option.name}
+                            isOptionEqualToValue={(option, value) => console.log(option, value)}
+                            getOptionLabel={(option) => option}
                             options={CountryList}
                             fullWidth
                             value={user.Country}

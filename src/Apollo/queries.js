@@ -60,8 +60,36 @@ export const getCustomerByID = `query myCustomerQuery($id: ID!) {
       _version
     }
     }
-      EmailAddress
-      _version
+       id
+       UserId360DSL
+       LastName
+       FirstName
+       EmailAddress
+       MobileNumber
+       Male
+       DateOfBirth
+       Country
+       TrainingDays {
+           MondayTrain
+           MondayTrainHours
+           TuesdayTrain
+           TuesdayTrainHours
+           WednesdayTrain
+           WednesdayTrainHours
+           ThursdayTrain
+           ThursdayTrainHours
+           FridayTrain
+           FridayTrainHours
+           SaturdayTrain
+           SaturdayTrainHours
+           SundayTrain
+           SundayTrainHours
+       }
+       MetricsDateCapture
+       MetricInjury
+       MetricSleep
+       MetricWorkLifeBalance
+       _version
       TrainingDays {
       FridayTrain
       FridayTrainHours
