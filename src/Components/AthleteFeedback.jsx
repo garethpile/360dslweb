@@ -19,21 +19,24 @@ export default function AthleteFeedback(props) {
   const [dropdownSick, setDropdownSick] = React.useState("No");
 
   async function updateAthleteMetrics(userId,customerVersion) {
+    let currentCustomerDataVersion = "";
     try {
+      currentCustomerDataVersion = customerVersion.data.getCUSTOMER360DSL._version;
       console.log(
         "Function updateAthleteMetrics executing with parameter id: " + userId
       );
       
-      console.log("AthleteFeedback Component - customerVersion: " + props.customerDataVersion);
+      console.log("AthleteFeedback Component - customerVersion: " + currentCustomerDataVersion);
 
       const updateAthleteMetricsResponse = await API.graphql(
         graphqlOperation(updateAthleteMetricsMutation, {
           id: userId,
           MetricInjury: dropdownInjury,
           MetricSleep: dropdownSleep,
+          MetricSick: dropdownSick,
           MetricWorkLifeBalance: dropdownWorkLifeStress,
           MetricsDateCapture: moment(new Date()).format("YYYY-MM-DD"),
-          _version: props.customerDataVersion + 1
+          _version: currentCustomerDataVersion
         })
       );
       console.log(

@@ -129,6 +129,7 @@ export const updateAthleteMetricsMutation = `mutation updateAthleteMetricsMutati
     $MetricsDateCapture: AWSDate
     $MetricInjury: String
     $MetricSleep: String
+    $MetricSick: String
     $MetricWorkLifeBalance: String,
     $_version : Int
 ) 
@@ -140,6 +141,7 @@ export const updateAthleteMetricsMutation = `mutation updateAthleteMetricsMutati
             MetricsDateCapture: $MetricsDateCapture
             MetricInjury: $MetricInjury
             MetricSleep: $MetricSleep
+            MetricSick: $MetricSick
             MetricWorkLifeBalance: $MetricWorkLifeBalance         
             _version: $_version
     }
@@ -147,6 +149,7 @@ export const updateAthleteMetricsMutation = `mutation updateAthleteMetricsMutati
     MetricsDateCapture
     MetricInjury
     MetricSleep
+    MetricSick
     MetricWorkLifeBalance
     _version
   }
