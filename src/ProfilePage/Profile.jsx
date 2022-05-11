@@ -3,11 +3,12 @@ import { TextField, Select, Card, MenuItem, Button, Grid, FormControlLabel, Inpu
 import CountryList from "./ContryList"
 import "./Profile.css";
 import { Box } from "@mui/system";
+import { Auth, API, graphqlOperation } from "aws-amplify";
 import { createCustomer360DSL, getCustomerByID } from "../Apollo/queries";
 
 
 
-const Profile = ({redirect}) => {
+const Profile = () => {
     const [user, setUser] = useState({
         FirstName: "",
         LastName: "",
@@ -37,10 +38,36 @@ const Profile = ({redirect}) => {
     const handleCheckBox = (e) => {
         setUser({ ...user, [e.target.name]: e.target.checked });
     }
-    const saveUser = () => {
+    const saveUser = async () => {
         // const {} = user;
         if (Object.keys(user).every(key => user[key] !== "")) {
-            console.log(user)
+            const createCustomer = await API.graphql(graphqlOperation(createCustomer360DSL , {
+                id: new Date().getTime(),
+                EmailAddress: user.EmailAddress,
+                MobileNumber: user.MobileNumber,
+                Male: user.gender == "Male" ? true: false,
+                FirstName: user.FirstName,
+                LastName: user.LastName,
+                Country: user.Country,
+                DateOfBirth: new Date(user.DateOfBirth).toISOString().substring(0, 10),
+                SaturdayTrain :user.SaturdayTrain,
+                SaturdayTrainHours :user.SundaydayTrainHours,
+                SundayTrain :user.SundaydayTrain,
+                SundayTrainHours :user.SundaydayTrainHours,
+                MondayTrain :user.MondayTrain,
+                MondayTrainHours :user.MondayTrainHours,
+                TuesdayTrain :user.TuesdayTrain,
+                TuesdayTrainHours :user.TuesdayTrainHours,
+                WednesdayTrain :user.WednesdayTrain,
+                WednesdayTrainHours :user.WednesdayTrainHours,
+                ThursdayTrain :user.ThursdayTrain,
+                ThursdayTrainHours :user.ThursdayTrainHours,
+                FridayTrain :user.FridayTrain,
+                FridayTrainHours :user.FridayTrainHours,
+
+
+            }));
+        console.log("createCustomer : ", createCustomer);
         }
         else {
             alert(`Please fill all the fields`)
@@ -83,7 +110,7 @@ const Profile = ({redirect}) => {
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
-                        <TextField type="number" defaultValue={1} name="MobileNumber" label="Mobile Number" onChange={handleChange} fullWidth />
+                        <TextField type="text" defaultValue={1} name="MobileNumber" label="Mobile Number" onChange={handleChange} fullWidth />
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
                         <TextField name="DateOfBirth" type="date" label="Date Of Birth" onChange={handleChange} fullWidth />

@@ -81,43 +81,71 @@ export const getCustomerByID = `query myCustomerQuery($id: ID!) {
       }
     }`;
 
-    // input CreateCUSTOMER360DSLInput {
-    //   id: ID
-    //   UserId360DSL: String
-    //   LastName: String!
-    //   FirstName: String!
-    //   EmailAddress: AWSEmail!
-    //   MobileNumber: AWSPhone!
-    //   Male: Boolean!
-    //   DateOfBirth: AWSDate!
-    //   Country: String
-    //   TrainingDays: TrainingDaysInput
-    //   NonTrainingPeriod: [NonTrainingPeriodInput]
-    //   ThirdPartyApplications: [ThirdPartyApplicationsInput]
-    //   MetricsDateCapture: AWSDate
-    //   MetricInjury: String
-    //   MetricSleep: String
-    //   MetricWorkLifeBalance: String
-    //   _version: Int
-    // }
-    // type TrainingDaysInput {
-    //   MondayTrain: Boolean
-    //   MondayTrainHours: Int
-    //   TuesdayTrain: Boolean
-    //   TuesdayTrainHours: Int
-    //   WednesdayTrain: Boolean
-    //   WednesdayTrainHours: Int
-    //   ThursdayTrain: Boolean
-    //   ThursdayTrainHours: Int
-    //   FridayTrain: Boolean
-    //   FridayTrainHours: Int
-    //   SaturdayTrain: Boolean
-    //   SaturdayTrainHours: Int
-    //   SundayTrain: Boolean
-    //   SundayTrainHours: Int
-    // }
-export const createCustomer360DSL = `mutation createCustomerMutation($id: ID!, $EmailAddress: AWSEmail!){
-  createCUSTOMER360DSL(input: {id : $id, EmailAddress: $EmailAddress}){
+// input CreateCUSTOMER360DSLInput {
+//   id: ID
+//   UserId360DSL: String
+//   LastName: String!
+//   FirstName: String!
+//   EmailAddress: AWSEmail!
+//   MobileNumber: AWSPhone!
+//   Male: Boolean!
+//   DateOfBirth: AWSDate!
+//   Country: String
+//   TrainingDays: TrainingDaysInput
+//   NonTrainingPeriod: [NonTrainingPeriodInput]
+//   ThirdPartyApplications: [ThirdPartyApplicationsInput]
+//   MetricsDateCapture: AWSDate
+//   MetricInjury: String
+//   MetricSleep: String
+//   MetricWorkLifeBalance: String
+//   _version: Int
+// }
+// type TrainingDaysInput {
+//   MondayTrain: Boolean
+//   MondayTrainHours: Int
+//   TuesdayTrain: Boolean
+//   TuesdayTrainHours: Int
+//   WednesdayTrain: Boolean
+//   WednesdayTrainHours: Int
+//   ThursdayTrain: Boolean
+//   ThursdayTrainHours: Int
+//   FridayTrain: Boolean
+//   FridayTrainHours: Int
+//   SaturdayTrain: Boolean
+//   SaturdayTrainHours: Int
+//   SundayTrain: Boolean
+//   SundayTrainHours: Int
+// }
+
+export const createCustomer360DSL = `mutation createCustomerMutation($id: ID!, $EmailAddress: AWSEmail!, $FirstName: String!, $LastName: String!, $MobileNumber: AWSPhone!, $Male: Boolean!, $DateOfBirth: AWSDate!, $Country: String!,$MondayTrain: Boolean! ,  $MondayTrainHours: Int ,  $TuesdayTrain: Boolean! ,  $TuesdayTrainHours: Int ,  $WednesdayTrain: Boolean! ,$WednesdayTrainHours: Int ,  $ThursdayTrain: Boolean! , $ThursdayTrainHours: Int , $FridayTrain: Boolean! ,$FridayTrainHours: Int , $SaturdayTrain: Boolean! , $SaturdayTrainHours: Int ,$SundayTrain: Boolean! ,  $SundayTrainHours: Int ){
+  createCUSTOMER360DSL(input: {
+    id : $id,
+    EmailAddress: $EmailAddress,
+    FirstName: $FirstName,
+    LastName: $LastName,
+    MobileNumber: $MobileNumber,
+    Male: $Male,
+    DateOfBirth : $DateOfBirth,
+    Country : $Country,
+    TrainingDays: {
+      MondayTrain: $MondayTrain,
+      MondayTrainHours: $MondayTrainHours,
+      TuesdayTrain: $TuesdayTrain,
+      TuesdayTrainHours: $TuesdayTrainHours,
+      WednesdayTrain: $WednesdayTrain,
+      WednesdayTrainHours: $WednesdayTrainHours,
+      ThursdayTrain: $ThursdayTrain,
+      ThursdayTrainHours: $ThursdayTrainHours,
+      FridayTrain: $FridayTrain,
+      FridayTrainHours: $FridayTrainHours,
+      SaturdayTrain: $SaturdayTrain,
+      SaturdayTrainHours: $SaturdayTrainHours,
+      SundayTrain: $SundayTrain,
+      SundayTrainHours: $SundayTrainHours
+    }
+
+  }
+    ){
     EmailAddress
     id
   }

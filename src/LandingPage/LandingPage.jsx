@@ -51,7 +51,7 @@ const LandingPage = () => {
     return (
         <BrowserRouter>
         <Header user={userId}></Header>
-            {redirect ? <Profile redirect={redirect} /> :
+            {redirect ? <Profile /> :
             <Routes>
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/ThirdParty" element={<ThirdParty />} />
