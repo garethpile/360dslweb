@@ -12,16 +12,16 @@ import { API, graphqlOperation } from "aws-amplify";
 const { Option } = Select;
 
 export default function AthleteFeedback(props) {
-  const [dropdownSleep, setDropdownSleep] = React.useState("8 Hours Plus");
+  const [dropdownSleep, setDropdownSleep] = React.useState(props.customerData.metricSleep);
   const [dropdownWorkLifeStress, setDropdownWorkLifeStress] =
-    React.useState("Perfect balance");
-  const [dropdownInjury, setDropdownInjury] = React.useState("No");
-  const [dropdownSick, setDropdownSick] = React.useState("No");
+    React.useState("");
+  const [dropdownInjury, setDropdownInjury] = React.useState("");
+  const [dropdownSick, setDropdownSick] = React.useState("");
 
-  async function updateAthleteMetrics(userId,customerVersion) {
+  async function updateAthleteMetrics(userId,customerData) {
     let currentCustomerDataVersion = "";
     try {
-      currentCustomerDataVersion = customerVersion.data.getCUSTOMER360DSL._version;
+      currentCustomerDataVersion = customerData._version;
       console.log(
         "Function updateAthleteMetrics executing with parameter id: " + userId
       );
@@ -120,7 +120,7 @@ export default function AthleteFeedback(props) {
             </Select>
           </Box>
           <p></p>
-          <Button onClick={() => updateAthleteMetrics(props.userId,props.customerVersion)}>Save</Button>
+          <Button onClick={() => updateAthleteMetrics(props.userId,props.customerData._version)}>Save</Button>
         </Col>
       </Row>
     </Card>

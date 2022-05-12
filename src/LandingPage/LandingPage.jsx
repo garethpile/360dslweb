@@ -22,17 +22,19 @@ const LandingPage = () => {
     let customerDataVersion = 0;
 
 
-    const getCustomer = async (id, EmailAddress) => {
+    const getCustomer = async (id) => {
       const customerData = await API.graphql(graphqlOperation(getCustomerByID , {id: id}));
       console.log("customerData : ", customerData.data.getCUSTOMER360DSL);
       if(!customerData.data.getCUSTOMER360DSL){
+        console.log("Customer does not exist ....")
         setRedirect(true);
         // const createCustomer = await API.graphql(graphqlOperation(createCustomer360DSL , {id, EmailAddress}));
         // console.log("createCustomer : ", createCustomer);
 
       }
-      setCustomer(customerData);
-      customerDataVersion = customerData.data?.getCUSTOMER360DSL?._version;
+      console.log("Customer exsists ....");
+      setCustomer(customerData.data.getCUSTOMER360DSL);
+      customerDataVersion = customerData.data.getCUSTOMER360DSL._version;
       console.log("Customer Data returned: " + JSON.stringify(customer));
       console.log("Customer version (Landing Page): " , customerDataVersion);
 
@@ -43,8 +45,10 @@ const LandingPage = () => {
       })
         .then((user) => {
           setUserId(user.username);
-          getCustomer(user.username, user.attributes.email);
           console.log("Current userId: ", user.username);
+          //console.log("Current Email address: ", user.attributes.email);
+          getCustomer(user.username);
+          
         })
         .catch((err) => console.log(err));
     }, []);
@@ -55,7 +59,7 @@ const LandingPage = () => {
             <Routes>
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/ThirdParty" element={<ThirdParty />} />
-                <Route exact path="/" element={<ThreeSixtyDSL customerDataVersion={customer}/>} />
+                <Route exact path="/" element={<ThreeSixtyDSL customerData={customer}/>} />
             </Routes>
             }
         </BrowserRouter>

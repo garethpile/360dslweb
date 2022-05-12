@@ -4,8 +4,8 @@ import IconButton from "@mui/material/IconButton";
 import { Avatar } from "antd";
 import Divider from "@mui/material/Divider";
 
-class AthleteCard extends React.Component {
-  render() {
+export default function AthleteCard (props) {
+  
     return (
       <Card className="maincardDiv">
         <IconButton className="mainavatarIcon">
@@ -16,7 +16,7 @@ class AthleteCard extends React.Component {
           />
         </IconButton>
         <div>
-          <p className="nameDiv">Athlete A</p>
+          <p className="nameDiv">{props.customerData.EmailAddress}</p>
         </div>
         <div className="calculationDiv">
           <span className="spanDiv">
@@ -36,7 +36,7 @@ class AthleteCard extends React.Component {
         <p></p>
       </Card>
     );
-  }
+  
 }
 
-export default AthleteCard;
+
