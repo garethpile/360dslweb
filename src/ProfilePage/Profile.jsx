@@ -17,16 +17,17 @@ const Profile = () => {
         EmailAddress: "",
         gender: "",
         MobileNumber: "",
+        Country: "",
         DateOfBirth: "",
         SaturdayTrain: true,
-        SundaydayTrain: true,
+        SundayTrain: true,
         MondayTrain: true,
         TuesdayTrain: true,
         WednesdayTrain: true,
         ThursdayTrain: true,
         FridayTrain: true,
         SaturdayTrainHours: 1,
-        SundaydayTrainHours: 1,
+        SundayTrainHours: 1,
         MondayTrainHours: 1,
         TuesdayTrainHours: 1,
         WednesdayTrainHours: 1,
@@ -51,7 +52,7 @@ const Profile = () => {
                 DateOfBirth: userData.DateOfBirth,
                 SaturdayTrain :userData.TrainingDays.SaturdayTrain,
                 SaturdayTrainHours :Number(userData.TrainingDays.SundayTrainHours),
-                SundayTrain :userData.TrainingDays.SundaydayTrain,
+                SundayTrain :userData.TrainingDays.SundayTrain,
                 SundayTrainHours :Number(userData.TrainingDays.SundayTrainHours),
                 MondayTrain :userData.TrainingDays.MondayTrain,
                 MondayTrainHours :Number(userData.TrainingDays.MondayTrainHours),
@@ -98,9 +99,9 @@ const Profile = () => {
                 Country: user.Country,
                 DateOfBirth: new Date(user.DateOfBirth).toISOString().substring(0, 10),
                 SaturdayTrain :user.SaturdayTrain,
-                SaturdayTrainHours :Number(user.SundaydayTrainHours),
+                SaturdayTrainHours :Number(user.SundayTrainHours),
                 SundayTrain :user.SundaydayTrain,
-                SundayTrainHours :Number(user.SundaydayTrainHours),
+                SundayTrainHours :Number(user.SundayTrainHours),
                 MondayTrain :user.MondayTrain,
                 MondayTrainHours :Number(user.MondayTrainHours),
                 TuesdayTrain :user.TuesdayTrain,
@@ -160,20 +161,17 @@ const Profile = () => {
                         <TextField type="text" value={user.MobileNumber} name="MobileNumber" label="Mobile Number" onChange={handleChange} fullWidth />
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
-                        <TextField name="DateOfBirth" value={user.DateOfBirth} type="date" label="Date Of Birth" onChange={handleChange} fullWidth />
+                        <TextField name="DateOfBirth" InputLabelProps={{ shrink: true }} value={user.DateOfBirth} type="date" label="Date Of Birth" onChange={handleChange} fullWidth />
                     </Grid>
                     <Grid item xs={12} lg={3} md={3} sm={6}>
                         <Autocomplete
-                            disablePortal
                             id="country"
-                            isOptionEqualToValue={(option, value) => console.log(option, value)}
-                            getOptionLabel={(option) => option}
-                            options={CountryList}
-                            fullWidth
-                            value={user.Country}
-                            componentName="Country"
                             name="Country"
-                            onChange={(a, b) => setUser({ ...user, "Country": b.name })}
+                            value={user.Country}
+                            inputValue={user.Country}
+                            options={CountryList?.map((option) => option.name)}
+                            fullWidth
+                            onInputChange={(a, b) => setUser({ ...user, "Country": b.name })}
                             renderInput={(params) => <TextField {...params} label="Select Country" />}
                         />
                     </Grid>
@@ -181,44 +179,44 @@ const Profile = () => {
             </Card>
             <Card sx={{padding : "20px" , marginTop : "10px"}}>
             <Grid container spacing={2}>
-                <Grid xs={12} lg={3} md={3} sm={6} />
-                <Grid xs={12} lg={12} md={12} sm={12}>
+                <Grid item xs={12} lg={3} md={3} sm={6} />
+                <Grid item xs={12} lg={12} md={12} sm={12}>
                     <Box textAlign="center" my={2}>
                         <h1>TrainingDays</h1>
                     </Box>
                 </Grid>
                 <Grid item xs={12} lg={3} md={3} sm={6}>
-                    <FormControlLabel control={<Checkbox name="FridayTrain" defaultChecked checked={user.FridayTrain} onChange={handleCheckBox} />} label="FridayTrain" />
+                    <FormControlLabel control={<Checkbox name="FridayTrain"  checked={user.FridayTrain} onChange={handleCheckBox} />} label="FridayTrain" />
                     <br />
                     <TextField type="number" defaultValue={1} name="FridayTrainHours" label="Friday Train Hours" onChange={handleChange} fullWidth />
                 </Grid>
                 <Grid item xs={12} lg={3} md={3} sm={6}>
-                    <FormControlLabel control={<Checkbox name="SaturdayTrain" defaultChecked checked={user.SaturdayTrain} onChange={handleCheckBox} />} label="SaturdayTrain" />
+                    <FormControlLabel control={<Checkbox name="SaturdayTrain"  checked={user.SaturdayTrain} onChange={handleCheckBox} />} label="SaturdayTrain" />
                     <br />
                     <TextField type="number" defaultValue={1} name="SaturdayTrainHours" label="Saturday Train Hours" onChange={handleChange} fullWidth />
                 </Grid>
                 <Grid item xs={12} lg={3} md={3} sm={6}>
-                    <FormControlLabel control={<Checkbox name="SundayTrain" defaultChecked checked={user.SundayTrain} onChange={handleCheckBox} />} label="SundayTrain" />
+                    <FormControlLabel control={<Checkbox name="SundayTrain"  checked={user.SundayTrain} onChange={handleCheckBox} />} label="SundayTrain" />
                     <br />
                     <TextField type="number" defaultValue={1} name="SundayTrainHours" label="Sunday Train Hours" onChange={handleChange} fullWidth />
                 </Grid>
                 <Grid item xs={12} lg={3} md={3} sm={6}>
-                    <FormControlLabel control={<Checkbox name="MondayTrain" defaultChecked checked={user.MondayTrain} onChange={handleCheckBox} />} label="MondayTrain" />
+                    <FormControlLabel control={<Checkbox name="MondayTrain"  checked={user.MondayTrain} onChange={handleCheckBox} />} label="MondayTrain" />
                     <br />
                     <TextField type="number" defaultValue={1} name="MondayTrainHours" label="Monday Train Hours" onChange={handleChange} fullWidth />
                 </Grid>
                 <Grid item xs={12} lg={3} md={3} sm={6}>
-                    <FormControlLabel control={<Checkbox onChange={handleCheckBox} defaultChecked checked={user.TuesdayTrain} name="TuesdayTrain" />} label="TuesdayTrain" />
+                    <FormControlLabel control={<Checkbox onChange={handleCheckBox}  checked={user.TuesdayTrain} name="TuesdayTrain" />} label="TuesdayTrain" />
                     <br />
                     <TextField type="number" defaultValue={1} name="TuesdayTrainHours" label="Tuesday Train Hours" onChange={handleChange} fullWidth />
                 </Grid>
                 <Grid item xs={12} lg={3} md={3} sm={6}>
-                    <FormControlLabel control={<Checkbox name="WednesdayTrain" defaultChecked checked={user.WednesdayTrain} onChange={handleCheckBox} />} label="WednesdayTrain" />
+                    <FormControlLabel control={<Checkbox name="WednesdayTrain"  checked={user.WednesdayTrain} onChange={handleCheckBox} />} label="WednesdayTrain" />
                     <br />
                     <TextField type="number" defaultValue={1} name="WednesdayTrainHours" label="Wednesday Train Hours" onChange={handleChange} fullWidth />
                 </Grid>
                 <Grid item xs={12} lg={3} md={3} sm={6}>
-                    <FormControlLabel control={<Checkbox name="ThursdayTrain" defaultChecked checked={user.ThursdayTrain} onChange={handleCheckBox} />} label="ThursdayTrain" />
+                    <FormControlLabel control={<Checkbox name="ThursdayTrain"  checked={user.ThursdayTrain} onChange={handleCheckBox} />} label="ThursdayTrain" />
                     <br />
                     <TextField type="number" defaultValue={1} name="ThursdayTrainHours" label="Thursday Train Hours" onChange={handleChange} fullWidth />
                 </Grid>

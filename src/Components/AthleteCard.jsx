@@ -16,7 +16,7 @@ export default function AthleteCard (props) {
           />
         </IconButton>
         <div>
-          <p className="nameDiv">{props.customerData.EmailAddress}</p>
+          <p className="nameDiv">{props.customerData?.FirstName } {props.customerData?.LastName}</p>
         </div>
         <div className="calculationDiv">
           <span className="spanDiv">
