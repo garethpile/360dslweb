@@ -171,7 +171,7 @@ const Profile = () => {
                             inputValue={user.Country}
                             options={CountryList?.map((option) => option.name)}
                             fullWidth
-                            onInputChange={(a, b) => setUser({ ...user, "Country": b.name })}
+                            onInputChange={(a, b) => setUser({ ...user, "Country": b })}
                             renderInput={(params) => <TextField {...params} label="Select Country" />}
                         />
                     </Grid>
