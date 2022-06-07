@@ -53,6 +53,17 @@ export const updateGarminActivity = `
     }
   }`;
 
+  export const updateNonTrainingDays = `
+  mutation MyMutation ($id: ID!, $startDate: AWSDate!, $endDate: AWSDate!, $valid: Boolean!, $EmailAddress : String!, $_version: Int) {
+    updateCUSTOMER360DSL(condition: {EmailAddress: {eq: $EmailAddress}},input : {id: $id, NonTrainingPeriod: {endDate: $endDate, startDate: $startDate, valid: $valid} ,_version: $_version}) {
+      NonTrainingPeriod {
+        endDate
+        startDate
+        valid
+      }
+    }
+  }`;
+
 export const getCustomerByID = `query myCustomerQuery($id: ID!) {
     getCUSTOMER360DSL(id: $id) {
     CUSTOMER3RDPARTIES {
@@ -90,6 +101,11 @@ export const getCustomerByID = `query myCustomerQuery($id: ID!) {
        MetricSleep
        MetricWorkLifeBalance
        _version
+      NonTrainingPeriod {
+        endDate
+        startDate
+        valid
+      }
       TrainingDays {
       FridayTrain
       FridayTrainHours

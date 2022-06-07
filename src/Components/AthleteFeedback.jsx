@@ -1,13 +1,14 @@
 import React from "react";
 import { Card } from "antd";
 import { Row, Col } from "antd";
-import { Button } from "antd";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Select } from "antd";
-import { updateAthleteMetricsMutation } from "../Apollo/queries";
+import { updateAthleteMetricsMutation, updateNonTrainingDays } from "../Apollo/queries";
 import moment from "moment";
 import { API, graphqlOperation } from "aws-amplify";
+import { Grid, TextField, Button } from "@mui/material";
+import Modal from "./Modal/Modal"
 
 const { Option } = Select;
 
@@ -17,7 +18,43 @@ export default function AthleteFeedback(props) {
     React.useState("");
   const [dropdownInjury, setDropdownInjury] = React.useState("");
   const [dropdownSick, setDropdownSick] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+  const [form, setForm] = React.useState({startDate : "" , endDate: ""});
+  const dateHandler = (e) => {
+    setForm({...form , [e.target.name] : e.target.value})
+  }
 
+  const addAthleteOffDays = async () => {
+    if(!form.startDate || !form.endDate){
+      return alert("Please enter start and end date");
+    }
+    let currentCustomerDataVersion = "";
+    try {
+      currentCustomerDataVersion = props.customerData._version;
+      console.log(
+        "Function updateAthleteMetrics executing with parameter id: " + props.customerData.id
+      );
+      
+      console.log("AthleteFeedback Component - customerVersion: " + currentCustomerDataVersion);
+
+      const updateAthleteMetricsResponse = await API.graphql(
+        graphqlOperation(updateNonTrainingDays, {
+          id: props.customerData.id,
+          startDate: form.startDate,
+          endDate: form.endDate,
+          valid: true,
+          EmailAddress: props.customerData.EmailAddress,
+          _version: currentCustomerDataVersion
+        })
+      );
+      console.log(
+        "updateAthleteMetricsMutation response: " + updateAthleteMetricsResponse
+      );
+      alert("OffDays Added Succesfully");
+    } catch (err) {
+      console.log("Error updating Athlete metrics", err);
+    }
+  }
   async function updateAthleteMetrics(userId,customerData) {
     let currentCustomerDataVersion = "";
     try {
@@ -49,6 +86,29 @@ export default function AthleteFeedback(props) {
 
   return (
     <Card className="maincardDiv">
+      <Modal
+        header="Select Non Training Days Date" 
+        open={open} size="sm"
+        closeHandler={() => setOpen(!open)}
+      >
+        <Grid container alignItems="center" justifyContent="center">
+          <Grid col={4} lg={4} md={4} item>
+            {/* <label htmlFor="startDate"> Start Date</label><br /> */}
+            <TextField label="Start Date" InputLabelProps={{ shrink: true }} type="date" value={form.startDate} onChange={dateHandler} name="startDate" />
+          </Grid>
+          <Grid col={4} lg={4} md={4} item>
+            {/* <label htmlFor="endDate"> End Date</label><br /> */}
+            <TextField type="date" InputLabelProps={{ shrink: true }} label="End Date" value={form.endDate} onChange={dateHandler} name="endDate" />
+          </Grid>
+          <Grid item lg={12} md={12} sm={12}>
+            <Box textAlign="center" mt={2}>
+                <Button color="primary" onClick={addAthleteOffDays} size="large" variant="contained" >
+                  Save
+                </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </Modal>
       <Row style={{ marginRight: "10px", marginTop: "10px" }}>
         <Col>
           <b className="healthHead">Overall Health</b>
@@ -64,7 +124,13 @@ export default function AthleteFeedback(props) {
             <Typography className="healthQuestion">Are you Sick?</Typography>
             <Select
               value={dropdownSick}
-              onChange={(e) => setDropdownSick(e)}
+              onChange={(e) => {
+                if(e === "SickYesNoTrain"){
+                  setOpen(!open)
+                }
+                setDropdownSick(e)
+
+              }}
               placeholder="SickFeedback"
               style={{ width: 200 }}
             >
@@ -79,7 +145,13 @@ export default function AthleteFeedback(props) {
           <Typography className="healthQuestion">Are you injured?</Typography>
           <Select
               value={dropdownInjury}
-              onChange={(e) => setDropdownInjury(e)}
+              onChange={(e) => {
+                console.log("e " , e)
+                if(e === "InuryYesNoTrain"){
+                  setOpen(!open)
+                }
+                setDropdownInjury(e)
+              }}
               placeholder="InjuryFeedback"
               style={{ width: 200 }}
             >

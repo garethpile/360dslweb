@@ -52,7 +52,7 @@ const Profile = () => {
                 DateOfBirth: userData.DateOfBirth,
                 SaturdayTrain :userData.TrainingDays.SaturdayTrain,
                 SaturdayTrainHours :Number(userData.TrainingDays.SundayTrainHours),
-                SundayTrain :userData.TrainingDays.SundayTrain,
+                SundayTrain :userData.TrainingDays.SundayTrain || true,
                 SundayTrainHours :Number(userData.TrainingDays.SundayTrainHours),
                 MondayTrain :userData.TrainingDays.MondayTrain,
                 MondayTrainHours :Number(userData.TrainingDays.MondayTrainHours),
