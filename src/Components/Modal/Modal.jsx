@@ -1,18 +1,22 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import Dialog from "@material-ui/core/Dialog";
- import Button from '@material-ui/core/Button';
-import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import MuiDialogContent from "@material-ui/core/DialogContent";
+import Dialog from '@mui/material/Dialog';
+import Button from '@mui/material/Button';
+import MuiDialogTitle from '@mui/material/DialogTitle';
+import MuiDialogContent from "@mui/material/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-import Typography from "@material-ui/core/Typography";
-import DialogActions from '@material-ui/core/DialogActions';
+import CloseIcon from "@mui/icons-material/Close";
+import Typography from "@mui/material/Typography";
+import DialogActions from '@mui/material/DialogActions';
+import { withStyles } from "@mui/styles";
+
 
 const styles = theme => ({
   root: {
     margin: 0,
-    padding: theme.spacing(2),
+    padding: "15px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
     // width: 700,
     backgroundColor: "#ed143d",
   },
@@ -27,9 +31,8 @@ const styles = theme => ({
   },
   closeButton: {
     position: "absolute",
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-    color: theme.palette.common.white
+    right: "10px",
+    color: "white !important"
   }
 });
 const DialogTitle = withStyles(styles)(props => {
@@ -52,7 +55,7 @@ const DialogTitle = withStyles(styles)(props => {
 
 const DialogContent = withStyles(theme => ({
   root: {
-    padding: theme.spacing(2)
+    padding: "20px"
   }
 }))(MuiDialogContent);
 
