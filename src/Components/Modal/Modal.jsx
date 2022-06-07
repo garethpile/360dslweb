@@ -3,7 +3,7 @@ import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
 import MuiDialogTitle from '@mui/material/DialogTitle';
 import MuiDialogContent from "@mui/material/DialogContent";
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
 import DialogActions from '@mui/material/DialogActions';
