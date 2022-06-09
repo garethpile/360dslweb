@@ -34,7 +34,7 @@ const LandingPage = () => {
       }
       console.log("Customer exsists ....");
       setCustomer(customerData.data.getCUSTOMER360DSL);
-      customerDataVersion = customerData.data.getCUSTOMER360DSL._version;
+      customerDataVersion = customerData.data.getCUSTOMER360DSL?._version;
       console.log("Customer Data returned: " + JSON.stringify(customer));
       console.log("Customer version (Landing Page): " , customerDataVersion);
 

@@ -100,7 +100,7 @@ const Profile = () => {
                 DateOfBirth: new Date(user.DateOfBirth).toISOString().substring(0, 10),
                 SaturdayTrain :user.SaturdayTrain,
                 SaturdayTrainHours :Number(user.SundayTrainHours),
-                SundayTrain :user.SundaydayTrain,
+                SundayTrain :user.SundayTrain,
                 SundayTrainHours :Number(user.SundayTrainHours),
                 MondayTrain :user.MondayTrain,
                 MondayTrainHours :Number(user.MondayTrainHours),
