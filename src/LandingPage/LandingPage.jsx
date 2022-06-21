@@ -23,7 +23,8 @@ const LandingPage = () => {
 
 
     const getCustomer = async (id) => {
-      const customerData = await API.graphql(graphqlOperation(getCustomerByID , {id: id}));
+      try {
+        const customerData = await API.graphql(graphqlOperation(getCustomerByID , {id: id}));
       console.log("customerData : ", customerData.data.getCUSTOMER360DSL);
       if(!customerData.data.getCUSTOMER360DSL){
         console.log("Customer does not exist ....")
@@ -37,6 +38,10 @@ const LandingPage = () => {
       customerDataVersion = customerData.data.getCUSTOMER360DSL?._version;
       console.log("Customer Data returned: " + JSON.stringify(customer));
       console.log("Customer version (Landing Page): " , customerDataVersion);
+      } catch (error) {
+        console.log("Customer does not exist ....", error)
+        setRedirect(true);
+      }
 
     }
     useEffect(() => {
