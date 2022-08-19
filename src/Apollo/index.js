@@ -5,10 +5,10 @@ import {
 
 const client = new ApolloClient({
     headers : {
-        "API-ID": "7wktsy5t35hhjk24fbvhoj6nge",
-        "API KEY": "da2-az5dh3w2ujexfpthrxxq2hcurq",
+        "API-ID": "i3r7qpfutrc5jhickziybbcmgm",
+        "API KEY": "da2-furlftqpy5anpb475cwlsqaakq",
     },
-    uri: 'https://yffoucqeyrd2fpmmd6nozkllmu.appsync-api.us-east-1.amazonaws.com',
+    uri: 'https://dhy5zxj44zbzfdh6pc72ou7gty.appsync-api.eu-west-1.amazonaws.com/graphql',
     cache: new InMemoryCache()
 });
 
