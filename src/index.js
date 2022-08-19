@@ -18,9 +18,9 @@ const client = new ApolloClient({
   credentials : "include",
   headers : {
       "API-ID": "7wktsy5t35hhjk24fbvhoj6nge",
-      "API KEY": "da2-mgni7zzrm5csvjpakhkkgqgap4"
+      "API KEY": "da2-7z76gvic7bhuvokfij6f2ux25m"
   },
-  uri: 'https://yffoucqeyrd2fpmmd6nozkllmu.appsync-api.us-east-1.amazonaws.com/graphql',
+  uri: 'https://tbhnz4fce5fqvecf2t42r5zwkq.appsync-api.eu-west-1.amazonaws.com/graphql',
   cache: new InMemoryCache()
 });
 
