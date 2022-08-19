@@ -22,7 +22,7 @@
                 },
                 "360dslLayer01": {
                     "deploymentBucketName": "amplify-360dslbe-prod-155343-deployment",
-                    "s3Key": "amplify-builds/360dslLayer01-LambdaLayerVersione11a1b52-build.zip"
+                    "s3Key": "amplify-builds/360dslLayer01-LambdaLayerVersion51ed96c6-build.zip"
                 },
                 "360dslRetrieveStravaToken": {
                     "deploymentBucketName": "amplify-360dslbe-prod-155343-deployment",

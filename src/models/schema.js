@@ -1,5 +1,196 @@
 export const schema = {
     "models": {
+        "ACTIVITIESGARMIN": {
+            "name": "ACTIVITIESGARMIN",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "UserId360DSL": {
+                    "name": "UserId360DSL",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminAccountId": {
+                    "name": "GarminAccountId",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityId": {
+                    "name": "GarminActivityId",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityDescription": {
+                    "name": "GarminActivityDescription",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityType": {
+                    "name": "GarminActivityType",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityStartTime": {
+                    "name": "GarminActivityStartTime",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityDistance": {
+                    "name": "GarminActivityDistance",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityDuration": {
+                    "name": "GarminActivityDuration",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminAveragePaceInMinutesPerKilometer": {
+                    "name": "GarminAveragePaceInMinutesPerKilometer",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActiveKilocalories": {
+                    "name": "GarminActiveKilocalories",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminAverageHeartRateInBeatsPerMinute": {
+                    "name": "GarminAverageHeartRateInBeatsPerMinute",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivity": {
+                    "name": "GarminActivity",
+                    "isArray": false,
+                    "type": "AWSJSON",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityRPE": {
+                    "name": "GarminActivityRPE",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityFatigue": {
+                    "name": "GarminActivityFatigue",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityAthleteFeedback": {
+                    "name": "GarminActivityAthleteFeedback",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityAthleteEffort": {
+                    "name": "GarminActivityAthleteEffort",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "GarminActivityAthleteBody": {
+                    "name": "GarminActivityAthleteBody",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "ACTIVITIESGARMINS",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "activitiesgarminByGarminAccountId",
+                        "fields": [
+                            "GarminAccountId"
+                        ],
+                        "queryField": "activitiesgarminByGarminAccountId"
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "activitiesgarminByGarminActivityStartTime",
+                        "fields": [
+                            "GarminActivityStartTime"
+                        ],
+                        "queryField": "activitiesgarminByGarminActivityStartTime"
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "CUSTOMER3RDPARTY": {
             "name": "CUSTOMER3RDPARTY",
             "fields": {
@@ -51,6 +242,22 @@ export const schema = {
                     "type": "ID",
                     "isRequired": false,
                     "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
                 }
             },
             "syncable": true,
@@ -95,6 +302,13 @@ export const schema = {
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "UserId360DSL": {
+                    "name": "UserId360DSL",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "TPActivityId": {
@@ -195,19 +409,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "ACTIVITIES360DSL": {
-                    "name": "ACTIVITIES360DSL",
-                    "isArray": false,
-                    "type": {
-                        "model": "ACTIVITIES360DSL"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "activitiestpActivities360DslId"
-                    }
-                },
                 "TPActivityLocation": {
                     "name": "TPActivityLocation",
                     "isArray": false,
@@ -221,6 +422,22 @@ export const schema = {
                     "type": "AWSJSON",
                     "isRequired": false,
                     "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
                 }
             },
             "syncable": true,
@@ -258,6 +475,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "UserId360DSL": {
+                    "name": "UserId360DSL",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "ActivityDescription": {
                     "name": "ActivityDescription",
                     "isArray": false,
@@ -292,33 +516,6 @@ export const schema = {
                     "type": "Float",
                     "isRequired": true,
                     "attributes": []
-                },
-                "ACTIVITIES360DSLCUSTOMER360DSLS": {
-                    "name": "ACTIVITIES360DSLCUSTOMER360DSLS",
-                    "isArray": true,
-                    "type": {
-                        "model": "ACTIVITIES360DSLCUSTOMER360DSL"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "activities360dsl"
-                    }
-                },
-                "ACTIVITIESSTRAVA": {
-                    "name": "ACTIVITIESSTRAVA",
-                    "isArray": false,
-                    "type": {
-                        "model": "ACTIVITIESSTRAVA"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "activities360DslActivitiesstravaId"
-                    }
                 },
                 "ActivityAverageHeartRate": {
                     "name": "ActivityAverageHeartRate",
@@ -396,6 +593,22 @@ export const schema = {
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
                 }
             },
             "syncable": true,
@@ -433,31 +646,35 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "activities360dsl": {
-                    "name": "activities360dsl",
+                "activities360dslID": {
+                    "name": "activities360dslID",
                     "isArray": false,
-                    "type": {
-                        "model": "ACTIVITIES360DSL"
-                    },
+                    "type": "ID",
                     "isRequired": true,
-                    "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "activities360dslID"
-                    }
+                    "attributes": []
                 },
-                "customer360dsl": {
-                    "name": "customer360dsl",
+                "customer360dslID": {
+                    "name": "customer360dslID",
                     "isArray": false,
-                    "type": {
-                        "model": "CUSTOMER360DSL"
-                    },
+                    "type": "ID",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
                     "attributes": [],
-                    "association": {
-                        "connectionType": "BELONGS_TO",
-                        "targetName": "customer360dslID"
-                    }
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
                 }
             },
             "syncable": true,
@@ -526,46 +743,53 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "UserId360DSL": {
+                    "name": "UserId360DSL",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "LastName": {
                     "name": "LastName",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "FirstName": {
                     "name": "FirstName",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "EmailAddress": {
                     "name": "EmailAddress",
                     "isArray": false,
                     "type": "AWSEmail",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "MobileNumber": {
                     "name": "MobileNumber",
                     "isArray": false,
                     "type": "AWSPhone",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
-                "Gender": {
-                    "name": "Gender",
+                "Male": {
+                    "name": "Male",
                     "isArray": false,
                     "type": "Boolean",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "DateOfBirth": {
                     "name": "DateOfBirth",
                     "isArray": false,
                     "type": "AWSDate",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "Country": {
@@ -575,33 +799,85 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "activities360dsls": {
-                    "name": "activities360dsls",
-                    "isArray": true,
+                "TrainingDays": {
+                    "name": "TrainingDays",
+                    "isArray": false,
                     "type": {
-                        "model": "ACTIVITIES360DSLCUSTOMER360DSL"
+                        "nonModel": "TrainingDays"
                     },
                     "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "customer360dsl"
-                    }
+                    "attributes": []
                 },
-                "CUSTOMER3RDPARTIES": {
-                    "name": "CUSTOMER3RDPARTIES",
+                "NonTrainingPeriod": {
+                    "name": "NonTrainingPeriod",
                     "isArray": true,
                     "type": {
-                        "model": "CUSTOMER3RDPARTY"
+                        "nonModel": "NonTrainingPeriod"
                     },
                     "isRequired": false,
                     "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "customer360dslID"
-                    }
+                    "isArrayNullable": true
+                },
+                "ThirdPartyApplications": {
+                    "name": "ThirdPartyApplications",
+                    "isArray": true,
+                    "type": {
+                        "nonModel": "ThirdPartyApplications"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "MetricsDateCapture": {
+                    "name": "MetricsDateCapture",
+                    "isArray": false,
+                    "type": "AWSDate",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "MetricSick": {
+                    "name": "MetricSick",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "MetricInjury": {
+                    "name": "MetricInjury",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "MetricSleep": {
+                    "name": "MetricSleep",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "MetricWorkLifeBalance": {
+                    "name": "MetricWorkLifeBalance",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
                 }
             },
             "syncable": true,
@@ -647,6 +923,13 @@ export const schema = {
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "UserId360DSL": {
+                    "name": "UserId360DSL",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "StravaActivityId": {
@@ -760,6 +1043,29 @@ export const schema = {
                     "type": "AWSJSON",
                     "isRequired": false,
                     "attributes": []
+                },
+                "StravaActivityZones": {
+                    "name": "StravaActivityZones",
+                    "isArray": false,
+                    "type": "AWSJSON",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
                 }
             },
             "syncable": true,
@@ -789,6 +1095,176 @@ export const schema = {
         }
     },
     "enums": {},
-    "nonModels": {},
-    "version": "5bfbc7b8ec5b24b3d4e6e1c018e0edc5"
+    "nonModels": {
+        "TrainingDays": {
+            "name": "TrainingDays",
+            "fields": {
+                "MondayTrain": {
+                    "name": "MondayTrain",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "MondayTrainHours": {
+                    "name": "MondayTrainHours",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "TuesdayTrain": {
+                    "name": "TuesdayTrain",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "TuesdayTrainHours": {
+                    "name": "TuesdayTrainHours",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "WednesdayTrain": {
+                    "name": "WednesdayTrain",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "WednesdayTrainHours": {
+                    "name": "WednesdayTrainHours",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "ThursdayTrain": {
+                    "name": "ThursdayTrain",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "ThursdayTrainHours": {
+                    "name": "ThursdayTrainHours",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "FridayTrain": {
+                    "name": "FridayTrain",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "FridayTrainHours": {
+                    "name": "FridayTrainHours",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "SaturdayTrain": {
+                    "name": "SaturdayTrain",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "SaturdayTrainHours": {
+                    "name": "SaturdayTrainHours",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "SundayTrain": {
+                    "name": "SundayTrain",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "SundayTrainHours": {
+                    "name": "SundayTrainHours",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            }
+        },
+        "NonTrainingPeriod": {
+            "name": "NonTrainingPeriod",
+            "fields": {
+                "valid": {
+                    "name": "valid",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "startDate": {
+                    "name": "startDate",
+                    "isArray": false,
+                    "type": "AWSDate",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "endDate": {
+                    "name": "endDate",
+                    "isArray": false,
+                    "type": "AWSDate",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            }
+        },
+        "ThirdPartyApplications": {
+            "name": "ThirdPartyApplications",
+            "fields": {
+                "application": {
+                    "name": "application",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "applicationSync": {
+                    "name": "applicationSync",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "applicationRefreshToken": {
+                    "name": "applicationRefreshToken",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "applicationTokenExpiryDate": {
+                    "name": "applicationTokenExpiryDate",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "applicationAccessToken": {
+                    "name": "applicationAccessToken",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            }
+        }
+    },
+    "version": "3fafea386dec5639d9451e8e1096d027"
 };
